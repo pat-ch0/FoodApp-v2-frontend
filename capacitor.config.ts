@@ -5,7 +5,12 @@ const config: CapacitorConfig = {
   appName: 'T1 Food App',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'http'
+  },
+  plugins: {
+    CapacitorHttp: {
+      enabled: true
+    }
   }
 };
 
