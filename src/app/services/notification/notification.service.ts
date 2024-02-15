@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '../api.service';
+import { ApiService } from "src/app/services/api.service"
 
 /**
  * Service for sending notification tokens.

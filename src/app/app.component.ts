@@ -5,7 +5,7 @@ import {
   PushNotifications,
   Token,
 } from '@capacitor/push-notifications';
-import { NotificationService } from './api/services/notification.service';
+import { NotificationService } from './services/notification/notification.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
