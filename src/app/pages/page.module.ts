@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PageRoutingModule } from './page-routing.module';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
-
 
 @NgModule({
   declarations: [
@@ -12,10 +10,8 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
   imports: [
     CommonModule,
     PageRoutingModule,
-    
   ],
-  exports:
-  [
+  exports: [
     ProductDetailComponent
   ]
 })

@@ -4,13 +4,12 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    
     path: 'tabs',
     component: TabsPage,
     children: [
       {
         path: 'storage',
-        loadChildren: () => import('./storage-tab/storage-tab.module').then( m => m.StorageTabPageModule)
+        loadChildren: () => import('./storage-tab/storage-tab.module').then(m => m.StorageTabPageModule)
       }, 
       {
         path: 'menu',
@@ -44,9 +43,6 @@ const routes: Routes = [
     path: 'menu-tab',
     loadChildren: () => import('./menu-tab/menu-tab.module').then( m => m.MenuTabPageModule)
   },
-
-
-
 ];
 
 @NgModule({
