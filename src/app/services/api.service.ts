@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CapacitorHttp } from '@capacitor/core';
+import { environment } from 'src/environments/environment';
 
 /**
  * Service for making HTTP requests to the API.
@@ -9,7 +10,7 @@ import { CapacitorHttp } from '@capacitor/core';
 })
 export abstract class ApiService {
     private static userToken: string = 'YOUR_USER_TOKEN_HERE';
-    private static baseUrl = "http://172.20.10.6:4015/";
+    private static baseUrl = environment.config.API_GATEWAY;
 
     /**
      * Get the headers for the HTTP request.
