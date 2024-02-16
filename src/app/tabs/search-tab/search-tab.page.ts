@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product/product.service';
 import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 
@@ -7,12 +7,12 @@ import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
   templateUrl: './search-tab.page.html',
   styleUrls: ['./search-tab.page.scss'],
 })
-export class SearchTabPage {
-  consoleOutput: string | null = null;
+export class SearchTabPage implements OnInit{
+ 
+  consoleOutput: string | null = null;  // TODO: Remove when implementing the navigation to product-detail
+  productDetails: any = null; // TODO: Remove when implementing the navigation to product-detail
 
   isAvailable = true;
-  barcodes: Array<any> = [];
-  productDetails: any = null;
 
   constructor(private productService: ProductService) {}
 
@@ -43,7 +43,7 @@ export class SearchTabPage {
     console.log(barcode);
     this.consoleOutput = `Search input changed: ${barcode}`;
 
-    // Call the ProductService to search for the product by barcode
+    // TODO: Add navigation to product-detail with the barcode "product-detail/barcode"
     this.productService
       .searchProductByBarcode(barcode)
       .then((response) => {
@@ -60,10 +60,26 @@ export class SearchTabPage {
       });
   }
 
-  scan() {
-    // Placeholder for the scan button functionality
-    console.log('Scan button clicked');
-    this.consoleOutput = 'Scan button clicked';
+  async scan(): Promise<void> {
+    if (this.isAvailable) {
+      const { barcodes } = await BarcodeScanner.scan();
+      const barcode = barcodes[0].rawValue;
+      // TODO: Add navigation to product-detail with the barcode "product-detail/barcode"
+      this.productService
+        .searchProductByBarcode(barcode)
+        .then((response) => {
+          // Handle the successful response here
+          console.log('Product search response:', response);
+          this.consoleOutput = `Product details: ${JSON.stringify(
+            response.data
+          )}`;
+        })
+        .catch((error) => {
+          // Handle the error here
+          console.error('Product search failed:', error);
+          this.consoleOutput = 'Product search failed';
+        });
+    }
   }
 
   private async _requestCameraPermission(): Promise<boolean> {
