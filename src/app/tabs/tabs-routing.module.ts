@@ -9,15 +9,15 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
+        path: 'search',
+        loadChildren: () => import('./search-tab/search-tab.module').then(m => m.SearchTabPageModule)
+      },
+      {
         path: 'storage',
         loadChildren: () => import('./storage-tab/storage-tab.module').then( m => m.StorageTabPageModule)
       }, 
       {
         path: 'menu',
-        loadChildren: () => import('./search-tab/search-tab.module').then(m => m.SearchTabPageModule)
-      },
-      {
-        path: 'search',
         loadChildren: () => import('./menu-tab/menu-tab.module').then(m => m.MenuTabPageModule)
       },
       {
