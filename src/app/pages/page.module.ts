@@ -5,14 +5,13 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
 
 @NgModule({
   declarations: [
-    ProductDetailComponent
   ],
   imports: [
     CommonModule,
     PageRoutingModule,
   ],
-  exports: [
-    ProductDetailComponent
+  exports:
+  [
   ]
 })
 export class PageModule { }
