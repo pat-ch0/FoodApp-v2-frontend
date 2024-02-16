@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  config: {
+    API_GATEWAY: "https://da77-176-147-208-38.ngrok-free.app/",
+    product:{
+      endpoint: "api/v1/product/",
+    }
+  }
 };
 
 /*
