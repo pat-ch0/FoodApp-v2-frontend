@@ -1,35 +1,82 @@
-<img alt="" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons> -->
+    <ion-buttons slot="end">
+      <app-language-picker></app-language-picker>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
-<ion-card class="product-detail_card">
-  <ion-card-header>
-    <ion-card-title>Boston Lettuce</ion-card-title>
-    <ion-card-subtitle></ion-card-subtitle>
-  </ion-card-header>
+<ion-content>
+  <!-- Image container with the glass effect background -->
+  <div class="image-container">
+    <ion-img
+      class="product-detail__image"
+      [src]="
+        product?.imageSrc ||
+        'https://ionicframework.com/docs/img/demos/card-media.png'
+      "
+      alt="{{ product?.name }}"
+    ></ion-img>
+  </div>
 
-  <ion-card-content class="container">
-    <p class="price">1.10 €/piece</p>
-    <p class="weight">~ 150gr /piece</p>
-    <p class="country">Spain</p>
-  </ion-card-content>
+  <!-- Card with the product details -->
+  <ion-card class="product-detail">
+    <ion-card-header class="product-detail__header">
+      <ion-card-title class="product-detail__title">
+        {{ product?.name }}
+      </ion-card-title>
+      <ion-card-subtitle class="product-detail__subtitle"></ion-card-subtitle>
+      <ion-label class="product-detail__barcode">
+        {{ "PRODUCT_DETAIL.BARCODE_LABEL" | translate }}: {{ product?.barcode }}
+      </ion-label>
+    </ion-card-header>
 
-  <ion-card-content class="description">
-    Allergènes : l a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du
-    Lorem Ipsum.
-  </ion-card-content>
-  <ion-card-content>
-    NutriScore : A/B/C/D/E
-  </ion-card-content>
+    <ion-card-content class="product-detail__content">
+      <p class="product-detail__price">1.10 €/piece</p>
+      <p class="product-detail__weight">~ 150gr /piece</p>
+      <p class="product-detail__country">Spain</p>
+    </ion-card-content>
 
+    <ion-card-content class="product-detail__description">
+      <ng-container *ngIf="product?.allergens?.length; else noAllergens">
+        <p>{{ "PRODUCT_DETAIL.ALLERGENS_LABEL" | translate }}:</p>
+        <ul>
+          <li *ngFor="let allergen of product?.allergens">{{ allergen }}</li>
+        </ul>
+      </ng-container>
+      <ng-template #noAllergens>
+        <p>{{ "PRODUCT_DETAIL.NO_ALLERGENS" | translate }}.</p>
+      </ng-template>
+    </ion-card-content>
+    <ion-card-content>
+      NutriScore : {{ product?.nutriScore | uppercase }}
+    </ion-card-content>
 
-
-  <ion-card-content class="container-button">
-    <ion-button expand="block" color="warning" class="button-class add-stock"><ion-icon name="cart-outline"
-        class="cart-item"></ion-icon>
-      <ion-text color="light">
-        Add to stock
-      </ion-text></ion-button>
-    <ion-button expand="block" color="light" class="button-class like-item"><ion-icon name="heart-outline" class="heart-item"></ion-icon>
-    </ion-button>
-  </ion-card-content>
-
-</ion-card>
+    <ion-card-content class="product-detail__actions">
+      <ion-button
+        expand="block"
+        color="warning"
+        class="product-detail__button product-detail__button--add-stock"
+        ><ion-icon
+          name="cart-outline"
+          class="product-detail__icon--cart"
+        ></ion-icon>
+        <ion-text color="light">{{
+          "PRODUCT_DETAIL.ADD_TO_STOCK" | translate
+        }}</ion-text></ion-button
+      >
+      <ion-button
+        expand="block"
+        color="light"
+        class="product-detail__button product-detail__button--like"
+        ><ion-icon
+          name="heart-outline"
+          class="product-detail__icon--heart"
+        ></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

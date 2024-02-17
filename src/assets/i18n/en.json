@@ -1,0 +1,12 @@
+{
+    "PRODUCT_DETAIL": {
+      "BARCODE_LABEL": "Barcode",
+      "ALLERGENS_LABEL": "Allergens",
+      "NO_ALLERGENS": "No allergens have been indicated",
+      "NUTRISCORE_LABEL": "NutriScore",
+      "ADD_TO_STOCK": "Add to stock",
+      "PRODUCT_NOT_FOUND": "Product not found",
+      "ERROR_FETCHING_DETAILS": "There was an error fetching the product details"
+    }
+  }
+  

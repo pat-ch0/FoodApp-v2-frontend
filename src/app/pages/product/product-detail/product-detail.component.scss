@@ -1,57 +1,60 @@
-.product-detail_card
-{
-    background-color: var(--ion-color-light);
+.product-detail {
+  background-color: var(--ion-color-light);
 }
 
-ion-card
-{
-    position: absolute;
-    bottom: 0%;
-    width: 100%;
-    height: 70%;
-    margin: 0;
-    border-top-left-radius: 10px !important;
-    border-top-right-radius: 10px !important;
-    border-radius: 0px;
-    border-top:0.5px solid var(--ion-color-medium);
+.product-detail {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+  border-radius: 0px;
+  border-top: 0.5px solid var(--ion-color-medium);
 }
 
-img
-{
-    position: fixed ;
-    width: 100%;
-    height: 35%;
+.image-container {
+  position: relative;
+  width: 100%; 
+  padding-top: 56.25%;
+  background-color: rgba(255,255,255,0.4);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.container-button
-{
-    display: flex;
-    flex-direction: row-reverse;
+.product-detail__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.add-stock
-{
-    width: 70%;
-    margin-left: 10%;
-    box-shadow: 0px 2px 5px var(--ion-color-medium);
-    border-radius: 15px;
-    color: lightblue;
+.product-detail__actions {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
-.like-item
-{
-    border: 1px solid var(--ion-color-light);
-    box-shadow: 0px 2px 5px var(--ion-color-medium);
-    border-radius: 15px;
-    width: 25%;
-}
-.cart-item
-{
-    padding-right: 10px;
-    color: var(--ion-color-light);
-}
-.heart-item
-{
-    color: var(--ion-color-medium);
+.product-detail__button--add-stock {
+  width: 70%;
+  margin-left: 10%;
+  box-shadow: 0px 2px 4px var(--ion-color-medium);
+  border-radius: 15px;
+  color: lightblue;
 }
 
+.like-item {
+  border: 1px solid var(--ion-color-light);
+  box-shadow: 0px 2px 4px var(--ion-color-medium);
+  border-radius: 15px;
+  width: 25%;
+}
+
+.product-detail__icon--cart {
+  padding-right: 10px;
+  color: var(--ion-color-light);
+}
+
+.product-detail__icon--heart {
+  color: var(--ion-color-medium);
+}

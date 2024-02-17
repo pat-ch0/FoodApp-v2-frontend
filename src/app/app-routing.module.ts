@@ -9,7 +9,7 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'product-detail',
+    path: 'product-detail/:barcode',
     component: ProductDetailComponent,
   }
 ];
