@@ -1,0 +1,49 @@
+/* Add your own color variables or use default Ionic variables */
+:root {
+  --ion-color-primary: #ffce00;
+  --ion-color-medium: #9586a8;
+  --ion-color-light: #f4f4f4;
+}
+
+.research-container {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+.research-item {
+  margin: 2em 0;
+}
+
+.research-view-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5em;
+  padding-top: 2em;
+}
+
+.research-view-paragraph {
+  color: var(--ion-color-medium);
+}
+
+.separator {
+  width: 80%;
+  border-top: 1px solid var(--ion-color-medium);
+  margin: 2em 0;
+}
+
+.button-class {
+  width: 80%;
+  --padding-top: 1em;
+  --padding-bottom: 1em;
+}
+
+.console-output {
+  padding: 1em;
+  background-color: var(--ion-color-light);
+  border-radius: 8px;
+  margin: 1em;
+  font-family: "Courier New", monospace;
+}

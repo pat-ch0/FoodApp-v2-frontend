@@ -1,13 +1,37 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>search-tab</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Research</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">search-tab</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding research-div-container">
+  <div class="research-view-content research-item">
+    <p class="research-view-paragraph research-item">
+      If you want to look for something in our database, use the research bar.
+    </p>
+    <ion-searchbar
+      (ionChange)="searchProduct($event)"
+      placeholder="Search"
+    ></ion-searchbar>
+    <div class="separator"></div>
+    <p class="research-view-paragraph research-item">
+      To search a product, you can use your mobile or take a picture of the
+      barcode and you will get the product details.
+    </p>
+    <ion-button
+      expand="block"
+      color="warning"
+      class="button-class research-item"
+      (click)="scan()"
+      >SCAN</ion-button
+    >
+  </div>
+
+  <!-- TODO: Remove  this div and console-output css when implementing the navigation to product-detail -->
+  <div *ngIf="consoleOutput" class="console-output">
+    <p>{{ consoleOutput }}</p>
+  </div>
 </ion-content>
