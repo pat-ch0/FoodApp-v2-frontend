@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { StorageTabPageRoutingModule } from './storage-tab-routing.module';
 
 import { StorageTabPage } from './storage-tab.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    StorageTabPageRoutingModule
+    StorageTabPageRoutingModule,
+    SharedModule
   ],
   declarations: [StorageTabPage]
 })
