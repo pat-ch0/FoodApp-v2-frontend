@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   config: {
-    API_GATEWAY: "https://761a-176-147-208-38.ngrok-free.app/",
+    API_GATEWAY: " https://9781-147-161-180-92.ngrok-free.app/",
     product:{
       endpoint: "api/v1/product/",
     }

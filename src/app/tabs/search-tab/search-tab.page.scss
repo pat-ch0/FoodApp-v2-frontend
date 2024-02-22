@@ -47,3 +47,30 @@
   margin: 1em;
   font-family: "Courier New", monospace;
 }
+
+.search__bot-container
+{
+  position: fixed;
+  bottom: 1%;
+  right: 4%;
+}
+
+.bot-content--img
+{
+  width: 80%;
+}
+
+// Media query to adapt the display of certain phones
+@media (100px <= width <= 375px){
+  .research-view-content
+  {
+    margin-top: 0; 
+    padding-top: 0;
+    margin-bottom: 0;
+  }
+
+  .research-view-paragraph
+  {
+    margin-top: 2%;
+  }
+}

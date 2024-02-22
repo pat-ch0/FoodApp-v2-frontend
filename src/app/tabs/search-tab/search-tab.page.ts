@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SearchTabPage implements OnInit {
   isAvailable = true;
-
+  
   constructor(private router: Router) {}
 
   ngOnInit() {

@@ -12,21 +12,19 @@
     <p class="research-view-paragraph research-item">
       If you want to look for something in our database, use the research bar.
     </p>
-    <ion-searchbar
-      (ionChange)="searchProduct($event)"
-      placeholder="Search"
-    ></ion-searchbar>
+    <ion-searchbar (ionChange)="searchProduct($event)" placeholder="Search"></ion-searchbar>
     <div class="separator"></div>
     <p class="research-view-paragraph research-item">
       To search a product, you can use your mobile or take a picture of the
       barcode and you will get the product details.
     </p>
-    <ion-button
-      expand="block"
-      color="warning"
-      class="button-class research-item"
-      (click)="scan()"
-      >SCAN</ion-button
-    >
+    <ion-button expand="block" color="warning" class="button-class research-item" (click)="scan()">SCAN</ion-button>
+
+    <ion-fab class="search__bot-container" ng-click="modal.show()">
+      <ion-fab-button color="light" class="search__bot-content">
+        <ion-img src="assets/icon/tabs/bot.svg"
+          alt="The Wisconsin State Capitol building in Madison, WI at night" class="bot-content--img"></ion-img>
+      </ion-fab-button>
+    </ion-fab>
   </div>
 </ion-content>
