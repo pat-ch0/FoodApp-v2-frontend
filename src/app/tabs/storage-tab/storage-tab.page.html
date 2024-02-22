@@ -1,14 +1,5 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>storage-tab</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header [title]="'Storage'"></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">storage-tab</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <app-sliding style="height: 100em !important;" [title]="'Chepa'" [icon]="'box'"></app-sliding>
+  <app-sliding *ngFor="let storage of storages;" style="height: 100em !important;" [storage]=storage></app-sliding>
 </ion-content>

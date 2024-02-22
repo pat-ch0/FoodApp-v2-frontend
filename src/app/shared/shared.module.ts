@@ -6,14 +6,15 @@ import { SlidingComponent } from './components/sliding/sliding.component';
 import { LanguagePickerComponent } from './language-picker/language-picker.component';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
   declarations: [
     ProductDetailComponent,
     SlidingComponent,
-    LanguagePickerComponent
+    LanguagePickerComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +26,8 @@ import { TranslateModule } from '@ngx-translate/core';
   exports: [
     ProductDetailComponent,
     SlidingComponent,
-    LanguagePickerComponent
+    LanguagePickerComponent,
+    HeaderComponent
   ]
 })
 export class SharedModule { }

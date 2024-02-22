@@ -1,10 +1,17 @@
-<ion-item-sliding class="test">
-  <ion-item >
-    <ion-icon slot="start" name="{{icon}}"></ion-icon>
-    <ion-label>{{ title }}</ion-label>
+<ion-item-sliding  class="sliding-item">
+  <ion-item (click)="onClickSliding()">
+    <div class="sliding-container">
+      <div class="sliding-container-icon">
+        <img [src]="iconPath" alt="">
+      </div>
+      <div>
+        <p>{{storage.name}}</p>
+        <p>Number of product: XX</p>
+      </div>
+    </div>
   </ion-item>
 
   <ion-item-options>
-    <ion-item-option color="danger">Delete</ion-item-option>
+    <ion-item-option (click)="onClickDelete()" color="danger">Delete</ion-item-option>
   </ion-item-options>
 </ion-item-sliding>
