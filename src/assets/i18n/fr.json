@@ -1,0 +1,11 @@
+{
+    "PRODUCT_DETAIL": {
+      "BARCODE_LABEL": "Code-barres",
+      "ALLERGENS_LABEL": "Allergènes",
+      "NO_ALLERGENS": "Aucun allergène n'a été indiqué",
+      "NUTRISCORE_LABEL": "NutriScore",
+      "ADD_TO_STOCK": "Ajouter au stock",
+      "PRODUCT_NOT_FOUND": "Produit non trouvé",
+      "ERROR_FETCHING_DETAILS": "Une erreur s'est produite lors de la récupération des détails du produit"
+    }
+  }
