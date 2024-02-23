@@ -1,5 +1,12 @@
 <app-header [title]="'Storage'"></app-header>
 
 <ion-content [fullscreen]="true">
-  <app-sliding *ngFor="let storage of storages;" style="height: 100em !important;" [storage]=storage></app-sliding>
+  <app-sliding *ngFor="let storage of storages;" 
+  (clickRequest)="onClickStorage(storage)"
+   (deleteRequest)="onDeleteStorage(storage)"
+    [iconPath]="'assets/icon/storage-icon/'+this.storage.icon"
+    [name]="storage.name"
+    [detail]="'Number of product xxx'"
+    >
+  </app-sliding>
 </ion-content>

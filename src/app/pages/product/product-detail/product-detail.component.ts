@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '@service/product/product.service';
 import { LoadingController, ToastController } from '@ionic/angular';
-import { Product } from '@type/product.type';
+import { ProductDetail } from '@type/products/product-detail.type';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./product-detail.component.scss'],
 })
 export class ProductDetailComponent implements OnInit {
-  product: Product | undefined; // The product details to display.
+  product: ProductDetail | undefined; // The product details to display.
   barcode: string | null = ''; // The barcode of the product to fetch.
   isLoading = false; // Indicates if the loading spinner should be shown.
 

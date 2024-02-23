@@ -1,9 +1,7 @@
 import { Composition } from "./composition.type";
+import { Product } from "./product.type";
 
-export type Product = {
-    barcode: string;
-    name: string;
-    imageSrc: string;
+export type ProductDetail = Product & {
     composition: Composition;
     nutriScore: string;
     carbonFootprint: number;

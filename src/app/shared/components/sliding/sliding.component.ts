@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, input } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { Component, EventEmitter, Input, OnInit, Output, input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StorageType } from 'src/app/types/storage.type';
 @Component({
   selector: 'app-sliding',
@@ -7,36 +7,29 @@ import { StorageType } from 'src/app/types/storage.type';
   styleUrls: ['./sliding.component.scss'],
 })
 export class SlidingComponent implements OnInit {
-  @Input() storage!: StorageType;
 
-  constructor(private alertController: AlertController) { }
+  @Output() deleteRequest = new EventEmitter();
+  @Output() editRequest = new EventEmitter();
+  @Output() clickRequest = new EventEmitter();
+  @Input() iconPath!: string;
+  @Input() name!: string;
+  @Input() detail!: string;
+  constructor() { }
 
-  async onClickDelete() {
-    const alert = await this.alertController.create({
-      header: `Delete ${this.storage.name}`,
-      message: `Are you sure you want to delete the storage ${this.storage.name} ?`,
-      buttons: [
-        {
-          text: 'Yes',
-          handler: () => {
-            //Use API for delete the storage
-            console.log('Yes button clicked');
-          }
-        },
-        'No'
-      ],
-      
-    });
+  onClickDelete() {
+    this.deleteRequest.emit();
+  }
 
-    await alert.present();
+  onClickEdit() {
+    this.editRequest.emit();
   }
 
   onClickSliding() {
+    this.clickRequest.emit();
   }
 
-  iconPath!: string;
   ngOnInit() {
-    this.iconPath = `assets/icon/storage-icon/${this.storage.icon}`;
-   }
+  
+  }
 
 }
