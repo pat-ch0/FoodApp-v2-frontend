@@ -7,6 +7,11 @@
       "ADD_TO_STOCK": "Add to stock",
       "PRODUCT_NOT_FOUND": "Product not found",
       "ERROR_FETCHING_DETAILS": "There was an error fetching the product details"
+    },
+    "SEARCH_TAB": {
+      "INPUT_PARAGRAPH": "To search for a product, enter its barcode in the search bar",
+      "SCAN_PARAGRAPH": "Scan barcode with camera",
+      "SCAN_BUTTON": "SCAN"
     }
   }
   

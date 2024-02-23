@@ -5,7 +5,7 @@ describe('SearchTabPage', () => {
   let component: SearchTabPage;
   let fixture: ComponentFixture<SearchTabPage>;
 
-  beforeEach(async(() => {
+  beforeEach(async (() => {
     fixture = TestBed.createComponent(SearchTabPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
