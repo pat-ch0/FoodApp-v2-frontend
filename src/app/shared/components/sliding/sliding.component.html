@@ -1,17 +1,23 @@
-<ion-item-sliding  class="sliding-item">
+<ion-item-sliding class="sliding__item">
+  <ion-item-options side="start">
+    <ion-item-option (click)="onClickEdit()" color="warning">&nbsp;&nbsp;Edit&nbsp;&nbsp;</ion-item-option>
+  </ion-item-options>
+
   <ion-item (click)="onClickSliding()">
-    <div class="sliding-container">
-      <div class="sliding-container-icon">
-        <img [src]="iconPath" alt="">
+    <div class="sliding__container">
+      <div class="sliding__container__icon">
+        <img class="" [src]="iconPath" alt="">
       </div>
       <div>
-        <p>{{storage.name}}</p>
-        <p>Number of product: XX</p>
+        <p>{{ name }}</p>
+        <p>{{ detail }}</p>
       </div>
     </div>
   </ion-item>
 
   <ion-item-options>
-    <ion-item-option (click)="onClickDelete()" color="danger">Delete</ion-item-option>
+    <ion-item-options side="end">
+      <ion-item-option (click)="onClickDelete()" color="danger">Delete</ion-item-option>
+    </ion-item-options>
   </ion-item-options>
 </ion-item-sliding>

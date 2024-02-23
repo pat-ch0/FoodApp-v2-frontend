@@ -1,0 +1,12 @@
+.loading__spinner__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+
+    ion-spinner {
+        width: 7em;
+        height: 7em;
+    }
+}

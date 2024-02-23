@@ -1,0 +1,27 @@
+<ion-content [fullscreen]="true">
+  <div class="product__storage__loading">
+    <app-header [title]="storage.name" [showBackButton]="true"></app-header>
+    <app-loading-spinner *ngIf="loading" [message]="'PRODUCT_STOCK.LOADING_TEXT' | translate"></app-loading-spinner>
+
+    <div *ngIf="!loading && isEmpty">
+      <p>{{'PRODUCT_STOCK.PRODUCT_NOT_FOUND' | translate}}</p>
+    </div>
+
+    <div *ngIf="!loading && !isEmpty">
+      <ion-searchbar animated="true" [placeholder]="'PRODUCT_STOCK.SEARCHBAR_PLACEHOLDER' | translate"
+      (ionInput)="onSearchProduct($event.detail.value)"
+      
+      >
+      </ion-searchbar>
+      <ion-button shape="round" color="warning" (click)="addProductClick()">
+        {{"PRODUCT_STOCK.ADD_PRODUCT" | translate}}
+      </ion-button>
+
+      <app-sliding *ngFor="let product of productsFilter;" (clickRequest)="onClickProduct(product)"
+        (deleteRequest)="onDeleteProduct(product)" [iconPath]="product.imageSrc" [name]="product.name"
+        [detail]="('PRODUCT_STOCK.NUMBER_OF_PRODUCT' | translate) + ' ' + product.quantity">
+      </app-sliding>
+
+    </div>
+  </div>
+</ion-content>
