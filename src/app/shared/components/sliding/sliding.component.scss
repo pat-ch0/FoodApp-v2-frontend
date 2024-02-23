@@ -1,16 +1,26 @@
-.sliding-item ion-item{
-    --min-height: 160px;
-}
+.sliding__item {
 
-.sliding-container{
-    width: 90%;
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-}
+    ion-item {
+        --min-height: 160px;
+    }
 
-.sliding-container-icon{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .sliding__container {
+        width: 90%;
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+    }
+
+    .sliding__container__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: auto;
+            max-width: 44vw;
+        }
+    }
+
+
 }
