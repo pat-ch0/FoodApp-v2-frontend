@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { Router } from '@angular/router';
+import { IonModal } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core/components';
+
 
 @Component({
   selector: 'app-search-tab',
@@ -8,6 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./search-tab.page.scss'],
 })
 export class SearchTabPage implements OnInit {
+  @ViewChild(IonModal)
+  modal!: IonModal;
+  message = 'Write something to bot, try to be clear in your asking';
+  nameUser!: string;
+  nameBot!: string;
   isAvailable = true;
   
   constructor(private router: Router) {}
@@ -32,6 +40,23 @@ export class SearchTabPage implements OnInit {
       }
     });
   }
+
+  // ###################### BOT Modal #########################
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
+  }
+
+  confirm() {
+    this.modal.dismiss(null, 'confirm');
+  }
+
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'confirm') {
+      this.message = `Hello, ${ev.detail.data}!`;
+    }
+  }
+// #############################------------------------------------------------
 
   searchProduct(event: any) {
     const barcode = event.detail.value;
