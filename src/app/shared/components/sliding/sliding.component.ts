@@ -1,17 +1,35 @@
-import { Component, Input, OnInit, input } from '@angular/core';
-
+import { Component, EventEmitter, Input, OnInit, Output, input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StorageType } from 'src/app/types/storage.type';
 @Component({
   selector: 'app-sliding',
   templateUrl: './sliding.component.html',
   styleUrls: ['./sliding.component.scss'],
 })
-export class SlidingComponent  implements OnInit {
+export class SlidingComponent implements OnInit {
 
-  @Input() title!: string;
-  @Input() icon!: string;
-
+  @Output() deleteRequest = new EventEmitter();
+  @Output() editRequest = new EventEmitter();
+  @Output() clickRequest = new EventEmitter();
+  @Input() iconPath!: string;
+  @Input() name!: string;
+  @Input() detail!: string;
   constructor() { }
 
-  ngOnInit() {}
+  onClickDelete() {
+    this.deleteRequest.emit();
+  }
+
+  onClickEdit() {
+    this.editRequest.emit();
+  }
+
+  onClickSliding() {
+    this.clickRequest.emit();
+  }
+
+  ngOnInit() {
+  
+  }
 
 }

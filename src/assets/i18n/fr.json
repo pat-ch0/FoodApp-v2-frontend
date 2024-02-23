@@ -7,5 +7,19 @@
       "ADD_TO_STOCK": "Ajouter au stock",
       "PRODUCT_NOT_FOUND": "Produit non trouvé",
       "ERROR_FETCHING_DETAILS": "Une erreur s'est produite lors de la récupération des détails du produit"
+    },
+    "SEARCH_TAB": {
+      "INPUT_PARAGRAPH": "Entrez le code-barre d'un produit dans le champ de recherche pour obtenir des informations détaillées sur le produit",
+      "SCAN_PARAGRAPH": "Cliquez sur le bouton Scanner et utilisez votre appareil photo pour scanner le code-barres du produit pour une recherche plus rapide",
+      "SCAN_BUTTON": "SCANNER",
+      "INPUT_PLACEHOLDER": "Rechercher"
+    },
+    "PRODUCT_STOCK": {
+      "LOADING_TEXT": "Chargement...",
+      "SEARCHBAR_PLACEHOLDER": "Rechercher un produit",
+      "PRODUCT_NOT_FOUND": "Produit non trouvé",
+      "ADD_PRODUCT": "Ajouter un produit",
+      "NUMBER_OF_PRODUCT": "Nombre de produits"
+    
     }
   }

@@ -7,6 +7,19 @@
       "ADD_TO_STOCK": "Add to stock",
       "PRODUCT_NOT_FOUND": "Product not found",
       "ERROR_FETCHING_DETAILS": "There was an error fetching the product details"
+    },
+    "SEARCH_TAB": {
+      "INPUT_PARAGRAPH": "Type the product barcode in the search field to view the details of the product",
+      "SCAN_PARAGRAPH": "Click on the Scan button and use your camera to scan the product barcode for a faster search",
+      "SCAN_BUTTON": "SCAN",
+      "INPUT_PLACEHOLDER": "Search"
+    },
+    "PRODUCT_STOCK": {
+      "LOADING_TEXT": "Loading...",
+      "SEARCHBAR_PLACEHOLDER": "Search a product",
+      "PRODUCT_NOT_FOUND": "Product not found",
+      "ADD_PRODUCT": "Add a product",
+      "NUMBER_OF_PRODUCT": "Number of products"
     }
   }
   

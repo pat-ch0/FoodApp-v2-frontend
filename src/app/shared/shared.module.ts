@@ -6,14 +6,17 @@ import { SlidingComponent } from './components/sliding/sliding.component';
 import { LanguagePickerComponent } from './language-picker/language-picker.component';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-
-
-
+import { HeaderComponent } from './components/header/header.component';
+import { ProductStockComponent } from '../pages/product/product-stock/product-stock.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 @NgModule({
   declarations: [
     ProductDetailComponent,
+    ProductStockComponent,
     SlidingComponent,
-    LanguagePickerComponent
+    LanguagePickerComponent,
+    HeaderComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -24,8 +27,11 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   exports: [
     ProductDetailComponent,
+    ProductStockComponent,
     SlidingComponent,
-    LanguagePickerComponent
+    LanguagePickerComponent,
+    HeaderComponent,
+    LoadingSpinnerComponent
   ]
 })
 export class SharedModule { }

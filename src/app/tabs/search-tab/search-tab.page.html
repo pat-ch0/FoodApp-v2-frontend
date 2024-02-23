@@ -9,13 +9,12 @@
 
   <div class="research-view-content research-item">
     <p class="research-view-paragraph research-item">
-      If you want to look for something in our database, use the research bar.
+      {{"SEARCH_TAB.INPUT_PARAGRAPH" | translate}}.
     </p>
     <ion-searchbar (ionChange)="searchProduct($event)" placeholder="Search"></ion-searchbar>
     <div class="separator"></div>
     <p class="research-view-paragraph research-item">
-      To search a product, you can use your mobile or take a picture of the
-      barcode and you will get the product details.
+      {{"SEARCH_TAB.SCAN_PARAGRAPH" | translate}}.
     </p>
     <ion-button expand="block" color="warning" class="button-class research-item" (click)="scan()">SCAN</ion-button>
 

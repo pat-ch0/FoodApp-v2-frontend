@@ -87,8 +87,7 @@ export class SearchTabPage implements OnInit {
   }
 
   private async _requestModule(): Promise<boolean> {
-    const { available } =
-      await BarcodeScanner.isGoogleBarcodeScannerModuleAvailable();
+    const { available } = await BarcodeScanner.isGoogleBarcodeScannerModuleAvailable();
     return available;
   }
 
