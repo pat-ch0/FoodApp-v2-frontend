@@ -10,8 +10,9 @@
     },
     "SEARCH_TAB": {
       "INPUT_PARAGRAPH": "Si vous souhaitez rechercher un produit, saisissez son code-barre dans la barre de recherche",
-      "SCAN_PARAGRAPH": "Scanner le barre-code avec l'appareil photo",
-      "SCAN_BUTTON": "SCANNER"
+      "SCAN_PARAGRAPH": "Scanner le code-barre d'un produit avec l'appareil photo",
+      "SCAN_BUTTON": "SCANNER",
+      "PLACEHOLDER": "Rechercher"
     },
     "PRODUCT_STOCK": {
       "LOADING_TEXT": "Chargement...",
