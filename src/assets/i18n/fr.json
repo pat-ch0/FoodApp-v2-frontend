@@ -9,10 +9,10 @@
       "ERROR_FETCHING_DETAILS": "Une erreur s'est produite lors de la récupération des détails du produit"
     },
     "SEARCH_TAB": {
-      "INPUT_PARAGRAPH": "Si vous souhaitez rechercher un produit, saisissez son code-barre dans la barre de recherche",
-      "SCAN_PARAGRAPH": "Scanner le code-barre d'un produit avec l'appareil photo",
+      "INPUT_PARAGRAPH": "Entrez le code-barre d'un produit dans le champ de recherche pour obtenir des informations détaillées sur le produit",
+      "SCAN_PARAGRAPH": "Cliquez sur le bouton Scanner et utilisez votre appareil photo pour scanner le code-barres du produit pour une recherche plus rapide",
       "SCAN_BUTTON": "SCANNER",
-      "PLACEHOLDER": "Rechercher"
+      "INPUT_PLACEHOLDER": "Rechercher"
     },
     "PRODUCT_STOCK": {
       "LOADING_TEXT": "Chargement...",
