@@ -1,0 +1,9 @@
+<app-header [title]="'COMMYNUTY_PAGE.TITLE' | translate" [showBackButton]="true"></app-header>
+<ion-content [fullscreen]="true">
+    <ion-button shape="round" color="warning" (click)="presentModal()">
+        {{ 'COMMYNUTY_PAGE.ADD_COMMUNITY' | translate }}
+    </ion-button>
+    <app-sliding *ngFor="let community of communities;" (clickRequest)="onClickCommynuty(community)"
+        (deleteRequest)="onDeleteCommunity(community)" [iconPath]="'assets/icon/community-icon.svg'"
+        [name]="community.name" [detail]="'COMMYNUTY_PAGE.DETAIL' | translate:{count: community.members.length}">
+    </app-sliding>

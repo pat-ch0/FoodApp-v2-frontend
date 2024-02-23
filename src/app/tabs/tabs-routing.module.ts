@@ -12,8 +12,8 @@ const routes: Routes = [
         loadChildren: () => import('./search-tab/search-tab.module').then(m => m.SearchTabPageModule)
       },
       {
-        path: 'storage',
-        loadChildren: () => import('./storage-tab/storage-tab.module').then(m => m.StorageTabPageModule)
+        path: 'community',
+        loadChildren: () => import('./community-tab/community-tab.module').then( m => m.CommunityTabPageModule)
       }, 
       {
         path: 'menu',
@@ -32,10 +32,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'storage-tab',
-    loadChildren: () => import('./storage-tab/storage-tab.module').then( m => m.StorageTabPageModule)
-  },
-  {
     path: 'search-tab',
     loadChildren: () => import('./search-tab/search-tab.module').then( m => m.SearchTabPageModule)
   },
@@ -43,6 +39,11 @@ const routes: Routes = [
     path: 'menu-tab',
     loadChildren: () => import('./menu-tab/menu-tab.module').then( m => m.MenuTabPageModule)
   },
+  {
+    path: 'community-tab',
+    loadChildren: () => import('./community-tab/community-tab.module').then( m => m.CommunityTabPageModule)
+  },
+
 ];
 
 @NgModule({

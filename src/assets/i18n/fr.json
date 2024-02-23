@@ -20,6 +20,10 @@
       "PRODUCT_NOT_FOUND": "Produit non trouvé",
       "ADD_PRODUCT": "Ajouter un produit",
       "NUMBER_OF_PRODUCT": "Nombre de produits"
-    
+    },
+    "COMMYNUTY_PAGE": {
+      "TITLE": "Communauté",
+      "ADD_COMMUNITY": "Ajouter une communauté",
+      "DETAIL": "Il y {{count}} utilisateur dans cette communauté"
     }
   }

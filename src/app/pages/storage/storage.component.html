@@ -1,6 +1,11 @@
-<app-header [title]="'Storage'"></app-header>
+<app-header [title]="'Storage'" [showBackButton]="true"></app-header>
 
 <ion-content [fullscreen]="true">
+
+  <ion-button shape="round" color="warning" (click)="addStorageClick()">
+    Add storage
+  </ion-button>
+
   <app-sliding *ngFor="let storage of storages;" 
   (clickRequest)="onClickStorage(storage)"
    (deleteRequest)="onDeleteStorage(storage)"

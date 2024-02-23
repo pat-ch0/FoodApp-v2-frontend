@@ -6,7 +6,9 @@
           <ion-back-button defaultHref="/" text=""></ion-back-button>
         </ion-buttons>
       </div>
-      <ion-title class="header__title">{{ title }}</ion-title>
+      <div class="header__title__container">
+        <ion-title class="header__title">{{ title }}</ion-title>
+      </div>
     </div>
     <ion-buttons slot="end">
       <app-language-picker></app-language-picker>

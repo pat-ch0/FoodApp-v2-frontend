@@ -1,0 +1,13 @@
+.form__modal__components{
+
+    form{
+        margin-top: 3em;
+    }
+
+    .form__modal__btn__submit{
+        margin-top: 2em !important;
+    }
+
+    --backdrop-opacity: 1;
+    backdrop-filter: blur(100px);
+}
