@@ -8,6 +8,7 @@ import { SearchTabPageRoutingModule } from './search-tab-routing.module';
 
 import { SearchTabPage } from './search-tab.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -16,8 +17,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormsModule,
     IonicModule,
     SearchTabPageRoutingModule,
-    SharedModule
-    
+    SharedModule,
+    TranslateModule.forChild()
   ],
   declarations: [SearchTabPage]
 })
