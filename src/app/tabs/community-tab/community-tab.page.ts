@@ -24,7 +24,7 @@ export class CommunityTabPage implements OnInit {
 
   }
 
-  addCommunity(params: any) {
+  async addCommunity(params: any) {
     console.log(params)
   }
 

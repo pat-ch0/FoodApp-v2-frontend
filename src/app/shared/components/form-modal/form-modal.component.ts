@@ -10,7 +10,7 @@ import { FormFiels } from '@type/formField.type';
 })
 export class FormModalComponent implements OnInit {
   @Input() formFields!: FormFiels[];
-  @Input() onSubmit!: (param: any) => {};
+  @Input() onSubmit!: (param: any) => Promise<void>;
   form!: FormGroup;
 
   constructor(private fb: FormBuilder,
@@ -29,8 +29,8 @@ export class FormModalComponent implements OnInit {
     this.form = this.fb.group(group);
   }
 
-  submitForm() {
-    this.onSubmit(this.form.value);
+  async submitForm() {
+    await this.onSubmit(this.form.value);
     this.closeModal();
   }
 

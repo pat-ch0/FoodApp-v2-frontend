@@ -11,7 +11,7 @@ export default class ModalCreator {
 
     constructor(private modalCtrl: ModalController) { }
 
-    public async createFormModal(submitCallback: (params: any) => void, formFields: FormFiels[]) {
+    public async createFormModal(submitCallback: (params: any) => Promise<void>, formFields: FormFiels[]) {
         const modal = await this.modalCtrl.create({
             component: FormModalComponent,
             breakpoints: [0, 0.4, 1],
