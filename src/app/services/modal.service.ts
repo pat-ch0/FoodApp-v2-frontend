@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { FormModalComponent } from "../shared/components/form-modal/form-modal.component";
-import { FormFiels } from "@type/formField.type";
+import { FormField } from "@type/formField.type";
 
 
 @Injectable({
@@ -11,7 +11,7 @@ export default class ModalCreator {
 
     constructor(private modalCtrl: ModalController) { }
 
-    public async createFormModal(submitCallback: (params: any) => Promise<void>, formFields: FormFiels[]) {
+    public async createFormModal(submitCallback: (params: any) => Promise<void>, formFields: FormField[]) {
         const modal = await this.modalCtrl.create({
             component: FormModalComponent,
             breakpoints: [0, 0.4, 1],

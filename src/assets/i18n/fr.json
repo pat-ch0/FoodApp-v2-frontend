@@ -19,11 +19,13 @@
       "SEARCHBAR_PLACEHOLDER": "Rechercher un produit",
       "PRODUCT_NOT_FOUND": "Produit non trouvé",
       "ADD_PRODUCT": "Ajouter un produit",
-      "NUMBER_OF_PRODUCT": "Nombre de produits"
+      "NUMBER_OF_PRODUCT": "Nombre de produits",
+      "NO_BARCODE_PROVIDED": "Pas de code-barre fourni",
+      "ERROR_FETCHING_DETAILS": "Une erreur s'est produite lors de la récupération des détails du produit"
     },
-    "COMMYNUTY_PAGE": {
+    "COMMUNITY_PAGE": {
       "TITLE": "Communauté",
       "ADD_COMMUNITY": "Ajouter une communauté",
-      "DETAIL": "Il y {{count}} utilisateur dans cette communauté"
+      "DETAIL": "Il y a {{count}} utilisateurs dans cette communauté"
     }
   }

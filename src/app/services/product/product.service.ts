@@ -18,6 +18,15 @@ export class ProductService {
    */
   async getProductByBarcode(barcode: string): Promise<any> {
     // Constructs the URL with the endpoint from environment variables and the passed barcode
-    return this.apiService.get(`${environment.config.product.endpoint}${barcode}`);
+    return this.apiService.get(`${environment.config.endpoint.product}${barcode}`);
+  }
+
+  /**
+   * Delete a product from a storage
+   * @param barcode The product's barcode
+   * @returns A promise that resolves with the product details
+   */
+  async deleteProduct(barcode: string): Promise<any> {
+    return this.apiService.delete(`${environment.config.endpoint.stock}${barcode}`)
   }
 }

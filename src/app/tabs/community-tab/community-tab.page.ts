@@ -39,7 +39,7 @@ export class CommunityTabPage implements OnInit {
     ]);
   }
 
-  onClickCommynuty(community: Community) {
+  onClickCommunity(community: Community) {
     this.route.navigate(['/storage', community.id]);
   }
 
