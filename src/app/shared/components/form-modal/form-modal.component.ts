@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { FormFiels } from '@type/formField.type';
+import { FormField } from '@type/formField.type';
 
 @Component({
   selector: 'app-form-modal',
@@ -9,7 +9,7 @@ import { FormFiels } from '@type/formField.type';
   styleUrls: ['./form-modal.component.scss'],
 })
 export class FormModalComponent implements OnInit {
-  @Input() formFields!: FormFiels[];
+  @Input() formFields!: FormField[];
   @Input() onSubmit!: (param: any) => Promise<void>;
   form!: FormGroup;
 
