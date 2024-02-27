@@ -1,0 +1,11 @@
+<div class="form__modal__components">
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <ion-item *ngFor="let field of formFields">
+      <ion-label position="floating">{{ field.label }}</ion-label>
+      <ion-input [formControlName]="field.name" [type]="field.type"></ion-input>
+    </ion-item>
+    <div class="form__modal__btn__submit">
+      <ion-button  type="submit" expand="full" [disabled]="!form.valid">Submit</ion-button>
+    </div>
+  </form>
+</div>

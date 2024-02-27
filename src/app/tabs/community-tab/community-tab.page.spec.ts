@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { StorageTabPage } from './storage-tab.page';
+import { CommunityTabPage } from './community-tab.page';
 
-describe('StorageTabPage', () => {
-  let component: StorageTabPage;
-  let fixture: ComponentFixture<StorageTabPage>;
+describe('CommunityTabPage', () => {
+  let component: CommunityTabPage;
+  let fixture: ComponentFixture<CommunityTabPage>;
 
   beforeEach(async(() => {
-    fixture = TestBed.createComponent(StorageTabPage);
+    fixture = TestBed.createComponent(CommunityTabPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

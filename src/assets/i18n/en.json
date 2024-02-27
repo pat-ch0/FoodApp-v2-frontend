@@ -6,7 +6,8 @@
       "NUTRISCORE_LABEL": "NutriScore",
       "ADD_TO_STOCK": "Add to stock",
       "PRODUCT_NOT_FOUND": "Product not found",
-      "ERROR_FETCHING_DETAILS": "There was an error fetching the product details"
+      "ERROR_FETCHING_DETAILS": "There was an error fetching the product details",
+      "NO_BARCODE_PROVIDED": "No barcode provided"
     },
     "SEARCH_TAB": {
       "INPUT_PARAGRAPH": "Type the product barcode in the search field to view the details of the product",
@@ -19,7 +20,13 @@
       "SEARCHBAR_PLACEHOLDER": "Search a product",
       "PRODUCT_NOT_FOUND": "Product not found",
       "ADD_PRODUCT": "Add a product",
-      "NUMBER_OF_PRODUCT": "Number of products"
+      "NUMBER_OF_PRODUCT": "Number of products",
+      "ERROR_FETCHING_DETAILS": "There was an error fetching the product details"
+    },
+    "COMMUNITY_PAGE": {
+      "TITLE": "Community",
+      "ADD_COMMUNITY": "Add a community",
+      "DETAIL": "There are {{count}} users in this community"
     }
   }
   

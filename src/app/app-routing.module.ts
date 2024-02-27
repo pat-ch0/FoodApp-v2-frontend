@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
 import { SharedModule } from './shared/shared.module';
 import { ProductStockComponent } from './pages/product/product-stock/product-stock.component';
+import { StorageComponent } from './pages/storage/storage.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'product-stock',
     component: ProductStockComponent,
+  },
+  {
+    path: 'storage/:communityid',
+    component: StorageComponent,
   }
 ];
 @NgModule({

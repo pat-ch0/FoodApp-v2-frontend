@@ -1,1 +1,9 @@
+.tabs-page ion-menu {
+  --width: 320px;
+}
 
+.tabs__tab-menu-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+}

@@ -1,21 +1,22 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StorageType } from 'src/app/types/storage.type';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-storage-tab',
-  templateUrl: './storage-tab.page.html',
-  styleUrls: ['./storage-tab.page.scss'],
+  selector: 'app-storage',
+  templateUrl: './storage.component.html',
+  styleUrls: ['./storage.component.scss'],
 })
-export class StorageTabPage implements OnInit {
-
+export class StorageComponent implements OnInit {
+  addStorageClick() {
+  }
 
   storages: Array<StorageType> = [];
   constructor(
     private alertController: AlertController,
     private route: Router
-    ) {}
+  ) { }
 
   ngOnInit() {
     this.storages.push({
@@ -23,7 +24,7 @@ export class StorageTabPage implements OnInit {
       icon: 'pantry.png',
       id: '1'
     });
-    
+
     this.storages.push({
       name: 'Work',
       icon: 'fridge.png',
@@ -33,55 +34,55 @@ export class StorageTabPage implements OnInit {
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
-    });this.storages.push({
+    }); this.storages.push({
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
-    });this.storages.push({
+    }); this.storages.push({
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
-    });this.storages.push({
+    }); this.storages.push({
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
-    });this.storages.push({
+    }); this.storages.push({
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
-    });this.storages.push({
+    }); this.storages.push({
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
-    });this.storages.push({
+    }); this.storages.push({
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
-    });this.storages.push({
+    }); this.storages.push({
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
-    });this.storages.push({
+    }); this.storages.push({
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
-    });this.storages.push({
+    }); this.storages.push({
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
-    });this.storages.push({
+    }); this.storages.push({
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
-    });this.storages.push({
+    }); this.storages.push({
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
-    });this.storages.push({
+    }); this.storages.push({
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
-    });this.storages.push({
+    }); this.storages.push({
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
@@ -103,9 +104,9 @@ export class StorageTabPage implements OnInit {
         },
         'No'
       ],
-  
+
     });
-  
+
     await alert.present();
   }
 
@@ -113,6 +114,7 @@ export class StorageTabPage implements OnInit {
     console.log('Storage clicked', storage);
     this.route.navigate(['/product-stock'], { queryParams: storage });
   }
- 
+
 
 }
+

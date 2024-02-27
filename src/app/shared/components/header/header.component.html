@@ -2,14 +2,15 @@
   <ion-toolbar>
     <div class="header__container">
       <div class="header__icon__container">
-        <ion-buttons *ngIf="showBackButton" slot="start">
-          <ion-back-button defaultHref="/" text=""></ion-back-button>
-        </ion-buttons>
+        <ion-back-button
+          defaultHref="/"
+          text=""
+          *ngIf="showBackButton"
+          slot="start"
+        ></ion-back-button>
+        <ion-title class="header__title">{{ title }}</ion-title>
       </div>
-      <ion-title class="header__title">{{ title }}</ion-title>
     </div>
-    <ion-buttons slot="end">
-      <app-language-picker></app-language-picker>
-    </ion-buttons>
+    <app-language-picker slot="end"></app-language-picker>
   </ion-toolbar>
 </ion-header>
