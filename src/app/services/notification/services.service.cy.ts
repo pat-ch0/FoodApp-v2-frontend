@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NotificationService } from './notification-api.service';
+import NotificationService from './notification.service';
 
 describe('NotificationService', () => {
   let service: NotificationService;
@@ -11,6 +11,6 @@ describe('NotificationService', () => {
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    cy.mount(NotificationService);
   });
 });
