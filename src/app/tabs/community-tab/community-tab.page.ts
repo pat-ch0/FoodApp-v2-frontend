@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import ModalCreator from '@service/modal.service';
 import { Community } from '@type/community.type';
-import { FormModalComponent } from 'src/app/shared/components/form-modal/form-modal.component';
+import { CommunityService } from '@service/community/community.service'
 
 @Component({
   selector: 'app-community-tab',
@@ -15,7 +15,8 @@ export class CommunityTabPage implements OnInit {
 
   constructor(
     private route: Router,
-    private modalCreator: ModalCreator
+    private modalCreator: ModalCreator,
+    private communityService: CommunityService
   ) { }
 
   communities: Community[] = []
@@ -24,8 +25,16 @@ export class CommunityTabPage implements OnInit {
 
   }
 
-  async addCommunity(params: any) {
-    console.log(params)
+  async addCommunity(community: Community) {
+    console.log(community)
+    try {
+      const response = await this.communityService.addCommunity(community.id);
+      this.communities.push(response.data);
+    }
+    catch (error: any) {
+      console.log("Can not add community")
+      // handle error
+    }
   }
 
   async presentModal() {
@@ -74,5 +83,4 @@ export class CommunityTabPage implements OnInit {
       ]
     });
   }
-
 }
