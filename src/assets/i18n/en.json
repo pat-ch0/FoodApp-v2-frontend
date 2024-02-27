@@ -26,7 +26,9 @@
     "COMMUNITY_PAGE": {
       "TITLE": "Community",
       "ADD_COMMUNITY": "Add a community",
-      "DETAIL": "There are {{count}} users in this community"
+      "DETAIL": "There are {{count}} users in this community",
+      "COMMUNITY_NOT_FOUND": "Community not found",
+      "ERROR_FETCHING_INFOS": "There was an error when fetching the community infos"
     }
   }
   

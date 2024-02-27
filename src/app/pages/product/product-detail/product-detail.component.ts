@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '@service/product/product.service';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 import { ProductDetail } from '@type/products/product-detail.type';
-import { TranslateService } from '@ngx-translate/core';
+import { HandleError } from '@service/errors/handle-error.service'
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
 })
+
 export class ProductDetailComponent implements OnInit {
   product: ProductDetail | undefined; // The product details to display.
   barcode: string | null = ''; // The barcode of the product to fetch.
@@ -26,8 +27,7 @@ export class ProductDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductService,
     private loadingController: LoadingController,
-    private toastController: ToastController,
-    private translate: TranslateService
+    private handleError: HandleError
   ) {}
 
   async ngOnInit() {
@@ -59,7 +59,7 @@ export class ProductDetailComponent implements OnInit {
     // Check if the barcode is not null
     if (!this.barcode) {
       // Handle the absence of a barcode
-      this.showToast('PRODUCT_DETAIL.NO_BARCODE_PROVIDED', 'warning');
+      this.handleError.showToast('PRODUCT_DETAIL.NO_BARCODE_PROVIDED', 'warning');
       return;
     }
 
@@ -67,34 +67,7 @@ export class ProductDetailComponent implements OnInit {
       const response = await this.productService.getProductByBarcode(this.barcode);
       this.product = response.data;
     } catch (error: any) {
-      this.handleError(error);
+      this.handleError.handleError(error, 'PRODUCT_DETAIL', 'PRODUCT_NOT_FOUND', 'ERROR_FETCHING_DETAILS');
     }
-  }
-
-  /**
-   * Handles errors during product fetching.
-   * @param error - The error object received.
-   */
-  private handleError(error: any) {
-    const messageKey =
-      error.status === 404
-        ? 'PRODUCT_DETAIL.PRODUCT_NOT_FOUND'
-        : 'PRODUCT_DETAIL.ERROR_FETCHING_DETAILS';
-    this.showToast(messageKey, 'warning');
-  }
-
-  /**
-   * Displays a toast notification with a custom message.
-   * @param message The message to be displayed in the toast.
-   */
-  private showToast(key: string, color: 'success' | 'warning' | 'danger') {
-    this.translate.get(key).subscribe(async (message: string) => {
-      const toast = await this.toastController.create({
-        message: message,
-        duration: 2000,
-        color: color, // 'success' for positive messages, 'warning' for caution, and 'danger' for errors
-      });
-      toast.present();
-    });
   }
 }
