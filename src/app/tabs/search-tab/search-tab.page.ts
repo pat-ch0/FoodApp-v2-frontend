@@ -3,6 +3,8 @@ import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { Message } from '@type/message.type';
+import { AiService } from '@service/ai/ai.service';
 
 
 @Component({
@@ -10,17 +12,24 @@ import { OverlayEventDetail } from '@ionic/core/components';
   templateUrl: './search-tab.page.html',
   styleUrls: ['./search-tab.page.scss'],
 })
+
+
 export class SearchTabPage implements OnInit {
+
   @ViewChild(IonModal)
+
   modal!: IonModal;
-  message = 'Write something to bot, try to be clear in your asking';
-  nameUser!: string;
-  nameBot!: string;
+  messages: Message[] = [];
+  messageRef: string = '';
+  nothing!: string;
   isAvailable = true;
-  
-  constructor(private router: Router) {}
+  prompt: string = this.messageRef;
+  msgLoading: boolean = false
+
+  constructor(private router: Router, private aiService: AiService) { }
 
   ngOnInit() {
+    // -----------------------BAR CODE -----------------
     BarcodeScanner.isSupported().then(async (result) => {
       const isSupported = result.supported;
       const isCameraAvailable = await this._requestCameraPermission();
@@ -39,29 +48,41 @@ export class SearchTabPage implements OnInit {
         );
       }
     });
+    //-----------------------------------------
+
   }
 
-  // ###################### BOT Modal #########################
+
+
+
   cancel() {
     this.modal.dismiss(null, 'cancel');
   }
 
-  confirm() {
-    this.modal.dismiss(null, 'confirm');
-  }
+  //------------------------ CHAT BOT -------------------
+  async sendMessage() {
 
-  onWillDismiss(event: Event) {
-    const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    if (ev.detail.role === 'confirm') {
-      this.message = `Hello, ${ev.detail.data}!`;
+    if (this.messageRef.trim() !== '') {
+      this.messages.push({
+        content: this.messageRef,
+        isUser: true,
+      });
+      this.messageRef = ''; // Réinitialisez le champ de saisie après l'envoi du message
+    
+    const response = await this.aiService.postAiMessage(this.messages)
+
+    this.messages.push(
+      JSON.parse(response.data)
+    )
+    console.log(response)
     }
   }
-// #############################------------------------------------------------
+  //------------------------------------------------
 
   searchProduct(event: any) {
     const barcode = event.detail.value;
     console.log(`Search input changed: ${barcode}`);
-  
+
     // Navigate to product-detail with the barcode
     this.router.navigate([`product-detail/${barcode}`])
   }
@@ -95,3 +116,5 @@ export class SearchTabPage implements OnInit {
     await BarcodeScanner.installGoogleBarcodeScannerModule();
   }
 }
+
+

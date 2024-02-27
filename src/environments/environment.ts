@@ -5,9 +5,12 @@
 export const environment = {
   production: false,
   config: {
-    API_GATEWAY: " https://9781-147-161-180-92.ngrok-free.app/",
+    API_GATEWAY: "http://localhost:5000/",
     product:{
-      endpoint: "api/v1/product/",
+      endpoint: "api/v1/product/"
+    },
+    ai: {
+      endpoint: "api/v1/ai/chat"
     }
   }
 };

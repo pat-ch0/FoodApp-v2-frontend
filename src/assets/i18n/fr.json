@@ -21,5 +21,13 @@
       "ADD_PRODUCT": "Ajouter un produit",
       "NUMBER_OF_PRODUCT": "Nombre de produits"
     
+    },
+    "HELPER_BOT": {
+      "HELPER_TITLE": "robot assistant",
+      "CANCEL": "cancel",
+      "ROLE_USER": "Assistant IA",
+      "WELCOME_BOT": "Bonjour, puis-je vous aider?",
+      "MSG_TOP_INPUT": "Ecrivez quelque chose ici !",
+      "MSG_INPUT": "Comment ajouter un produit dans un de mes stockages ?"
     }
   }

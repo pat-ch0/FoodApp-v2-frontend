@@ -1,11 +1,4 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <!-- <ion-buttons slot="start">
-      <ion-back-button defaultHref="/" text=""></ion-back-button>
-    </ion-buttons> -->
-    <ion-title>Research</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header [title]="'Research'"></app-header>
 
   <div class="research-view-content research-item">
     <p class="research-view-paragraph research-item">
@@ -16,7 +9,7 @@
     <p class="research-view-paragraph research-item">
       {{"SEARCH_TAB.SCAN_PARAGRAPH" | translate}}.
     </p>
-    <ion-button expand="block" color="warning" class="button-class research-item" (click)="scan()">SCAN</ion-button>
+    <ion-button expand="block" color="warning" class="button-class research-item" (click)="scan()">{{"SEARCH_TAB.SCAN_BUTTON" | translate | uppercase}}</ion-button>
 
     <!--######## BOT ICON ########-->
 
@@ -35,39 +28,48 @@
           class="bot-content--img"></ion-img>
       </ion-fab-button>
       <!-- Body - Modal -Bot -->
-      <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+      <ion-modal trigger="open-modal">
         <ng-template>
           <ion-header>
             <ion-toolbar>
               <ion-buttons slot="start">
                 <ion-button (click)="cancel()">Cancel</ion-button>
               </ion-buttons>
-              <ion-title id="open-toast" expand="block">HELPER BOT</ion-title>
+              <ion-title id="open-toast" expand="block">{{ "HELPER_BOT.HELPER_TITLE" | translate | uppercase}}</ion-title>
               <ion-toast trigger="open-toast" message="A OPEN-TOAST can be use if bot not found something"
                 [duration]="5000"></ion-toast>
-              <ion-buttons slot="end">
-                <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
-              </ion-buttons>
             </ion-toolbar>
           </ion-header>
+
           <ion-content class="ion-padding">
-            <p id="message__bot-modal">I will try to help you like i can, try to be clear and understandable</p>
-            <hr class="solid">
             <ion-card class="message__chatbox-content">
               <ion-card-header class="message__chatbox-header">
                 <ion-img src="assets/icon/tabs/bot.svg" alt="Bot-img"
           class="message__bot-img"></ion-img>
-                <ion-card-title class="message__chatbox-header-name">{{nameBot}} | HELPER BOT</ion-card-title>
-                <ion-card-subtitle>IA assistant</ion-card-subtitle>
+                <ion-card-title class="message__chatbox-header-name">{{ "HELPER_BOT.HELPER_TITLE" | translate}}</ion-card-title>
+                <ion-card-subtitle>{{ "HELPER_BOT.ROLE_USER" | translate}}</ion-card-subtitle>
               </ion-card-header>
             </ion-card>
-              <ion-card-content class="message__chatbox-footer">
-                Oh, It's you ! tell me what i can do for you.
+
+              <ion-card-content class="message__chatbox-footer-outcoming">
+                {{ "HELPER_BOT.WELCOME_BOT" | translate}}
               </ion-card-content>
+
+              <ion-list *ngFor="let message of messages">
+                  <!-- {{ template }} -->
+                  <ion-card-content *ngIf="message.isUser == true"  class="message__chatbox-footer-incoming">
+                    {{ message.content }}
+                  </ion-card-content>
+                  <ion-card-content *ngIf="message.isUser == false"   class="message__chatbox-footer-outcoming">
+                    {{ message.content }}
+                  </ion-card-content>
+              </ion-list>
             
-            <ion-item class="input__bot-asking">
-              <ion-input label="Write me something !" labelPlacement="stacked" type="text" placeholder="How can i add product in my stock ?"
-                [(ngModel)]="nameBot"></ion-input>
+            <ion-item class="input__bot-asking" onsubmit="{handleSubmit}">
+              <ion-input [label]="'HELPER_BOT.MSG_TOP_INPUT' | translate" labelPlacement="stacked" type="text" [placeholder]="'HELPER_BOT.MSG_INPUT' | translate"
+                [(ngModel)]="messageRef"></ion-input>
+                <ion-button type="submit" color="warning" (click)="sendMessage()" class="message__bot-send"><ion-img src="assets/icon/tabs/send.svg" alt="Bot-img"
+                  class="message__bot-send-icon"></ion-img></ion-button>
             </ion-item>
           </ion-content>
         </ng-template>

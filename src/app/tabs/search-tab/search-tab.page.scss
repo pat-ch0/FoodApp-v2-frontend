@@ -19,11 +19,10 @@
 .research-view-content {
   flex-grow: 1;
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1.5em;
-  padding-top: 2em;
 }
 
 .research-view-paragraph {
@@ -51,7 +50,7 @@
   font-family: "Courier New", monospace;
 }
 
-// ### Button Bot ###
+// ### Button SCAN ###
 .search__bot-container {
   position: fixed;
   bottom: 1%;
@@ -72,13 +71,6 @@ hr.solid {
 
 // #### MODAL BOT ####
 
-.input__bot-asking {
-  position: absolute;
-  left: 5%;
-  bottom: 5%;
-  width: 85%;
-}
-
 #message__bot-modal {
   text-align: center;
   color: #9586a8;
@@ -92,14 +84,24 @@ hr.solid {
   padding-right: 10%;
 }
 
-.message__chatbox-footer {
+.message__chatbox-footer-outcoming {
   margin-top: 15px;
-  width: 80%;
-  padding-left: 0%;
+  margin-right: 20%;
   font-size: 100%;
   text-align: center;
-  color: var(--ion-color-light);
-  background-color: #6574ff;
+  color: black;
+  background-color: #f4f4f4;
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+.message__chatbox-footer-incoming {
+  margin-top: 15px;
+  margin-left: 20%;
+  font-size: 100%;
+  text-align: center;
+  color: #f4f4f4;
+  background-color: #2C41FB;
   border: 2px solid black;
   border-radius: 15px;
 }
@@ -113,10 +115,25 @@ hr.solid {
   min-width: 38px;
 }
 
+.message__bot-send
+{
+  border: 1px black solid;
+  background-color: #ffce00;
+  width: 10%;
+}
+
+.message__bot-send:hover
+{
+  scale: 1.05;
+  transition: all;
+  transition-duration: 600ms;
+}
+
+
 //-----------------
 
 // Media query to adapt the display of certain phones
-@media (100px <=width <=375px) {
+@media (100px <=width <=413px) {
   .research-view-content {
     margin-top: 0;
     padding-top: 0;
