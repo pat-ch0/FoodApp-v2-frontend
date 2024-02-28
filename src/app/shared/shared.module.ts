@@ -14,6 +14,7 @@ import { FormModalComponent } from './components/form-modal/form-modal.component
 import { HomeComponent } from '../pages/home/home.component';
 import { RouterModule } from '@angular/router';
 import { ChatModalComponent } from './components/chat-modal/chat-modal.component';
+import { ProfilComponent } from '../pages/profil/profil.component';
 @NgModule({
   declarations: [
     ProductDetailComponent,
@@ -25,7 +26,8 @@ import { ChatModalComponent } from './components/chat-modal/chat-modal.component
     LanguagePickerComponent,
     HeaderComponent,
     LoadingSpinnerComponent,
-    HomeComponent
+    HomeComponent,
+    ProfilComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { ChatModalComponent } from './components/chat-modal/chat-modal.component
     LanguagePickerComponent,
     HeaderComponent,
     LoadingSpinnerComponent,
-    HomeComponent
+    HomeComponent,
+    ProfilComponent,
   ]
 })
 export class SharedModule { }

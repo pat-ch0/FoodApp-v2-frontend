@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
 import { ProductStockComponent } from './pages/product/product-stock/product-stock.component';
 import { StorageComponent } from './pages/storage/storage.component';
+import { ProfilComponent } from './pages/profil/profil.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
     path: 'storage/:communityid',
     component: StorageComponent,
   },
+  {
+    path: 'tabs/profil',
+    component: ProfilComponent
+  }
 ];
 @NgModule({
   imports: [
@@ -38,4 +43,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

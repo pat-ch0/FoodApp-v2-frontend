@@ -1,0 +1,73 @@
+<app-header [title]="'Profil'" [showBackButton]="true"></app-header>
+
+<ion-content class="profil__info-content">
+
+  <ion-avatar>
+    <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+  </ion-avatar>
+
+  <!-- PERSONAL INFORMATION -->
+  <h1>Personal information</h1>
+  <hr style="border: 1px solid black;">
+  <ion-card>
+    <ion-item>
+      <ion-input label="Firstname" value="Stephane" helperText="Modify your firstname"
+        errorText="Invalid name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Lastname" value="Hanwking" helperText="Modify your lastname"
+        errorText="Invalid lastname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Date of birth" value="12/12/2000" disabled=""
+        helperText="You need to wait 30d to modify birthday"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Telephone input" type="tel" value="0663656869" helperText="Enter a valid phone number"
+        errorText="Invalid phone number"></ion-input>
+    </ion-item>
+  </ion-card>
+  <!-- ------------------------------------------------- -->
+
+  <!-- ACCOUNT SETTINGS  -->
+  <h1>Account settings</h1>
+  <hr style="border: 1px solid black;">
+  <ion-card>
+    <ion-item>
+      <ion-input label="Password input" type="password" value="password"
+        helperText="You can change all 30d your password" errorText="Invalid password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Email input" type="email" placeholder="Lameraboir@detergent.com"
+        helperText="Enter a valid email" errorText="Invalid email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <!-- Systeme allow notification to do -->
+      <ion-toggle>
+        <ion-label>Allow notifications</ion-label>
+        <ion-note color="medium">if member of community add a product for example...</ion-note>
+      </ion-toggle>
+    </ion-item>
+    <!-- Systeme Validation 2 factor to do -->
+    <ion-item button detail="true">
+      <ion-label>
+        <h3>Manage double factor authentication</h3>
+        <p>You will be redirect to the page security</p>
+      </ion-label>
+      <div *ngIf="factorVerify; then thenFactor else elseFactor "></div>
+      <ng-template #thenFactor><img src="../../../assets/icon/tabs/check.svg" alt=""> </ng-template>
+      <ng-template #elseFactor><img src="../../../assets/icon/tabs/cross.svg" alt=""></ng-template>
+    </ion-item>
+  </ion-card>
+  <!-- -------------------------------- -->
+
+  <ion-card>
+    <ion-item button detail="true">
+      <ion-label>
+        <h3>Delete account</h3>
+        <p>Keep in mind that upon deleting your account all of your account information will be deleted without possibly
+          of restoration.</p>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+</ion-content>
