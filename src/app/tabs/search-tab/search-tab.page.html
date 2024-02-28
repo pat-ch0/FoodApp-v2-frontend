@@ -23,57 +23,12 @@
         </ng-template>
       </ion-popover> -->
       
-      <ion-fab-button color="light" class="search__bot-content" id="open-modal" expand="block">
+      <ion-fab-button color="light" class="search__bot-content" id="open-modal-chat" expand="block">
         <ion-img src="assets/icon/tabs/bot.svg" alt="Bot-img"
           class="bot-content--img"></ion-img>
       </ion-fab-button>
       <!-- Body - Modal -Bot -->
-      <ion-modal trigger="open-modal">
-        <ng-template>
-          <ion-header>
-            <ion-toolbar>
-              <ion-buttons slot="start">
-                <ion-button (click)="cancel()">Cancel</ion-button>
-              </ion-buttons>
-              <ion-title id="open-toast" expand="block">{{ "HELPER_BOT.HELPER_TITLE" | translate | uppercase}}</ion-title>
-              <ion-toast trigger="open-toast" message="A OPEN-TOAST can be use if bot not found something"
-                [duration]="5000"></ion-toast>
-            </ion-toolbar>
-          </ion-header>
-
-          <ion-content class="ion-padding">
-            <ion-card class="message__chatbox-content">
-              <ion-card-header class="message__chatbox-header">
-                <ion-img src="assets/icon/tabs/bot.svg" alt="Bot-img"
-          class="message__bot-img"></ion-img>
-                <ion-card-title class="message__chatbox-header-name">{{ "HELPER_BOT.HELPER_TITLE" | translate}}</ion-card-title>
-                <ion-card-subtitle>{{ "HELPER_BOT.ROLE_USER" | translate}}</ion-card-subtitle>
-              </ion-card-header>
-            </ion-card>
-
-              <ion-card-content class="message__chatbox-footer-outcoming">
-                {{ "HELPER_BOT.WELCOME_BOT" | translate}}
-              </ion-card-content>
-
-              <ion-list *ngFor="let message of messages">
-                  <!-- {{ template }} -->
-                  <ion-card-content *ngIf="message.isUser == true"  class="message__chatbox-footer-incoming">
-                    {{ message.content }}
-                  </ion-card-content>
-                  <ion-card-content *ngIf="message.isUser == false"   class="message__chatbox-footer-outcoming">
-                    {{ message.content }}
-                  </ion-card-content>
-              </ion-list>
-            
-            <ion-item class="input__bot-asking" onsubmit="{handleSubmit}">
-              <ion-input [label]="'HELPER_BOT.MSG_TOP_INPUT' | translate" labelPlacement="stacked" type="text" [placeholder]="'HELPER_BOT.MSG_INPUT' | translate"
-                [(ngModel)]="messageRef"></ion-input>
-                <ion-button type="submit" color="warning" (click)="sendMessage()" class="message__bot-send"><ion-img src="assets/icon/tabs/send.svg" alt="Bot-img"
-                  class="message__bot-send-icon"></ion-img></ion-button>
-            </ion-item>
-          </ion-content>
-        </ng-template>
-      </ion-modal>
+      <app-chat-modal [trigger]="'open-modal-chat'"></app-chat-modal>
     </ion-fab>
     <!-- ############################# -->
 

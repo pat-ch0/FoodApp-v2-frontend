@@ -52,7 +52,10 @@
   font-family: "Courier New", monospace;
 }
 
-// ### Button SCAN ###
+
+
+
+//-----------------
 .search__bot-container {
   position: fixed;
   bottom: 1%;
@@ -68,72 +71,6 @@ hr.solid {
   padding: 0;
   margin: 0;
 }
-
-// ------------------
-
-// #### MODAL BOT ####
-
-#message__bot-modal {
-  text-align: center;
-  color: #9586a8;
-}
-
-.message__chatbox-content {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  padding-left: 10%;
-  padding-right: 10%;
-}
-
-.message__chatbox-footer-outcoming {
-  margin-top: 15px;
-  margin-right: 20%;
-  font-size: 100%;
-  text-align: center;
-  color: black;
-  background-color: #f4f4f4;
-  border: 2px solid black;
-  border-radius: 15px;
-}
-
-.message__chatbox-footer-incoming {
-  margin-top: 15px;
-  margin-left: 20%;
-  font-size: 100%;
-  text-align: center;
-  color: #f4f4f4;
-  background-color: #2C41FB;
-  border: 2px solid black;
-  border-radius: 15px;
-}
-
-.message__bot-img {
-  padding: 5px;
-  margin: 5px;
-  position: fixed;
-  left: 1%;
-  width: 8%;
-  min-width: 38px;
-}
-
-.message__bot-send
-{
-  border: 1px black solid;
-  background-color: #ffce00;
-  width: 10%;
-}
-
-.message__bot-send:hover
-{
-  scale: 1.05;
-  transition: all;
-  transition-duration: 600ms;
-}
-
-
-//-----------------
-
 // Media query to adapt the display of certain phones
 @media (100px <=width <=413px) {
   .research-view-content {
