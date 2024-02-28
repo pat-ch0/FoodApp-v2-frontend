@@ -1,16 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { Router } from '@angular/router';
+import { AiService } from '@service/ai/ai.service';
+
 
 @Component({
   selector: 'app-search-tab',
   templateUrl: './search-tab.page.html',
   styleUrls: ['./search-tab.page.scss'],
 })
-export class SearchTabPage implements OnInit {
-  isAvailable = true;
 
-  constructor(private router: Router) {}
+
+export class SearchTabPage implements OnInit {
+
+
+
+  nothing!: string;
+  isAvailable = true;
+  msgLoading: boolean = false
+
+  constructor(private router: Router, private aiService: AiService) { }
 
   ngOnInit() {
     BarcodeScanner.isSupported().then(async (result) => {
@@ -36,7 +45,7 @@ export class SearchTabPage implements OnInit {
   searchProduct(event: any) {
     const barcode = event.detail.value;
     console.log(`Search input changed: ${barcode}`);
-  
+
     // Navigate to product-detail with the barcode
     this.router.navigate([`product-detail/${barcode}`])
   }
@@ -70,3 +79,5 @@ export class SearchTabPage implements OnInit {
     await BarcodeScanner.installGoogleBarcodeScannerModule();
   }
 }
+
+

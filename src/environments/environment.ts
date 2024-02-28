@@ -6,13 +6,16 @@ export const environment = {
   production: false,
   config: {
     API_GATEWAY: 'http://localhost:5000/',
-    endpoint:{
+    endpoint: {
       product: "api/v1/product/",
       stock: "api/v1/stock/product_stock/",
       community: "api/v1/community/"
+    },
+    ai: {
+      endpoint: "api/v1/ai/chat"
     }
   }
-};
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

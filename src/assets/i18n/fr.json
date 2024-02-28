@@ -28,6 +28,15 @@
       "ADD_COMMUNITY": "Ajouter une communauté",
       "DETAIL": "Il y a {{count}} utilisateurs dans cette communauté",
       "COMMUNITY_NOT_FOUND": "Communauté non trouvée",
-      "ERROR_FETCHING_INFOS": "Erreur lors de la récupération des informations de la communauté"
+      "ERROR_FETCHING_INFOS": "Erreur lors de la récupération des informations de la communauté",
+      "NUMBER_OF_PRODUCT": "Nombre de produits"
+    },
+    "HELPER_BOT": {
+      "HELPER_TITLE": "robot assistant",
+      "CANCEL": "cancel",
+      "ROLE_USER": "Assistant IA",
+      "WELCOME_BOT": "Bonjour, puis-je vous aider?",
+      "MSG_TOP_INPUT": "Ecrivez quelque chose ici !",
+      "MSG_INPUT": "Comment ajouter un produit dans un de mes stockages ?"
     }
   }

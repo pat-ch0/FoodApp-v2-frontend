@@ -1,23 +1,35 @@
 <app-header [title]="'Research'"></app-header>
 
-<ion-content [fullscreen]="true" class="ion-padding research-div-container">
   <div class="research-view-content research-item">
     <p class="research-view-paragraph research-item">
       {{"SEARCH_TAB.INPUT_PARAGRAPH" | translate}}.
     </p>
-    <ion-searchbar
-      (ionChange)="searchProduct($event)"
-      placeholder="{{'SEARCH_TAB.INPUT_PLACEHOLDER' | translate}}"
-    ></ion-searchbar>
+    <ion-searchbar (ionChange)="searchProduct($event)" placeholder="Search"></ion-searchbar>
     <div class="separator"></div>
     <p class="research-view-paragraph research-item">
       {{"SEARCH_TAB.SCAN_PARAGRAPH" | translate}}.
     </p>
-    <ion-button
-      expand="block"
-      color="warning"
-      class="button-class research-item"
-      (click)="scan()"
-      >{{"SEARCH_TAB.SCAN_BUTTON" | translate | uppercase}}</ion-button>
+    <ion-button expand="block" color="warning" class="button-class research-item" (click)="scan()">{{"SEARCH_TAB.SCAN_BUTTON" | translate | uppercase}}</ion-button>
+
+    <!--######## BOT ICON ########-->
+
+    <ion-fab class="search__bot-container" id="hover-trigger">
+      <!-- ID - Modal - Bot - ICON -->
+      <!-- Pop hover - bot asking  -->
+<!-- 
+      <ion-popover trigger="hover-trigger" triggerAction="hover">
+        <ng-template>
+          <ion-item class="ion-padding">Hello there ! Do you need something ?</ion-item>
+        </ng-template>
+      </ion-popover> -->
+      
+      <ion-fab-button color="light" class="search__bot-content" id="open-modal-chat" expand="block">
+        <ion-img src="assets/icon/tabs/bot.svg" alt="Bot-img"
+          class="bot-content--img"></ion-img>
+      </ion-fab-button>
+      <!-- Body - Modal -Bot -->
+      <app-chat-modal [trigger]="'open-modal-chat'"></app-chat-modal>
+    </ion-fab>
+    <!-- ############################# -->
+
   </div>
-</ion-content>

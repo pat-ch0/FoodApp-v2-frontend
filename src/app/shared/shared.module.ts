@@ -11,11 +11,13 @@ import { ProductStockComponent } from '../pages/product/product-stock/product-st
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { StorageComponent } from '../pages/storage/storage.component';
 import { FormModalComponent } from './components/form-modal/form-modal.component';
+import { ChatModalComponent } from './components/chat-modal/chat-modal.component';
 @NgModule({
   declarations: [
     ProductDetailComponent,
     ProductStockComponent,
     StorageComponent,
+    ChatModalComponent,
     FormModalComponent,
     SlidingComponent,
     LanguagePickerComponent,
@@ -33,6 +35,7 @@ import { FormModalComponent } from './components/form-modal/form-modal.component
   exports: [
     ProductDetailComponent,
     ProductStockComponent,
+    ChatModalComponent,
     FormModalComponent,
     SlidingComponent,
     LanguagePickerComponent,

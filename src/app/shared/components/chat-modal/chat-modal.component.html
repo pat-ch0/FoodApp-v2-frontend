@@ -1,0 +1,45 @@
+<ion-modal trigger="{{ trigger }}">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">Cancel</ion-button>
+        </ion-buttons>
+        <ion-title id="open-toast" expand="block">{{ "HELPER_BOT.HELPER_TITLE" | translate | uppercase}}</ion-title>
+        <ion-toast trigger="open-toast" message="A OPEN-TOAST can be use if bot not found something"
+          [duration]="5000"></ion-toast>
+      </ion-toolbar>
+    </ion-header>
+
+    <div class="chat__container">
+      <ion-card class="message__chatbox-content">
+        <ion-card-header class="message__chatbox-header">
+          <ion-img src="assets/icon/tabs/bot.svg" alt="Bot-img" class="message__bot-img"></ion-img>
+          <ion-card-title class="message__chatbox-header-name">{{ "HELPER_BOT.HELPER_TITLE" |
+            translate}}</ion-card-title>
+          <ion-card-subtitle>{{ "HELPER_BOT.ROLE_USER" | translate}}</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+
+
+
+      <div #divListMessage>
+        <ng-container *ngFor="let message of messages">
+          <ion-card-content *ngIf="message.isUser == true" class="message__chatbox-footer-incoming">
+            {{ message.content }}
+          </ion-card-content>
+          <ion-card-content *ngIf="message.isUser == false" class="message__chatbox-footer-outcoming">
+            {{ message.content }}
+          </ion-card-content>
+        </ng-container>
+      </div>
+
+      <ion-item class="input__bot-asking" onsubmit="{handleSubmit}">
+        <ion-input [label]="'HELPER_BOT.MSG_TOP_INPUT' | translate" labelPlacement="stacked" type="text"
+          [placeholder]="'HELPER_BOT.MSG_INPUT' | translate" [(ngModel)]="messageRef"></ion-input>
+        <ion-button type="submit" color="warning" (click)="sendMessage()" class="message__bot-send"><ion-img
+            src="assets/icon/tabs/send.svg" alt="Bot-img" class="message__bot-send-icon"></ion-img></ion-button>
+      </ion-item>
+    </div>
+  </ng-template>
+</ion-modal>
