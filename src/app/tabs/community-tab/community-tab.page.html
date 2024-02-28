@@ -4,6 +4,7 @@
         {{ 'COMMUNITY_PAGE.ADD_COMMUNITY' | translate }}
     </ion-button>
     <app-sliding *ngFor="let community of communities;" (clickRequest)="onClickCommunity(community)"
-        (deleteRequest)="onDeleteCommunity(community)" [iconPath]="'assets/icon/community-icon.svg'"
+        (deleteRequest)="onDeleteCommunity(community)" (editRequest)="presentEditModal()"
+        [iconPath]="'assets/icon/community-icon.svg'"
         [name]="community.name" [detail]="'COMMUNITY_PAGE.DETAIL' | translate:{count: community.members.length}">
     </app-sliding>

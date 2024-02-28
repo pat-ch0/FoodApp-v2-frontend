@@ -21,9 +21,6 @@ export class CommunityTabPage implements OnInit {
 
   communities: Community[] = []
 
-  onDeleteCommunity(community: Community) {
-  }
-
   // A verifier
   async addCommunity(community: Community) {
     try {
@@ -35,8 +32,8 @@ export class CommunityTabPage implements OnInit {
     }
   }
 
-  // A finir
-  async deleteCommunity(community: Community) {
+  // A vérifier
+  async onDeleteCommunity(community: Community) {
     try {
       const response = await this.communityService.deleteCommunity(community.id)
       console.log(response.data)
@@ -47,10 +44,10 @@ export class CommunityTabPage implements OnInit {
   }
 
 
-  // A finir
-  async editCommunity(community: Community, newName: string) {
+  // A vérifier
+  async onEditCommunity(community: Community) {
     try {
-      const response = await this.communityService.editCommunity(community.id, newName)
+      const response = await this.communityService.editCommunity(community.id, community.name)
       console.log(response.data)
     }
     catch (error: any) {
@@ -62,19 +59,19 @@ export class CommunityTabPage implements OnInit {
     await this.modalCreator.createFormModal(this.addCommunity.bind(this), [
       {
         name: 'name',
-        label: 'New name',
+        label: 'Name',
         type: 'text',
         validators: [Validators.required]
       }
     ]);
   }
 
-  // A corriger, pas sûr des arguments
-  async presentModalEdit() {
-    await this.modalCreator.createFormModal(this.editCommunity.bind(this, this.communities[this.communities.length]), [
+  // a verifier
+  async presentEditModal() {
+    await this.modalCreator.createFormModal(this.onEditCommunity.bind(this), [
       {
         name: 'name',
-        label: 'Name',
+        label: 'New name',
         type: 'text',
         validators: [Validators.required]
       }
