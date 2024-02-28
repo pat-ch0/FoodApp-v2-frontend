@@ -37,5 +37,41 @@
       "WELCOME_BOT": "Bonjour, puis-je vous aider?",
       "MSG_TOP_INPUT": "Ecrivez quelque chose ici !",
       "MSG_INPUT": "Comment ajouter un produit dans un de mes stockages ?"
+    },
+    "HOME_SIGN_IN" : {
+      "TITLE" : "Connectez-vous à votre compte",
+      "EMAIL_LABEL" : "Email",
+      "PASSWORD_LABEL" : "Mot de passe",
+      "BUTTON_LABEL" : "Se connecter",
+      "OR_SIGN_IN_WITH" : "ou se connecter avec",
+      "DONT_HAVE_ACCOUNT_TEXT" : "Vous n'avez pas de compte ?",
+      "SIGN_UP_LINK" : "S'inscrire"
+    },
+    "SIGN_UP" : {
+      "TITLE" : "Créez votre compte",
+      "FIRSTNAME_LABEL" : "Prénom",
+      "FISTNAME_ERROR_REQUIRED" : "Le prénom est obligatoire",
+      "FIRSTNAME_ERROR_LENGTH" : "Le prénom doit comporter au moins 2 caractères",
+      "LASTNAME_LABEL" : "Nom",
+      "LASTNAME_ERROR_REQUIRED" : "Le nom est obligatoire",
+      "LASTNAME_ERROR_LENGTH" : "Le nom doit comporter au moins 4 caractères",
+      "EMAIL_LABEL" : "Email",
+      "EMAIL_ERROR_REQUIRED" : "L'adresse électronique est obligatoire",
+      "EMAIL_ERROR_VALID" : "L'adresse électronique doit être valide",
+      "BIRTHDATE_LABEL" : "Date de naissance",
+      "BIRTHDATE_ERROR_REQUIRED" : "La date de naissance est obligatoire",
+      "PASSWORD_LABEL" : "Mot de passe",
+      "PASSWORD_ERROR_REQUIRED" : "Le mot de passe est obligatoire",
+      "PASSWORD_ERROR_LENGTH" : "Le mot de passe doit comporter au moins 6 caractères",
+      "CONFIRM_PASSWORD_LABEL" : "Confirmer le mot de passe",
+      "CONFIRM_PASSWORD_ERROR_REQUIRED" : "Confirmation du mot de passe requise",
+      "PASSWORD_ERROR_NOT_MATCH" : "Les mots de passe ne correspondent pas",
+      "TERMS_UNDERSTAND_TEXT" : "J'accepte les",
+      "TERMS_AND_POLICY" : "termes et conditions",
+      "TERMS_ERROR_REQUIRED" : "Vous devez accepter les termes et conditions",
+      "BUTTON_SIGN_UP" : "S'inscrire",
+      "OR_SIGN_UP_WITH" : "ou s'inscrire avec",
+      "HAVE_ACCOUNT_TEXT" : "Vous avez un compte ?",
+      "SIGN_IN_LINK" : "Se connecter"
     }
   }

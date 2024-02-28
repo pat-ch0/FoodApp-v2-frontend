@@ -1,0 +1,52 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding home-container">
+  <div class="home-container__logo">
+    <img
+      src="assets/icon/favicon.svg"
+      alt="Logo"
+      class="home-container__logo-img"
+    />
+  </div>
+
+  <p class="home-container__sign-in-title"> {{ "HOME_SIGN_IN.TITLE" | translate }}</p>
+
+  <ion-item class="home-container__email-input">
+    <ion-input labelPlacement="floating" label="{{ 'HOME_SIGN_IN.EMAIL_LABEL' | translate }}" type="email"></ion-input>
+  </ion-item>
+
+  <ion-item class="home-container__password-input">
+    <ion-input labelPlacement="floating" label="{{ 'HOME_SIGN_IN.PASSWORD_LABEL' | translate }}" type="password"></ion-input>
+  </ion-item>
+
+  <ion-button class="home-container__sign-in-button" expand="block" color="warning">
+    {{ "HOME_SIGN_IN.BUTTON_LABEL" | translate }}
+  </ion-button>
+
+  <h1 class="home-container__or-sign-in-with">{{ "HOME_SIGN_IN.OR_SIGN_IN_WITH" | translate }}</h1>
+
+  <div class="home-container__social-logos">
+    <ion-col>
+      <div class="social-logo google">
+        <img src="assets/icon/social-media/google.png" alt="Google Logo" />
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="social-logo facebook">
+        <img src="assets/icon/social-media/facebook.png" alt="Facebook Logo" />
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="social-logo twitter">
+        <img src="assets/icon/social-media/twitter.png" alt="Twitter Logo" />
+      </div>
+    </ion-col>
+  </div>
+
+  <p class="home-container__no-account">
+    {{ "HOME_SIGN_IN.DONT_HAVE_ACCOUNT_TEXT" | translate }}
+    <ion-label color="warning">
+      <ion-text class="sign-up-link" [routerLink]="['signup']">{{ "HOME_SIGN_IN.SIGN_UP_LINK" | translate }}</ion-text>
+    </ion-label>
+  </p>
+</ion-content>

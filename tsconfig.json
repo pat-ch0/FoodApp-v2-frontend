@@ -4,6 +4,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "crypto": ["./node_modules/crypto-browserify"],
+      "stream": ["./node_modules/stream-browserify"],
       "@service/*": ["src/app/services/*"],
       "@type/*": ["src/app/types/*"],
       "@environment/*": ["src/environments/*"],

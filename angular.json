@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["stream-browserify", "crypto-browserify", "bcryptjs"],
             "outputPath": "www",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -94,6 +95,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "allowedCommonJsDependencies": ["stream-browserify", "crypto-browserify", "bcryptjs"],
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",

@@ -11,6 +11,8 @@ import { ProductStockComponent } from '../pages/product/product-stock/product-st
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { StorageComponent } from '../pages/storage/storage.component';
 import { FormModalComponent } from './components/form-modal/form-modal.component';
+import { HomeComponent } from '../pages/home/home.component';
+import { RouterModule } from '@angular/router';
 import { ChatModalComponent } from './components/chat-modal/chat-modal.component';
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { ChatModalComponent } from './components/chat-modal/chat-modal.component
     LanguagePickerComponent,
     HeaderComponent,
     LoadingSpinnerComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +33,7 @@ import { ChatModalComponent } from './components/chat-modal/chat-modal.component
     ReactiveFormsModule,
     FormsModule,
     TranslateModule.forChild(),
-
+    RouterModule
   ],
   exports: [
     ProductDetailComponent,
@@ -41,6 +44,7 @@ import { ChatModalComponent } from './components/chat-modal/chat-modal.component
     LanguagePickerComponent,
     HeaderComponent,
     LoadingSpinnerComponent,
+    HomeComponent
   ]
 })
 export class SharedModule { }
