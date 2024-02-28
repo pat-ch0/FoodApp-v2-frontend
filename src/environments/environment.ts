@@ -5,13 +5,16 @@
 export const environment = {
   production: false,
   config: {
-    API_GATEWAY: 'https://cdd5-176-147-208-38.ngrok-free.app/',
+    API_GATEWAY: 'http://localhost:5000/',
     endpoint:{
       product: "api/v1/product/",
       stock: "api/v1/stock/product_stock/"
-    }
+    },
+    ai: {
+      endpoint: "api/v1/ai/chat"
   }
-};
+}
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

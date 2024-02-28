@@ -26,6 +26,16 @@
     "COMMUNITY_PAGE": {
       "TITLE": "Communauté",
       "ADD_COMMUNITY": "Ajouter une communauté",
-      "DETAIL": "Il y a {{count}} utilisateurs dans cette communauté"
+      "DETAIL": "Il y a {{count}} utilisateurs dans cette communauté",
+      "NUMBER_OF_PRODUCT": "Nombre de produits"
+    
+    },
+    "HELPER_BOT": {
+      "HELPER_TITLE": "robot assistant",
+      "CANCEL": "cancel",
+      "ROLE_USER": "Assistant IA",
+      "WELCOME_BOT": "Bonjour, puis-je vous aider?",
+      "MSG_TOP_INPUT": "Ecrivez quelque chose ici !",
+      "MSG_INPUT": "Comment ajouter un produit dans un de mes stockages ?"
     }
   }

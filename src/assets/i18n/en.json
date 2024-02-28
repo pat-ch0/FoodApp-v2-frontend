@@ -26,7 +26,16 @@
     "COMMUNITY_PAGE": {
       "TITLE": "Community",
       "ADD_COMMUNITY": "Add a community",
-      "DETAIL": "There are {{count}} users in this community"
+      "DETAIL": "There are {{count}} users in this community",
+      "NUMBER_OF_PRODUCT": "Number of products"
+    },
+    "HELPER_BOT": {
+      "HELPER_TITLE": "HELPER BOT",
+      "CANCEL": "cancel",
+      "ROLE_USER": "IA assistant",
+      "WELCOME_BOT": "Hello there, how may I help you ?",
+      "MSG_TOP_INPUT": "Write me something !",
+      "MSG_INPUT": "How can i add product in my stock"
     }
   }
   
