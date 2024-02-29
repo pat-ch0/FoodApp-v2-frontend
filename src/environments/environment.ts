@@ -8,7 +8,8 @@ export const environment = {
     API_GATEWAY: 'http://localhost:5000/',
     endpoint: {
       product: "api/v1/product/",
-      stock: "api/v1/stock/product_stock/"
+      stock: "api/v1/stock/product_stock/",
+      community: "api/v1/community/"
     },
     ai: {
       endpoint: "api/v1/ai/chat"

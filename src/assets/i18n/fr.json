@@ -27,8 +27,9 @@
       "TITLE": "Communauté",
       "ADD_COMMUNITY": "Ajouter une communauté",
       "DETAIL": "Il y a {{count}} utilisateurs dans cette communauté",
+      "COMMUNITY_NOT_FOUND": "Communauté non trouvée",
+      "ERROR_FETCHING_INFOS": "Erreur lors de la récupération des informations de la communauté",
       "NUMBER_OF_PRODUCT": "Nombre de produits"
-    
     },
     "HELPER_BOT": {
       "HELPER_TITLE": "robot assistant",

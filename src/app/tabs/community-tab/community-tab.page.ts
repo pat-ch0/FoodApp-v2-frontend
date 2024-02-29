@@ -3,7 +3,8 @@ import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import ModalCreator from '@service/modal.service';
 import { Community } from '@type/community.type';
-import { FormModalComponent } from 'src/app/shared/components/form-modal/form-modal.component';
+import { CommunityService } from '@service/community/community.service'
+import { HandleError } from '@service/errors/handle-error.service'
 
 @Component({
   selector: 'app-community-tab',
@@ -11,28 +12,66 @@ import { FormModalComponent } from 'src/app/shared/components/form-modal/form-mo
   styleUrls: ['./community-tab.page.scss'],
 })
 export class CommunityTabPage implements OnInit {
-
-
   constructor(
     private route: Router,
-    private modalCreator: ModalCreator
+    private modalCreator: ModalCreator,
+    private communityService: CommunityService,
+    private handleError: HandleError
   ) { }
 
   communities: Community[] = []
 
-  onDeleteCommunity(community: Community) {
-
+  // A verifier
+  async addCommunity(community: Community) {
+    try {
+      const response = await this.communityService.addCommunity(community.id)
+      this.communities[this.communities.length] = response.data
+    }
+    catch (error: any) {
+      this.handleError.handleError(error, 'COMMUNITY_PAGE', 'COMMUNITY_NOT_FOUND', 'ERROR_FETCHING_INFOS')
+    }
   }
 
-  async addCommunity(params: any) {
-    console.log(params)
+  // A vérifier
+  async onDeleteCommunity(community: Community) {
+    try {
+      const response = await this.communityService.deleteCommunity(community.id)
+      console.log(response.data)
+    }
+    catch (error: any) {
+      this.handleError.handleError(error, 'COMMUNITY_PAGE', 'COMMUNITY_NOT_FOUND', 'ERROR_FETCHING_INFOS')
+    }
+  }
+
+
+  // A vérifier
+  async onEditCommunity(community: Community) {
+    try {
+      const response = await this.communityService.editCommunity(community.id, community.name)
+      console.log(response.data)
+    }
+    catch (error: any) {
+      this.handleError.handleError(error, 'COMMUNITY_PAGE', 'COMMUNITY_NOT_FOUND', 'ERROR_FETCHING_INFOS')
+    }
   }
 
   async presentModal() {
-    await this.modalCreator.createFormModal(this.addCommunity, [
+    await this.modalCreator.createFormModal(this.addCommunity.bind(this), [
       {
         name: 'name',
         label: 'Name',
+        type: 'text',
+        validators: [Validators.required]
+      }
+    ]);
+  }
+
+  // a verifier
+  async presentEditModal() {
+    await this.modalCreator.createFormModal(this.onEditCommunity.bind(this), [
+      {
+        name: 'name',
+        label: 'New name',
         type: 'text',
         validators: [Validators.required]
       }
@@ -87,5 +126,4 @@ export class CommunityTabPage implements OnInit {
       ]
     });
   }
-
 }
