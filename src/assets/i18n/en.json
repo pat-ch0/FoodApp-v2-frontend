@@ -76,6 +76,9 @@
       "OR_SIGN_UP_WITH": "or sign up with",
       "HAVE_ACCOUNT_TEXT": "Have an account?",
       "SIGN_IN_LINK": "Sign in"
+    },
+    "STORAGE_PAGE": {
+      "STORAGE_NOT_FOUND": "Storage not found",
+      "ERROR_FETCHING_INFOS": "There was an error when fetching the storage infos"
     }
   }
-  

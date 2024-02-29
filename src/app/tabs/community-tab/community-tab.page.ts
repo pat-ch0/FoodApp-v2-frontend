@@ -25,7 +25,7 @@ export class CommunityTabPage implements OnInit {
   async addCommunity(community: Community) {
     try {
       const response = await this.communityService.addCommunity(community.id)
-      this.communities[this.communities.length] = response.data
+      this.communities.push(response.data)
     }
     catch (error: any) {
       this.handleError.handleError(error, 'COMMUNITY_PAGE', 'COMMUNITY_NOT_FOUND', 'ERROR_FETCHING_INFOS')
@@ -66,7 +66,7 @@ export class CommunityTabPage implements OnInit {
     ]);
   }
 
-  // a verifier
+  // passer la communauté voulue dans le bind
   async presentEditModal() {
     await this.modalCreator.createFormModal(this.onEditCommunity.bind(this), [
       {

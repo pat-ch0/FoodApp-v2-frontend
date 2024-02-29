@@ -11,7 +11,6 @@ export const environment = {
       stock: "api/v1/stock/product_stock/",
       community: "api/v1/community/",
       storage: "api/v1/storage/"
-    
     },
     ai: {
       endpoint: "api/v1/ai/chat"
