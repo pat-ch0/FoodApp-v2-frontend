@@ -1,0 +1,71 @@
+.home-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  &__logo-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  &__sign-in-title {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 1em;
+    font-size: 32px;
+  }
+
+  &__email-input,
+  &__password-input {
+    margin-top: 10px;
+  }
+
+  &__sign-in-button {
+    --border-radius: 8px;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+
+  &__or-sign-in-with {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  &__social-logos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    ion-col {
+      flex-grow: unset;
+    }
+  }
+
+  .social-logo {
+    width: 86px;
+    height: 42px;
+    // background-color: #f4f4f4;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__no-account {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  .sign-up-link {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,100 @@
+<ion-toolbar>
+  <div class="header-sign-up__container">
+    <div class="header-sign-up__icon__container">
+      <ion-back-button defaultHref="/" text="" slot="start"></ion-back-button>
+    </div>
+    <app-language-picker></app-language-picker>
+    <div class="header-sign-up__logo">
+      <img src="assets/icon/favicon.svg" alt="Logo" />
+    </div>
+  </div>
+</ion-toolbar>
+
+<ion-content [fullscreen]="true" class="ion-padding sign-up-container">
+  <h1 class="sign-up-container__sign-up-title">{{ 'SIGN_UP.TITLE' | translate }}</h1>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <ion-item class="sign-up-container__form-item" [class.invalid]="signupForm.get('firstName')?.invalid">
+      <ion-input labelPlacement="floating" label="{{ 'SIGN_UP.FIRSTNAME_LABEL' | translate }}" formControlName="firstName"></ion-input>
+    </ion-item>
+    <div *ngIf="signupForm.get('firstName')?.hasError('required') && signupForm.get('firstName')?.touched" class="error-message">{{ 'SIGN_UP.FISTNAME_ERROR_REQUIRED' | translate }}.</div>
+    <div *ngIf="signupForm.get('firstName')?.hasError('minlength') && signupForm.get('firstName')?.touched" class="error-message">{{ 'SIGN_UP.FIRSTNAME_ERROR_LENGTH' | translate }}.</div>
+
+    <ion-item class="sign-up-container__form-item">
+      <ion-input labelPlacement="floating" label="{{ 'SIGN_UP.LASTNAME_LABEL' | translate }}" formControlName="lastName"></ion-input>
+    </ion-item>
+    <div *ngIf="signupForm.get('lastName')?.hasError('required') && signupForm.get('lastName')?.touched" class="error-message">{{ 'SIGN_UP.LASTNAME_ERROR_REQUIRED' | translate }}.</div>
+    <div *ngIf="signupForm.get('lastName')?.hasError('minlength') && signupForm.get('lastName')?.touched" class="error-message">{{ 'SIGN_UP.LASTNAME_ERROR_LENGTH' | translate }}.</div>
+
+    <ion-item class="sign-up-container__form-item">
+      <ion-input labelPlacement="floating" label="{{ 'SIGN_UP.EMAIL_LABEL' | translate }}" formControlName="email"></ion-input>
+    </ion-item>
+    <div *ngIf="signupForm.get('email')?.hasError('required') && signupForm.get('email')?.touched" class="error-message">{{ 'SIGN_UP.EMAIL_ERROR_REQUIRED' | translate }}.</div>
+    <div *ngIf="signupForm.get('email')?.hasError('email') && signupForm.get('email')?.touched" class="error-message">{{ 'SIGN_UP.EMAIL_ERROR_VALID' | translate }}.</div>
+
+    <ion-item class="sign-up-container__form-item" [class.invalid]="signupForm.get('birthdate')?.invalid">
+      <ion-input labelPlacement="floating" label="{{ 'SIGN_UP.BIRTHDATE_LABEL' | translate }}" formControlName="birthdate" (ionChange)="onDateChange($event)" [max]="maxDate" [min]="minDate"></ion-input>
+      <ion-icon name="calendar-outline" slot="end" (click)="openDatePicker()"></ion-icon>
+
+      <ion-modal [keepContentsMounted]="true" [showBackdrop]="false" [cssClass]="'datepicker-popover'" #datePicker>
+        <ng-template>
+          <ion-content class="datetime-modal-content">
+            <!-- TODO: Add the binding of the date typed in the input to be the selected date when opening the date picker -->
+            <ion-datetime formControlName="birthdate" pickerFormat="MMM D, YYYY" presentation="date" (ionChange)="onDateChange($event)" [max]="maxDate" [min]="minDate" [showDefaultButtons]="true" [showDefaultTitle]="true"></ion-datetime>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+    <div *ngIf="signupForm.get('birthdate')?.hasError('required') && signupForm.get('birthdate')?.touched" class="error-message">{{ 'SIGN_UP.BIRTHDATE_ERROR_REQUIRED' | translate }}.</div>
+
+    <ion-item class="sign-up-container__form-item" [class.invalid]="signupForm.get('confirmPassword')?.hasError('mismatch') &&signupForm.get('confirmPassword')?.touched">
+      <ion-input labelPlacement="floating" label="{{ 'SIGN_UP.PASSWORD_LABEL' | translate }}" type="{{ showPassword ? 'text' : 'password' }}" formControlName="password"></ion-input>
+      <ion-icon name="{{ showPassword ? 'eye-off' : 'eye' }}" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
+    </ion-item>
+    <div *ngIf="signupForm.get('password')?.hasError('required') && signupForm.get('password')?.touched" class="error-message">{{ 'SIGN_UP.PASSWORD_ERROR_REQUIRED' | translate }}.</div>
+    <div *ngIf="signupForm.get('password')?.hasError('minlength')" class="error-message">{{ 'SIGN_UP.PASSWORD_ERROR_LENGTH' | translate }}.</div>
+
+    <ion-item class="sign-up-container__form-item" [class.invalid]="signupForm.get('confirmPassword')?.hasError('mismatch') && signupForm.get('confirmPassword')?.touched">
+      <ion-input labelPlacement="floating" label="{{ 'SIGN_UP.CONFIRM_PASSWORD_LABEL' | translate }}" type="{{ showPassword ? 'text' : 'password' }}" formControlName="confirmPassword"></ion-input>
+      <ion-icon name="{{ showPassword ? 'eye-off' : 'eye' }}" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
+    </ion-item>
+    <div *ngIf="signupForm.get('confirmPassword')?.hasError('required') && signupForm.get('confirmPassword')?.touched" class="error-message">{{ 'SIGN_UP.CONFIRM_PASSWORD_ERROR_REQUIRED' | translate }}.</div>
+
+    <div *ngIf="signupForm.get('confirmPassword')?.hasError('mismatch') && signupForm.get('confirmPassword')?.touched" class="error-message">{{ 'SIGN_UP.PASSWORD_ERROR_NOT_MATCH' | translate }}.</div>
+
+    <p class="sign-up-container__form-item form-checkbox">
+      <ion-checkbox formControlName="termsAndPolicy"></ion-checkbox>
+      <ion-label>{{ 'SIGN_UP.TERMS_UNDERSTAND_TEXT' | translate }} <ion-text color="warning">{{ 'SIGN_UP.TERMS_AND_POLICY' | translate }}</ion-text> .</ion-label>
+    </p>
+    <div *ngIf="signupForm.get('termsAndPolicy')?.hasError('required') && signupForm.get('termsAndPolicy')?.touched" class="error-message">{{ 'SIGN_UP.TERMS_ERROR_REQUIRED' | translate }}.</div>
+
+    
+    <ion-button class="sign-up-container__sign-up-button" expand="full" type="submit" color="warning" [disabled]="signupForm.invalid">{{ 'SIGN_UP.BUTTON_SIGN_UP' | translate }}</ion-button>
+  </form>
+
+  <h1 class="sign-up-container__or-sign-up-with">{{ 'SIGN_UP.OR_SIGN_UP_WITH' | translate }}</h1>
+
+  <div class="sign-up-container__social-logos">
+    <ion-col>
+      <div class="social-logo google">
+        <img src="assets/icon/social-media/google.png" alt="Google Logo" />
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="social-logo facebook">
+        <img src="assets/icon/social-media/facebook.png" alt="Facebook Logo" />
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="social-logo twitter">
+        <img src="assets/icon/social-media/twitter.png" alt="Twitter Logo" />
+      </div>
+    </ion-col>
+  </div>
+
+  <p class="sign-up-container__have-account">
+    {{ 'SIGN_UP.HAVE_ACCOUNT_TEXT' | translate }}
+    <ion-label color="warning">
+      <ion-text class="sign-up-link" [routerLink]="['/home']">{{ 'SIGN_UP.SIGN_IN_LINK' | translate | uppercase }}</ion-text>
+    </ion-label>
+  </p>
+</ion-content>

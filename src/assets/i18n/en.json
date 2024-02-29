@@ -38,6 +38,42 @@
       "WELCOME_BOT": "Hello there, how may I help you ?",
       "MSG_TOP_INPUT": "Write me something !",
       "MSG_INPUT": "How can i add product in my stock"
+    },
+    "HOME_SIGN_IN": {
+      "TITLE": "Sign in to your account",
+      "EMAIL_LABEL" :"Email",
+      "PASSWORD_LABEL" :"Password",
+      "BUTTON_LABEL": "Sign in",
+      "OR_SIGN_IN_WITH": "or sign in with",
+      "DONT_HAVE_ACCOUNT_TEXT": "Don't have an account?",
+      "SIGN_UP_LINK": "Sign up"
+    },
+    "SIGN_UP": {
+      "TITLE" : "Create your account",
+      "FIRSTNAME_LABEL" : "First Name",
+      "FISTNAME_ERROR_REQUIRED": "First Name is required",
+      "FIRSTNAME_ERROR_LENGTH" : "First Name must be at least 2 characters long",
+      "LASTNAME_LABEL" : "Last Name",
+      "LASTNAME_ERROR_REQUIRED": "Last Name is required",
+      "LASTNAME_ERROR_LENGTH" : "Last Name must be at least 4 characters long",
+      "EMAIL_LABEL" : "Email",
+      "EMAIL_ERROR_REQUIRED" : "Email is required",
+      "EMAIL_ERROR_VALID" : "Email must be valid",
+      "BIRTHDATE_LABEL" : "Birthdate",
+      "BIRTHDATE_ERROR_REQUIRED" : "Birthdate is required",
+      "PASSWORD_LABEL" : "Password",
+      "PASSWORD_ERROR_REQUIRED" : "Password is required",
+      "PASSWORD_ERROR_LENGTH" : "Password be at least 6 characters long",
+      "CONFIRM_PASSWORD_LABEL" : "Confirm Password",
+      "CONFIRM_PASSWORD_ERROR_REQUIRED" : "Confirm Password is required",
+      "PASSWORD_ERROR_NOT_MATCH": "Passwords do not match",
+      "TERMS_UNDERSTAND_TEXT": "Agree to",
+      "TERMS_AND_POLICY": "terms & condition",
+      "TERMS_ERROR_REQUIRED" : "You must agree with the terms",
+      "BUTTON_SIGN_UP": "Sign up",
+      "OR_SIGN_UP_WITH": "or sign up with",
+      "HAVE_ACCOUNT_TEXT": "Have an account?",
+      "SIGN_IN_LINK": "Sign in"
     }
   }
   
