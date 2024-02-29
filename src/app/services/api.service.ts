@@ -1,26 +1,33 @@
 import { Injectable } from '@angular/core';
 import { CapacitorHttp } from '@capacitor/core';
 import { environment } from '@environment/environment';
+import { AuthService } from './auth.service'; // Assurez-vous que le chemin est correct
 
-/**
- * Service for making HTTP requests to the API.
- */
 @Injectable({
   providedIn: 'root',
 })
-export abstract class ApiService {
-  private static userToken: string = 'YOUR_USER_TOKEN_HERE';
+export class ApiService {
+
   private static baseUrl = environment.config.API_GATEWAY;
+  private static staticAuthService: AuthService;
+  constructor(private authService: AuthService) {
+    ApiService.staticAuthService = authService;
+  }
+
+  // Cette méthode n'est plus statique pour pouvoir utiliser authService
+  static async setToken(token: string) {
+    await this.staticAuthService.setToken(token);
+  }
 
   /**
-   * Get the headers for the HTTP request.
-   * @returns The headers object.
+   * Récupère les headers pour la requête HTTP, incluant le JWT si présent.
    */
-  private getHeaders() {
+  private static async getHeaders() {
+    const token = await this.staticAuthService.getToken();
     return {
-      Authorization: `Bearer ${ApiService.userToken}`,
       'Content-Type': 'application/json',
-      'ngrok-skip-browser-warning': 'true'
+      'ngrok-skip-browser-warning': 'true',
+      ...(token ? { Authorization: `${token}` } : {}),
     };
   }
 
@@ -35,7 +42,7 @@ export abstract class ApiService {
     try {
       const response = await CapacitorHttp.get({
         url: ApiService.baseUrl + url,
-        headers: this.getHeaders(),
+        headers: await ApiService.getHeaders(),
         params,
       });
       return response;
@@ -56,7 +63,7 @@ export abstract class ApiService {
     try {
       const response = await CapacitorHttp.post({
         url: ApiService.baseUrl + url,
-        headers: this.getHeaders(),
+        headers: await ApiService.getHeaders(),
         data,
       });
       return response;
@@ -77,7 +84,7 @@ export abstract class ApiService {
     try {
       const response = await CapacitorHttp.delete({
         url: ApiService.baseUrl + url,
-        headers: this.getHeaders(),
+        headers: await ApiService.getHeaders(),
         params,
       });
       return response;
@@ -98,7 +105,7 @@ export abstract class ApiService {
     try {
       const response = await CapacitorHttp.patch({
         url: ApiService.baseUrl + url,
-        headers: this.getHeaders(),
+        headers: await ApiService.getHeaders(),
         data,
       });
       return response;

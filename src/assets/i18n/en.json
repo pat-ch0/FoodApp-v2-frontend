@@ -46,7 +46,9 @@
       "BUTTON_LABEL": "Sign in",
       "OR_SIGN_IN_WITH": "or sign in with",
       "DONT_HAVE_ACCOUNT_TEXT": "Don't have an account?",
-      "SIGN_UP_LINK": "Sign up"
+      "SIGN_UP_LINK": "Sign up",
+      "INVALIDE_EMAIL" : "Email must be valid",
+      "INVALIDE_PASSWORD" : "Password must be at least 6 characters long"
     },
     "SIGN_UP": {
       "TITLE" : "Create your account",

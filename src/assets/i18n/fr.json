@@ -46,7 +46,9 @@
       "BUTTON_LABEL" : "Se connecter",
       "OR_SIGN_IN_WITH" : "ou se connecter avec",
       "DONT_HAVE_ACCOUNT_TEXT" : "Vous n'avez pas de compte ?",
-      "SIGN_UP_LINK" : "S'inscrire"
+      "SIGN_UP_LINK" : "S'inscrire",
+      "INVALIDE_EMAIL" : "L'email doit être valide",
+      "INVALIDE_PASSWORD" : "Le mot de passe doit comporter au moins 6 caractères"
     },
     "SIGN_UP" : {
       "TITLE" : "Créez votre compte",

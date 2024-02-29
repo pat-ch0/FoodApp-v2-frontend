@@ -13,6 +13,10 @@ export const environment = {
     },
     ai: {
       endpoint: "api/v1/ai/chat"
+    },
+    user: {
+      createUser: "api/v1/users",
+      login: "api/v1/users/login",
     }
   }
 }
