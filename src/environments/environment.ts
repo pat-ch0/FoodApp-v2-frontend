@@ -9,7 +9,9 @@ export const environment = {
     endpoint: {
       product: "api/v1/product/",
       stock: "api/v1/stock/product_stock/",
-      community: "api/v1/community/"
+      community: "api/v1/community/",
+      storage: "api/v1/storage/"
+    
     },
     ai: {
       endpoint: "api/v1/ai/chat"

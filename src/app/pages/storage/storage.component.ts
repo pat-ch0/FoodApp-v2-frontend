@@ -46,46 +46,6 @@ export class StorageComponent implements OnInit {
       name: 'Work',
       icon: 'fridge.png',
       id: '2'
-    }); this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
-    }); this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
-    }); this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
-    }); this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
-    }); this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
-    }); this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
-    }); this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
-    }); this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
-    }); this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
-    }); this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
     });
   }
 
