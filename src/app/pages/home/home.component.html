@@ -1,27 +1,33 @@
 <app-header></app-header>
 
 <ion-content [fullscreen]="true" class="ion-padding home-container">
-  <div class="home-container__logo">
-    <img
-      src="assets/icon/favicon.svg"
-      alt="Logo"
-      class="home-container__logo-img"
-    />
-  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSignIn()">
+    <div class="home-container__logo">
+      <img src="assets/icon/favicon.svg" alt="Logo" class="home-container__logo-img" />
+    </div>
 
-  <p class="home-container__sign-in-title"> {{ "HOME_SIGN_IN.TITLE" | translate }}</p>
+    <p class="home-container__sign-in-title">{{ "HOME_SIGN_IN.TITLE" | translate }}</p>
 
-  <ion-item class="home-container__email-input">
-    <ion-input labelPlacement="floating" label="{{ 'HOME_SIGN_IN.EMAIL_LABEL' | translate }}" type="email"></ion-input>
-  </ion-item>
+    <ion-item class="home-container__email-input">
+      <ion-input formControlName="email" labelPlacement="floating" label="{{ 'HOME_SIGN_IN.EMAIL_LABEL' | translate }}"
+        type="email"></ion-input>
+    </ion-item>
+    <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+      <ion-text color="danger">{{ 'HOME_SIGN_IN.INVALIDE_EMAIL' | translate }}</ion-text>
+    </div>
 
-  <ion-item class="home-container__password-input">
-    <ion-input labelPlacement="floating" label="{{ 'HOME_SIGN_IN.PASSWORD_LABEL' | translate }}" type="password"></ion-input>
-  </ion-item>
+    <ion-item class="home-container__password-input">
+      <ion-input formControlName="password" labelPlacement="floating"
+        label="{{ 'HOME_SIGN_IN.PASSWORD_LABEL' | translate }}" type="password"></ion-input>
+    </ion-item>
+    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+      <ion-text color="danger">{{ 'HOME_SIGN_IN.INVALIDE_PASSWORD' | translate }}</ion-text>
+    </div>
 
-  <ion-button class="home-container__sign-in-button" expand="block" color="warning">
-    {{ "HOME_SIGN_IN.BUTTON_LABEL" | translate }}
-  </ion-button>
+    <ion-button class="home-container__sign-in-button" expand="block" color="warning" type="submit">
+      {{ "HOME_SIGN_IN.BUTTON_LABEL" | translate }}
+    </ion-button>
+  </form>
 
   <h1 class="home-container__or-sign-in-with">{{ "HOME_SIGN_IN.OR_SIGN_IN_WITH" | translate }}</h1>
 

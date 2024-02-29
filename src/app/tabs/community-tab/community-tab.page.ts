@@ -49,13 +49,20 @@ export class CommunityTabPage implements OnInit {
       name: 'Community 1',
       members: [
         {
-          id: '1',
-          name: 'User 1'
+          id: 1,
+          firstname: 'User 1',
+          lastname: 'User 1',
+          birthdate: new Date(),
+          email: '',
         },
         {
-          id: '2',
-          name: 'User 2'
+          id: 2,
+          firstname: 'User 2',
+          lastname: 'User 2',
+          birthdate: new Date(),
+          email: '',
         }
+
       ]
     });
 
@@ -64,12 +71,18 @@ export class CommunityTabPage implements OnInit {
       name: 'Community 2',
       members: [
         {
-          id: '1',
-          name: 'User 1'
+          id: 1,
+          firstname: 'User 1',
+          lastname: 'User 1',
+          birthdate: new Date(),
+          email: '',
         },
         {
-          id: '4',
-          name: 'User 4'
+          id: 4,
+          firstname: 'User 4',
+          lastname: 'User 4',
+          birthdate: new Date(),
+          email: '',
         }
       ]
     });

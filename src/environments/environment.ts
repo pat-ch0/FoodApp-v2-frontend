@@ -6,14 +6,18 @@ export const environment = {
   production: false,
   config: {
     API_GATEWAY: 'http://localhost:5000/',
-    endpoint:{
+    endpoint: {
       product: "api/v1/product/",
       stock: "api/v1/stock/product_stock/"
     },
     ai: {
       endpoint: "api/v1/ai/chat"
+    },
+    user: {
+      createUser: "api/v1/users",
+      login: "api/v1/users/login",
+    }
   }
-}
 }
 
 /*

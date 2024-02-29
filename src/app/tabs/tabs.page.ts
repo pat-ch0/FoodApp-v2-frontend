@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
+import { AuthService } from '@service/auth.service';
 
 @Component({
   selector: 'app-tabs',
@@ -7,10 +8,12 @@ import { MenuController, NavController } from '@ionic/angular';
   styleUrls: ['tabs.page.scss'],
 })
 export class TabsPage {
+
   constructor(
     private menuController: MenuController,
-    private navCtrl: NavController
-  ) {}
+    private navCtrl: NavController,
+    private authService: AuthService
+  ) { }
   menuType: 'overlay' | 'reveal' | 'push' = 'overlay';
   openMenu() {
     this.menuController.open('menu-tab');
@@ -18,5 +21,10 @@ export class TabsPage {
 
   navigateTo(tab: string) {
     this.navCtrl.navigateForward(`tabs/${tab}`);
+  }
+
+  async logout() {
+    await this.authService.logout();
+    this.navCtrl.navigateRoot('');
   }
 }

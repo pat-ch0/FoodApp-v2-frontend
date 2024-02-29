@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '@service/auth.service';
+import { UserService } from '@service/user.service';
+import { User } from '@type/user.type';
 import * as bcrypt from 'bcryptjs';
 
 @Component({
@@ -18,10 +22,19 @@ export class SignupComponent implements OnInit {
 
   @ViewChild('datePicker') datePicker: any;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private router: Router,
+    private authService: AuthService
+    ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.initForm();
+    if ((await this.authService.isUserLoggedIn())) {
+      this.router.navigate(['/tabs/search']);
+      return;
+    }
   }
 
   /**
@@ -120,25 +133,21 @@ export class SignupComponent implements OnInit {
   /**
    * Handles the form submission.
    */
-  onSubmit() {
+  async onSubmit() {
     if (this.signupForm.valid) {
-      // Generate a salt and hash the password
-      const saltRounds = 10;
-      const salt = bcrypt.genSaltSync(saltRounds);
-      const hashedPassword = bcrypt.hashSync(
-        this.signupForm.value.password,
-        salt
-      );
-
-      const form = {
-        firstName: this.signupForm.get('firstName')?.value,
-        lastName: this.signupForm.get('lastName')?.value,
+      const dateForBackend = new Date(this.signupForm.value.birthdate);
+      const form : User = {
+        firstname: this.signupForm.get('firstName')?.value,
+        lastname: this.signupForm.get('lastName')?.value,
         email: this.signupForm.get('email')?.value,
-        birthdate: this.signupForm.get('birthdate')?.value,
-        password: hashedPassword,
+        birthdate: dateForBackend,
       };
-
+      // this.signupForm.value.password
       console.log('Form:', form);
+      const responce = await this.userService.createUser(form, this.signupForm.value.password);
+      if (responce.status === 200) {
+        this.router.navigate(['/tabs/search']);
+      }
     } else {
       console.log('Form is not valid. Please check the fields.');
     }
