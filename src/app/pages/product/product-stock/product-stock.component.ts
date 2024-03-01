@@ -57,7 +57,6 @@ export class ProductStockComponent implements OnInit {
   }
 
   onClickProduct(product: (Product & Quantity)) {
-
   }
 
   constructor(

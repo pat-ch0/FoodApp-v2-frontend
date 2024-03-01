@@ -2,16 +2,17 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-button shape="round" color="warning" (click)="addStorageClick()">
+  <ion-button shape="round" color="warning" (click)="presentModal()">
     Add storage
   </ion-button>
 
   <app-sliding *ngFor="let storage of storages;" 
   (clickRequest)="onClickStorage(storage)"
-   (deleteRequest)="onDeleteStorage(storage)"
-    [iconPath]="'assets/icon/storage-icon/'+this.storage.icon"
-    [name]="storage.name"
-    [detail]="'Number of product xxx'"
-    >
+  (deleteRequest)="onDeleteStorage(storage)"
+  (editRequest)="presentEditModal()"
+  [iconPath]="'assets/icon/storage-icon/'+this.storage.icon"
+  [name]="storage.name"
+  [detail]="'Number of product xxx'"
+  >
   </app-sliding>
 </ion-content>

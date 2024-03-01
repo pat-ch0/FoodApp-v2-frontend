@@ -32,11 +32,11 @@
       "NUMBER_OF_PRODUCT": "Nombre de produits"
     },
     "HELPER_BOT": {
-      "HELPER_TITLE": "robot assistant",
+      "HELPER_TITLE": "Assistant virtuel",
       "CANCEL": "cancel",
       "ROLE_USER": "Assistant IA",
-      "WELCOME_BOT": "Bonjour, puis-je vous aider?",
-      "MSG_TOP_INPUT": "Ecrivez quelque chose ici !",
+      "WELCOME_BOT": "Bonjour, comment puis-je vous aider ?",
+      "MSG_TOP_INPUT": "Écrivez quelque chose ici !",
       "MSG_INPUT": "Comment ajouter un produit dans un de mes stockages ?"
     },
     "HOME_SIGN_IN" : {
@@ -76,5 +76,9 @@
       "OR_SIGN_UP_WITH" : "ou s'inscrire avec",
       "HAVE_ACCOUNT_TEXT" : "Vous avez un compte ?",
       "SIGN_IN_LINK" : "Se connecter"
+    },
+    "STORAGE_PAGE": {
+      "STORAGE_NOT_FOUND": "Stockage non trouvé",
+      "ERROR_FETCHING_INFOS": "Erreur lors de la récupération des informations du stockage"
     }
   }
