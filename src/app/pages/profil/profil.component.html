@@ -1,53 +1,60 @@
 <app-header [title]="'Profil'" [showBackButton]="true"></app-header>
 
-<ion-content class="profil__info-content">
+<ion-content [fullscreen]="true" class="profil__info-content">
   <!-- PERSONAL INFORMATION -->
-  <h1>Personal information</h1>
-  <hr style="border: 1px solid black;">
+  <h1>{{ "PROFIL_SETTINGS.FIRST_TITLE" | translate }}</h1>
   <ion-card>
     <ion-item>
-      <ion-input label="Firstname" value="Stephane" helperText="Modify your firstname"
-        errorText="Invalid name" ></ion-input>
+      <ion-input [label]="'PROFIL_SETTINGS.LABEL_FIRSTNAME' | translate" value="Stephane"
+        [errorText]="'PROFIL_SETTINGS.INVALID_FIRSTNAME' | translate"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Lastname" value="Hanwking" helperText="Modify your lastname"
-        errorText="Invalid lastname"></ion-input>
+      <ion-input [label]="'PROFIL_SETTINGS.LABEL_LASTNAME' | translate" value="Hanwking"
+        [errorText]="'PROFIL_SETTINGS.INVALID_LASTNAME' | translate"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Date of birth" value="12/12/2000" disabled=""
-        helperText="You need to wait 30d to modify birthday"></ion-input>
+      <ion-input [label]="'PROFIL_SETTINGS.INVALID_DATE' | translate" value="12/12/2000" disabled=""></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Telephone input" type="tel" value="0663656869" helperText="Enter a valid phone number"
-        errorText="Invalid phone number"></ion-input>
+      <ion-input [label]="'PROFIL_SETTINGS.LABEL_PHONE' | translate" type="tel" value="0663656869"
+        [errorText]="'PROFIL_SETTINGS.INVALID_PHONE' | translate"></ion-input>
     </ion-item>
+
+    <ion-button color="warning" (click)="getUserDetails">
+      {{ "PROFIL_SETTINGS.EDIT" | translate }}
+    </ion-button>
+
+
+
+    <div *ngIf="changeSelect === true">
+
+    </div>
   </ion-card>
   <!-- ------------------------------------------------- -->
 
   <!-- ACCOUNT SETTINGS  -->
-  <h1>Account settings</h1>
-  <hr style="border: 1px solid black;">
+  <h1>{{ "PROFIL_SETTINGS.SECOND_TITLE" | translate }}</h1>
   <ion-card>
     <ion-item>
-      <ion-input label="Password input" type="password" value="password"
-        helperText="You can change all 30d your password" errorText="Invalid password"></ion-input>
+      <ion-input [label]="'PROFIL_SETTINGS.LABEL_PASSWORD' | translate" type="password" value="password"
+        [errorText]="'PROFIL_SETTINGS.INVALID_PASSWORD' | translate"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Email input" type="email" placeholder="Lameraboir@detergent.com"
-        helperText="Enter a valid email" errorText="Invalid email"></ion-input>
+      <ion-input [label]="'PROFIL_SETTINGS.LABEL_EMAIL' | translate" type="email" placeholder="Lameraboir@detergent.com"
+        [errorText]="'PROFIL_SETTINGS.INVALID_EMAIL' | translate"></ion-input>
     </ion-item>
     <ion-item>
       <!-- Systeme allow notification to do -->
       <ion-toggle>
-        <ion-label>Allow notifications</ion-label>
-        <ion-note color="medium">if member of community add a product for example...</ion-note>
+        <ion-label>{{ "PROFIL_SETTINGS.LABEL_NOTIF" | translate }}</ion-label>
+        <ion-note color="medium">{{ "PROFIL_SETTINGS.LABEL_NOTE_NOTIF" | translate }}</ion-note>
       </ion-toggle>
     </ion-item>
     <!-- Systeme Validation 2 factor to do -->
     <ion-item button detail="true">
       <ion-label>
-        <h3>Manage double factor authentication</h3>
-        <p>You will be redirect to the page security</p>
+        <h3>{{ "PROFIL_SETTINGS.THIRD_TITLE" | translate }}</h3>
+        <p>{{ "PROFIL_SETTINGS.LABEL_REDIRECT" | translate }}</p>
       </ion-label>
       <div *ngIf="factorVerify; then thenFactor else elseFactor "></div>
       <ng-template #thenFactor><img src="../../../assets/icon/tabs/check.svg" alt=""> </ng-template>
@@ -55,13 +62,11 @@
     </ion-item>
   </ion-card>
   <!-- -------------------------------- -->
-
   <ion-card>
     <ion-item button detail="true">
       <ion-label>
-        <h3>Delete account</h3>
-        <p>Keep in mind that upon deleting your account all of your account information will be deleted without possibly
-          of restoration.</p>
+        <h3>{{ "PROFIL_SETTINGS.FOURTH_TITLE" | translate }}</h3>
+        <p>{{ "PROFIL_SETTINGS.WARNING_DELETE" | translate }}</p>
       </ion-label>
     </ion-item>
   </ion-card>

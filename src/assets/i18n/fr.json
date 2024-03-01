@@ -75,5 +75,28 @@
       "OR_SIGN_UP_WITH" : "ou s'inscrire avec",
       "HAVE_ACCOUNT_TEXT" : "Vous avez un compte ?",
       "SIGN_IN_LINK" : "Se connecter"
+    },
+    "PROFIL_SETTINGS":{
+      "FIRST_TITLE": "Information personnel",
+      "SECOND_TITLE": "Paramètre de compte",
+      "THIRD_TITLE": "Authentificateur à deux facteurs",
+      "FOURTH_TITLE": "Supprimer le compte",
+      "LABEL_FIRSTNAME": "Prénom",
+      "LABEL_LASTNAME": "Nom de famille",
+      "LABEL_DATE": "Date de naissance",
+      "LABEL_PHONE": "Telephone",
+      "LABEL_PASSWORD": "Mot de passe",
+      "LABEL_EMAIL": "Email",
+      "LABEL_NOTIF": "Activer les notifications",
+      "LABEL_NOTE_NOTIF": "Si un membre de la communauté ajoute un produit par exemple..",
+      "LABEL_REDIRECT": "Vous allez être redirigé vers la page de sécurité",
+      "WARNING_DELETE": "Garder en tête que supprimer votre compte, effacera de notre base de donnée toutes vos informations personnel, et ne pourrons être restoré.",
+      "INVALID_FIRSTNAME": "Prénom invalide",
+      "INVALID_LASTNAME": "Nom invalide",
+      "INVALID_DATE": "Date invalide",
+      "INVALID_PHONE": "Téléphone invalide",
+      "INVALID_PASSWORD": "Mot de passe invalide",
+      "INVALID_EMAIL": "Prénom invalide",
+      "EDIT": "Modifier"
     }
   }
