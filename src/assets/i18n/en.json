@@ -34,10 +34,10 @@
     "HELPER_BOT": {
       "HELPER_TITLE": "HELPER BOT",
       "CANCEL": "cancel",
-      "ROLE_USER": "IA assistant",
+      "ROLE_USER": "AI assistant",
       "WELCOME_BOT": "Hello there, how may I help you ?",
       "MSG_TOP_INPUT": "Write me something !",
-      "MSG_INPUT": "How can i add product in my stock"
+      "MSG_INPUT": "How can I add a product to my stock"
     },
     "HOME_SIGN_IN": {
       "TITLE": "Sign in to your account",
@@ -45,7 +45,7 @@
       "PASSWORD_LABEL" :"Password",
       "BUTTON_LABEL": "Sign in",
       "OR_SIGN_IN_WITH": "or sign in with",
-      "DONT_HAVE_ACCOUNT_TEXT": "Don't have an account?",
+      "DONT_HAVE_ACCOUNT_TEXT": "Don't have an account ?",
       "SIGN_UP_LINK": "Sign up",
       "INVALIDE_EMAIL" : "Email must be valid",
       "INVALIDE_PASSWORD" : "Password must be at least 6 characters long"
@@ -65,7 +65,7 @@
       "BIRTHDATE_ERROR_REQUIRED" : "Birthdate is required",
       "PASSWORD_LABEL" : "Password",
       "PASSWORD_ERROR_REQUIRED" : "Password is required",
-      "PASSWORD_ERROR_LENGTH" : "Password be at least 6 characters long",
+      "PASSWORD_ERROR_LENGTH" : "Password must be at least 6 characters long",
       "CONFIRM_PASSWORD_LABEL" : "Confirm Password",
       "CONFIRM_PASSWORD_ERROR_REQUIRED" : "Confirm Password is required",
       "PASSWORD_ERROR_NOT_MATCH": "Passwords do not match",
@@ -74,7 +74,7 @@
       "TERMS_ERROR_REQUIRED" : "You must agree with the terms",
       "BUTTON_SIGN_UP": "Sign up",
       "OR_SIGN_UP_WITH": "or sign up with",
-      "HAVE_ACCOUNT_TEXT": "Have an account?",
+      "HAVE_ACCOUNT_TEXT": "Have an account ?",
       "SIGN_IN_LINK": "Sign in"
     },
     "STORAGE_PAGE": {

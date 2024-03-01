@@ -32,11 +32,11 @@
       "NUMBER_OF_PRODUCT": "Nombre de produits"
     },
     "HELPER_BOT": {
-      "HELPER_TITLE": "robot assistant",
+      "HELPER_TITLE": "Assistant virtuel",
       "CANCEL": "cancel",
       "ROLE_USER": "Assistant IA",
-      "WELCOME_BOT": "Bonjour, puis-je vous aider?",
-      "MSG_TOP_INPUT": "Ecrivez quelque chose ici !",
+      "WELCOME_BOT": "Bonjour, comment puis-je vous aider ?",
+      "MSG_TOP_INPUT": "Écrivez quelque chose ici !",
       "MSG_INPUT": "Comment ajouter un produit dans un de mes stockages ?"
     },
     "HOME_SIGN_IN" : {
