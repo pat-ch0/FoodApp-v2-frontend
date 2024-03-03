@@ -25,7 +25,7 @@ import { ChatModalComponent } from './components/chat-modal/chat-modal.component
     LanguagePickerComponent,
     HeaderComponent,
     LoadingSpinnerComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +44,7 @@ import { ChatModalComponent } from './components/chat-modal/chat-modal.component
     LanguagePickerComponent,
     HeaderComponent,
     LoadingSpinnerComponent,
-    HomeComponent
+    HomeComponent,
   ]
 })
 export class SharedModule { }
