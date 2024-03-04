@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './home/signup/signup.component';
-import { AuthGuard } from '@Guard/auth.guard';
+import { AuthGuard } from '@Guard/auth/auth.guard';
+import { NotAuthGuard } from '@Guard/notAuth/not-auth.guard';
 
 @NgModule({
   imports: [RouterModule.forChild(PageRoutingModule.routes)],
@@ -14,13 +15,11 @@ export class PageRoutingModule {
       path: '',
       component: HomeComponent,
       pathMatch: 'full',
-
     },
     {
       path: 'signup',
       component: SignupComponent,
       pathMatch: 'full',
-
     },
-  ]
+  ];
 }
