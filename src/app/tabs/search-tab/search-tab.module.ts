@@ -4,9 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SearchTabPageRoutingModule } from './search-tab-routing.module';
 import { SearchTabPage } from './search-tab.page';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '@Shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
-
 
 @NgModule({
   imports: [
@@ -15,8 +14,8 @@ import { TranslateModule } from '@ngx-translate/core';
     IonicModule,
     SearchTabPageRoutingModule,
     SharedModule,
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
   ],
-  declarations: [SearchTabPage]
+  declarations: [SearchTabPage],
 })
 export class SearchTabPageModule {}

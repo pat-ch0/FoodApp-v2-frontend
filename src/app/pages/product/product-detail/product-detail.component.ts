@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '@service/product/product.service';
+import { ProductService } from '@Service/product/product.service';
 import { LoadingController } from '@ionic/angular';
-import { ProductDetail } from '@type/products/product-detail.type';
-import { HandleError } from '@service/errors/handle-error.service'
+import { ProductDetail } from '@Type/products/product-detail.type';
+import { HandleError } from '@Service/errors/handle-error.service';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
 })
-
 export class ProductDetailComponent implements OnInit {
   product: ProductDetail | undefined; // The product details to display.
   barcode: string | null = ''; // The barcode of the product to fetch.
@@ -59,15 +58,25 @@ export class ProductDetailComponent implements OnInit {
     // Check if the barcode is not null
     if (!this.barcode) {
       // Handle the absence of a barcode
-      this.handleError.showToast('PRODUCT_DETAIL.NO_BARCODE_PROVIDED', 'warning');
+      this.handleError.showToast(
+        'PRODUCT_DETAIL.NO_BARCODE_PROVIDED',
+        'warning'
+      );
       return;
     }
 
     try {
-      const response = await this.productService.getProductByBarcode(this.barcode);
+      const response = await this.productService.getProductByBarcode(
+        this.barcode
+      );
       this.product = response.data;
     } catch (error: any) {
-      this.handleError.handleError(error, 'PRODUCT_DETAIL', 'PRODUCT_NOT_FOUND', 'ERROR_FETCHING_DETAILS');
+      this.handleError.handleError(
+        error,
+        'PRODUCT_DETAIL',
+        'PRODUCT_NOT_FOUND',
+        'ERROR_FETCHING_DETAILS'
+      );
     }
   }
 }

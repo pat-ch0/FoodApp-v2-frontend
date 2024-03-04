@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageRoutingModule } from './page-routing.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@Shared/shared.module';
 import { IonicModule } from '@ionic/angular';
 import { SignupComponent } from './home/signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,7 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
     IonicModule,
     ReactiveFormsModule,
     FormsModule,
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
   ],
   exports: [],
 })

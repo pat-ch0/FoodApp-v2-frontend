@@ -1,8 +1,14 @@
-import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { IonList, IonModal } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { AiService } from '@service/ai/ai.service';
-import { Message } from '@type/message.type';
+import { AiService } from '@Service/ai/ai.service';
+import { Message } from '@Type/message.type';
 
 /**
  * Represents the ChatModalComponent which is responsible for displaying a chat modal.
@@ -13,7 +19,6 @@ import { Message } from '@type/message.type';
   styleUrls: ['./chat-modal.component.scss'],
 })
 export class ChatModalComponent implements OnInit {
-
   /**
    * Represents the reference to the current message.
    */
@@ -44,30 +49,28 @@ export class ChatModalComponent implements OnInit {
    */
   @Input() trigger!: String;
 
-  constructor(private aiService: AiService,
-    private translate: TranslateService) { }
+  constructor(
+    private aiService: AiService,
+    private translate: TranslateService
+  ) {}
 
   /**
    * Initializes the component and adds a welcome message to the chat.
    */
   ngOnInit() {
-    this.messages.push(
-      {
-        content: this.translate.instant("HELPER_BOT.WELCOME_BOT"),
-        isUser: false
-      }
-    )
+    this.messages.push({
+      content: this.translate.instant('HELPER_BOT.WELCOME_BOT'),
+      isUser: false,
+    });
   }
   scrollToEnd() {
     setTimeout(() => {
       try {
-        this.divListMessage.nativeElement.scrollTop = this.divListMessage.nativeElement.scrollHeight;
-      } catch (error) {
-
-      }
+        this.divListMessage.nativeElement.scrollTop =
+          this.divListMessage.nativeElement.scrollHeight;
+      } catch (error) {}
     }, 200);
   }
-
 
   cancel() {
     this.modal.dismiss(null, 'cancel');
@@ -88,14 +91,11 @@ export class ChatModalComponent implements OnInit {
       this.scrollToEnd();
 
       this.messageRef = '';
-      const response = await this.aiService.postAiMessage(this.messages)
+      const response = await this.aiService.postAiMessage(this.messages);
 
-      this.messages.push(
-        JSON.parse(response.data)
-      )
+      this.messages.push(JSON.parse(response.data));
     }
 
     this.scrollToEnd();
   }
-
 }

@@ -1,8 +1,7 @@
 <app-header [title]="'Storage'" [showBackButton]="true"></app-header>
 
-<ion-content [fullscreen]="true">
-
-  <ion-button shape="round" color="warning" (click)="presentModal()">
+<ion-content [fullscreen]="true" class="storage">
+  <ion-button shape="round" color="warning" (click)="presentModal()" class="storage__add-storage">
     {{"STORAGE_PAGE.ADD_STORAGE" | translate}}
   </ion-button>
 
@@ -10,13 +9,14 @@
     {{"STORAGE_PAGE.ADD_USER" | translate}}
   </ion-button>
 
-  <app-sliding *ngFor="let storage of storages;" 
-  (clickRequest)="onClickStorage(storage)"
-  (deleteRequest)="onDeleteStorage(storage)"
-  (editRequest)="presentEditModal()"
-  [iconPath]="'assets/icon/storage-icon/'+this.storage.icon"
-  [name]="storage.name"
-  [detail]="'Number of product xxx'"
+  <app-sliding
+    *ngFor="let storage of storages"
+    (clickRequest)="onClickStorage(storage)"
+    (deleteRequest)="onDeleteStorage(storage)"
+    (editRequest)="presentEditModal(storage)"
+    [iconPath]="'assets/icon/storage-icon/' + storage.icon"
+    [name]="storage.label"
+    [detail]="'Number of product xxx'"
   >
   </app-sliding>
 </ion-content>

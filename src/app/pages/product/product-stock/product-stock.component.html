@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
   <div class="product__storage__loading">
-    <app-header [title]="storage.name" [showBackButton]="true"></app-header>
+    <app-header [title]="storage.label" [showBackButton]="true"></app-header>
     <app-loading-spinner *ngIf="loading" [message]="'PRODUCT_STOCK.LOADING_TEXT' | translate"></app-loading-spinner>
 
     <div *ngIf="!loading && isEmpty">

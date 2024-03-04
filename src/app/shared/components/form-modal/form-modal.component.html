@@ -1,24 +1,27 @@
 <div class="form__modal__components">
   <form [formGroup]="form" (ngSubmit)="submitForm()">
     <ion-item *ngFor="let field of formFields">
-
-      <ng-container *ngIf="field.type == 'select'">
-        <ion-label>{{ field.label }}</ion-label>
+      <ion-label position="floating">{{ field.label }}</ion-label>
+      <ng-container *ngIf="field.type === 'text'; else selectField">
+        <ion-input
+          [formControlName]="field.name"
+          [type]="field.type"
+        ></ion-input>
+      </ng-container>
+      <ng-template #selectField>
         <ion-select [formControlName]="field.name">
-          <ion-select-option *ngFor="let option of field.options" [value]="option.value">
-            {{ option.label }}
-          </ion-select-option>
+          <ion-select-option
+            *ngFor="let option of field.options"
+            [value]="option.value"
+            >{{ option.label }}</ion-select-option
+          >
         </ion-select>
-      </ng-container>
-      
-      <ng-container *ngIf="field.type == 'text'">
-        <ion-label position="floating">{{ field.label }}</ion-label>
-        <ion-input [formControlName]="field.name" [type]="field.type"></ion-input>
-      </ng-container>
-
+      </ng-template>
     </ion-item>
     <div class="form__modal__btn__submit">
-      <ion-button type="submit" expand="full" [disabled]="!form.valid">Submit</ion-button>
+      <ion-button type="submit" expand="full" [disabled]="!form.valid"
+        >Submit</ion-button
+      >
     </div>
   </form>
 </div>

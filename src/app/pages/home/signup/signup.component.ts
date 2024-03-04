@@ -1,18 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '@service/auth.service';
-import { UserService } from '@service/user.service';
-import { User } from '@type/user.type';
-import * as bcrypt from 'bcryptjs';
+import { AuthService } from '@Auth/auth.service';
+import { UserService } from '@Service/user.service';
+import { User } from '@Type/user.type';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
-export class SignupComponent implements OnInit {
-  signupForm: FormGroup = new FormGroup({});
+export class SignupComponent {
+  signupForm: FormGroup;
 
   private _showPassword = false;
 
@@ -27,23 +26,8 @@ export class SignupComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private authService: AuthService
-    ) {}
-
-  async ngOnInit() {
-    this.initForm();
-    if ((await this.authService.isUserLoggedIn())) {
-      this.router.navigate(['/tabs/search']);
-      return;
-    }
-  }
-
-  /**
-   * Initialize the signup form with form controls and validators
-   *
-   */
-  initForm() {
-    this.signupForm = this.formBuilder.group(
-      {
+  ) {
+    this.signupForm = this.formBuilder.group({
         firstName: ['', [Validators.required, Validators.minLength(2)]],
         lastName: ['', [Validators.required, Validators.minLength(4)]],
         email: ['', [Validators.required, Validators.email]],
@@ -69,8 +53,8 @@ export class SignupComponent implements OnInit {
     return this._showPassword;
   }
 
-  get birthdateValue(){
-    return this.signupForm.get('birthdate')
+  get birthdateValue() {
+    return this.signupForm.get('birthdate');
   }
 
   /**
@@ -136,7 +120,7 @@ export class SignupComponent implements OnInit {
   async onSubmit() {
     if (this.signupForm.valid) {
       const dateForBackend = new Date(this.signupForm.value.birthdate);
-      const form : User = {
+      const form: User = {
         firstname: this.signupForm.get('firstName')?.value,
         lastname: this.signupForm.get('lastName')?.value,
         email: this.signupForm.get('email')?.value,
@@ -144,7 +128,10 @@ export class SignupComponent implements OnInit {
       };
       // this.signupForm.value.password
       console.log('Form:', form);
-      const responce = await this.userService.createUser(form, this.signupForm.value.password);
+      const responce = await this.userService.createUser(
+        form,
+        this.signupForm.value.password
+      );
       if (responce.status === 200) {
         this.router.navigate(['/tabs/search']);
       }

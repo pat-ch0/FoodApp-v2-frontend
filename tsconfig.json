@@ -4,11 +4,12 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "crypto": ["./node_modules/crypto-browserify"],
-      "stream": ["./node_modules/stream-browserify"],
-      "@service/*": ["src/app/services/*"],
-      "@type/*": ["src/app/types/*"],
-      "@environment/*": ["src/environments/*"],
+      "@Service/*": ["src/app/core/services/*"],
+      "@Type/*": ["src/app/core/types/*"],
+      "@Environment/*": ["src/environments/*"],
+      "@Shared/*": ["src/app/shared/*"],
+      "@Auth/*": ["src/app/core/Auth/*"],
+      "@Guard/*": ["src/app/core/guards/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

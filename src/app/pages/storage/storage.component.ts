@@ -1,22 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageType } from 'src/app/types/storage.type';
+import { StorageType } from '@Type/storage.type';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { StorageService } from '@service/storage/storage.service'
-import { HandleError } from '@service/errors/handle-error.service'
-import ModalCreator from '@service/modal.service'
-import { Validators } from '@angular/forms'
-import { CommunityService } from '@service/community/community.service';
-import { Community } from '@type/community/community.type';
-import { CommunityDataService } from '@service/community/community_data.service';
+import { StorageService } from '@Service/storage/storage.service';
+import { HandleError } from '@Service/errors/handle-error.service';
+import ModalCreator from '@Service/modal.service';
+import { Validators } from '@angular/forms';
+import { CommunityService } from '@Service/community/community.service';
+import { Community } from '@Type/community/community.type';
+import { CommunityDataService } from '@Service/community/community_data.service';
 
 @Component({
   selector: 'app-storage',
   templateUrl: './storage.component.html',
   styleUrls: ['./storage.component.scss'],
 })
-
 export class StorageComponent implements OnInit {
+  storages: Array<StorageType> = []
+  community!: { community: Community; userRoleLabel: string; }
+
+  constructor(
+    private alertController: AlertController,
+    private route: Router,
+    private storageService: StorageService,
+    private communityService: CommunityService,
+    private handleError: HandleError,
+    private modalCreator: ModalCreator,
+    private communityDataService: CommunityDataService
+  ) {}
+
+  ngOnInit() {
+
+    this.communityDataService.currentCommunity.subscribe(community => {
+      if (community) {
+        this.community = community;
+      } else {
+        this.route.navigate(['']);
+      }
+    });
+
+    this.loadStorages();
+  }
 
   async addUserToCommunity({email} : {email: string}) {
     console.log(email)
@@ -27,26 +51,6 @@ export class StorageComponent implements OnInit {
       
     }
     this.handleError.showToast('USER_ADDED', 'success')
-  }
-  async addStorageClick(storage: StorageType) {
-    try {
-      const response = await this.storageService.addStorage(storage.id)
-      this.storages.push(response.data)
-    }
-    catch (error: any) {
-      this.handleError.handleError(error, 'STORAGE_PAGE', 'STORAGE_NOT_FOUND', 'ERROR_FETCHING_INFOS')
-    }
-  }
-
-  async presentModal() {
-    await this.modalCreator.createFormModal(this.addStorageClick.bind(this), [
-      {
-        name: 'name',
-        label: 'Name',
-        type: 'text',
-        validators: [Validators.required]
-      }
-    ]);
   }
 
   async presentModalAddUser() {
@@ -60,105 +64,144 @@ export class StorageComponent implements OnInit {
     ]);
   }
 
-  storages: Array<StorageType> = []
-  
-  constructor(
-    private alertController: AlertController,
-    private route: Router,
-    private storageService: StorageService,
-    private communityService: CommunityService,
-    private handleError: HandleError,
-    private modalCreator: ModalCreator,
-    private communityDataService: CommunityDataService
-  ) {}
+  /**
+   * Asynchronously loads the list of storages from the server.
+   * Updates the component's 'storages' property upon successful retrieval.
+   * @returns A promise that resolves when the storages are loaded.
+   */
+  async loadStorages(): Promise<void> {
+    try {
+      // Fetch the list of storages from the backend
+      const storageList = await this.storageService.getAllStorages();
 
-  community!: { community: Community; userRoleLabel: string; }
+      // Update the component's 'storages' property with the retrieved data
+      this.storages = storageList.data;
+    } catch (error: any) {
+      // Handle errors that may occur during the loading process
+      console.error('Error loading storages', error);
+    }
+  }
 
-  ngOnInit() {
+  async addStorageClick(storageFormData: any) {
+    try {
+      const storage: StorageType = {
+        label: storageFormData.label,
+        type: storageFormData.type,
+        icon: `${storageFormData.type.toLowerCase()}.png`,
+      };
 
-    this.communityDataService.currentCommunity.subscribe(community => {
-      if (community) {
-        this.community = community;
-      } else {
-        this.route.navigate(['']);
-      }
-    });
+      console.log(storage);
 
-    this.storages.push({
-      name: 'Home',
-      icon: 'pantry.png',
-      id: '1'
-    });
+      const response = await this.storageService.addStorage(storage);
+      this.storages.push(response.data);
+    } catch (error: any) {
+      this.handleError.handleError(
+        error,
+        'STORAGE_PAGE',
+        'STORAGE_NOT_FOUND',
+        'ERROR_FETCHING_INFOS'
+      );
+    }
+  }
 
-    this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
-    });
-    this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
-    }); this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
-    }); this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
-    }); this.storages.push({
-      name: 'Work',
-      icon: 'fridge.png',
-      id: '2'
-    });
+  async presentModal() {
+    const storageTypes = ['Fridge', 'Freezer', 'Pantry'];
+    await this.modalCreator.createFormModal(this.addStorageClick.bind(this), [
+      {
+        name: 'label',
+        label: 'Name',
+        type: 'text',
+        validators: [Validators.required],
+      },
+      {
+        name: 'type',
+        label: 'Storage Type',
+        type: 'select',
+        options: storageTypes.map((type) => ({ value: type, label: type })),
+        validators: [Validators.required],
+      },
+    ]);
   }
 
   async onDeleteStorage(storage: StorageType) {
-    console.log(this.alertController)
+    console.log(this.alertController);
     const alert = await this.alertController.create({
-      header: `Delete ${storage.name}`,
-      message: `Are you sure you want to delete the storage ${storage.name} ?`,
+      header: `Delete ${storage.label}`,
+      message: `Are you sure you want to delete the storage ${storage.label} ?`,
       buttons: [
         {
           text: 'Yes',
           handler: async () => {
             console.log('Yes button clicked');
+            if (!storage.id) throw new Error('No storage id provided');
+
             try {
-              await this.storageService.deleteStorage(storage.id)
+              await this.storageService.deleteStorage(storage.id);
+              this.loadStorages();
+            } catch (error: any) {
+              this.handleError.handleError(
+                error,
+                'STORAGE_PAGE',
+                'STORAGE_NOT_FOUND',
+                'ERROR_FETCHING_INFOS'
+              );
             }
-            catch (error: any) {
-              this.handleError.handleError(error, 'STORAGE_PAGE', 'STORAGE_NOT_FOUND', 'ERROR_FETCHING_INFOS')
-            }
-          }
+          },
         },
-        'No'
+        'No',
       ],
     });
 
     await alert.present();
   }
 
-  async onEditStorage(storage: StorageType) {
+  async onEditStorage(formData: any, storage: StorageType) {
     try {
-      const response = await this.storageService.editStorage(storage.id, storage.name)
-      console.log(response.data)
-    }
-    catch (error: any) {
-      this.handleError.handleError(error, 'STORAGE_PAGE', 'STORAGE_NOT_FOUND', 'ERROR_FETCHING_INFOS')
+      const updatedStorage: StorageType = {
+        id: storage.id,
+        label: formData.label,
+        type: formData.type,
+        icon: `${formData.type.toLowerCase()}.png`,
+      };
+
+      console.log(updatedStorage);
+
+      const response = await this.storageService.updateStorage(updatedStorage);
+      console.log(response.data);
+      this.loadStorages();
+    } catch (error: any) {
+      this.handleError.handleError(
+        error,
+        'STORAGE_PAGE',
+        'STORAGE_NOT_FOUND',
+        'ERROR_FETCHING_INFOS'
+      );
     }
   }
 
   // passer le storage dans le bind
-  async presentEditModal() {
-    await this.modalCreator.createFormModal(this.onEditStorage.bind(this), [
-      {
-        name: 'name',
-        label: 'New name',
-        type: 'text',
-        validators: [Validators.required]
-      }
-    ]);
+  async presentEditModal(storage: StorageType) {
+    const storageTypes = ['Fridge', 'Freezer', 'Pantry'];
+
+    await this.modalCreator.createFormModal(
+      (formData: any) => this.onEditStorage(formData, storage),
+      [
+        {
+          name: 'label',
+          label: 'Name',
+          type: 'text',
+          validators: [Validators.required],
+        },
+        {
+          name: 'type',
+          label: 'Storage Type',
+          type: 'select',
+          options: storageTypes.map((type) => ({ value: type, label: type })),
+          validators: [Validators.required],
+        },
+      ],
+      storage
+    );
   }
 
   onClickStorage(storage: StorageType) {
