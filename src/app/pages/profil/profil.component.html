@@ -1,34 +1,29 @@
 <app-header [title]="'Profil'" [showBackButton]="true"></app-header>
 
-<ion-content [fullscreen]="true" class="profil__info-content">
+<ion-content [fullscreen]="true" class="profil__info-content" *ngIf="user != undefined">
   <!-- PERSONAL INFORMATION -->
   <h1>{{ "PROFIL_SETTINGS.FIRST_TITLE" | translate }}</h1>
   <ion-card>
     <ion-item>
-      <ion-input [label]="'PROFIL_SETTINGS.LABEL_FIRSTNAME' | translate" value="Stephane"
-        [errorText]="'PROFIL_SETTINGS.INVALID_FIRSTNAME' | translate"></ion-input>
+      <ion-input [label]="'PROFIL_SETTINGS.LABEL_FIRSTNAME' | translate" [value]="user.firstname"
+        [errorText]="'PROFIL_SETTINGS.INVALID_FIRSTNAME' | translate" [readonly]="!isEditMode"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input [label]="'PROFIL_SETTINGS.LABEL_LASTNAME' | translate" value="Hanwking"
-        [errorText]="'PROFIL_SETTINGS.INVALID_LASTNAME' | translate"></ion-input>
+      <ion-input [label]="'PROFIL_SETTINGS.LABEL_LASTNAME' | translate" [value]="user.lastname"
+        [errorText]="'PROFIL_SETTINGS.INVALID_LASTNAME' | translate" [readonly]="!isEditMode"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input [label]="'PROFIL_SETTINGS.INVALID_DATE' | translate" value="12/12/2000" disabled=""></ion-input>
+      <ion-input [label]="'PROFIL_SETTINGS.LABEL_DATE' | translate" [value]="user.birthdate" [readonly]="!isEditMode"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-input [label]="'PROFIL_SETTINGS.LABEL_PHONE' | translate" type="tel" value="0663656869"
+    <!-- <ion-item>
+      <ion-input [label]="'PROFIL_SETTINGS.LABEL_PHONE' | translate" type="number" [value]="user.phone" [readonly]="!isEditMode"
         [errorText]="'PROFIL_SETTINGS.INVALID_PHONE' | translate"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
-    <ion-button color="warning" (click)="getUserDetails">
+    <ion-button color="warning" (click)="toggleEditMode()">
       {{ "PROFIL_SETTINGS.EDIT" | translate }}
     </ion-button>
 
-
-
-    <div *ngIf="changeSelect === true">
-
-    </div>
   </ion-card>
   <!-- ------------------------------------------------- -->
 
