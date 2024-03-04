@@ -7,6 +7,7 @@ import { CommunityService } from '@Service/community/community.service';
 import { HandleError } from '@Service/errors/handle-error.service';
 import { City } from '@Type/community/city.type';
 import { CommunityDataService } from '@Service/community/community_data.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-community-tab',
@@ -22,7 +23,8 @@ export class CommunityTabPage implements OnInit {
     private modalCreator: ModalCreator,
     private communityService: CommunityService,
     private handleError: HandleError,
-    private communityDataService: CommunityDataService
+    private communityDataService: CommunityDataService,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -62,22 +64,35 @@ export class CommunityTabPage implements OnInit {
 
   // A vérifier
   async onDeleteCommunity(community: Community) {
-    try {
-      const response = await this.communityService.deleteCommunity(
-        community.id
-      );
-      if (response)
-        this.communities = this.communities.filter(
-          (commu) => commu.community.id !== community.id
-        );
-    } catch (error: any) {
-      this.handleError.handleError(
-        error,
-        'COMMUNITY_PAGE',
-        'COMMUNITY_NOT_FOUND',
-        'ERROR_FETCHING_INFOS'
-      );
-    }
+    const alert = await this.alertController.create({
+      header: `Delete ${community.label}`,
+      message: `Are you sure you want to delete ${community.label} ?`,
+      buttons: [
+        {
+          text: 'Yes',
+          handler: async () => {
+            try {
+              const response = await this.communityService.deleteCommunity(
+                community.id
+              );
+              if (response)
+                this.communities = this.communities.filter(
+                  (commu) => commu.community.id !== community.id
+                );
+            } catch (error: any) {
+              this.handleError.handleError(
+                error,
+                'COMMUNITY_PAGE',
+                'COMMUNITY_NOT_FOUND',
+                'ERROR_FETCHING_INFOS'
+              );
+            }
+          },
+        },
+        'No',
+      ],
+    });
+    await alert.present();
   }
 
   // A vérifier
