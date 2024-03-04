@@ -3,7 +3,11 @@
 <ion-content [fullscreen]="true">
 
   <ion-button shape="round" color="warning" (click)="presentModal()">
-    Add storage
+    {{"STORAGE_PAGE.ADD_STORAGE" | translate}}
+  </ion-button>
+
+  <ion-button shape="round" color="warning" (click)="presentModalAddUser()">
+    {{"STORAGE_PAGE.ADD_USER" | translate}}
   </ion-button>
 
   <app-sliding *ngFor="let storage of storages;" 

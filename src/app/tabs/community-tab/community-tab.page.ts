@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import ModalCreator from '@service/modal.service';
-import { Community } from '@type/community.type';
+import { Community } from '@type/community/community.type';
 import { CommunityService } from '@service/community/community.service'
 import { HandleError } from '@service/errors/handle-error.service'
+import { City } from '@type/community/city.type';
+import { CommunityDataService } from '@service/community/community_data.service';
 
 @Component({
   selector: 'app-community-tab',
@@ -16,16 +18,23 @@ export class CommunityTabPage implements OnInit {
     private route: Router,
     private modalCreator: ModalCreator,
     private communityService: CommunityService,
-    private handleError: HandleError
+    private handleError: HandleError,
+    private communityDataService: CommunityDataService
   ) { }
 
-  communities: Community[] = []
+  communities: ({"community": Community, userRoleLabel: string})[] = []
+  private cities: City[] = [];
+
 
   // A verifier
   async addCommunity(community: Community) {
+    const city = this.cities.find(city => city.id === parseInt(community.city as any))
+    if(!city) throw new Error('City not found')
+    community.city = city;
+    console.log(community)
     try {
-      const response = await this.communityService.addCommunity(community.id)
-      this.communities.push(response.data)
+      const newCommu = await this.communityService.createCommunity(community)
+      this.communities.push(newCommu)
     }
     catch (error: any) {
       this.handleError.handleError(error, 'COMMUNITY_PAGE', 'COMMUNITY_NOT_FOUND', 'ERROR_FETCHING_INFOS')
@@ -36,7 +45,7 @@ export class CommunityTabPage implements OnInit {
   async onDeleteCommunity(community: Community) {
     try {
       const response = await this.communityService.deleteCommunity(community.id)
-      console.log(response.data)
+      if(response) this.communities = this.communities.filter(commu => commu.community.id !== community.id)
     }
     catch (error: any) {
       this.handleError.handleError(error, 'COMMUNITY_PAGE', 'COMMUNITY_NOT_FOUND', 'ERROR_FETCHING_INFOS')
@@ -47,7 +56,7 @@ export class CommunityTabPage implements OnInit {
   // A vérifier
   async onEditCommunity(community: Community) {
     try {
-      const response = await this.communityService.editCommunity(community.id, community.name)
+      const response = await this.communityService.editCommunity(community.id, community.label)
       console.log(response.data)
     }
     catch (error: any) {
@@ -56,17 +65,36 @@ export class CommunityTabPage implements OnInit {
   }
 
   async presentModal() {
-    await this.modalCreator.createFormModal(this.addCommunity.bind(this), [
+    await this.modalCreator.createFormModal(this.addCommunity.bind(this), 
+    [
       {
-        name: 'name',
+        name: 'label',
         label: 'Name',
         type: 'text',
+        validators: [Validators.required]
+      },
+      {
+        name: 'address',
+        label: 'Address',
+        type: 'text',
+        validators: [Validators.required]
+      },
+      {
+        name: 'addressDetail',
+        label: 'Address detail',
+        type: 'text',
+        validators: [Validators.required]
+      },
+      {
+        name: 'city',
+        label: 'City',
+        type: 'select',
+        options: this.cities.map(city => ({ value: city.id.toString(), label: city.name })),
         validators: [Validators.required]
       }
     ]);
   }
 
-  // passer la communauté voulue dans le bind
   async presentEditModal() {
     await this.modalCreator.createFormModal(this.onEditCommunity.bind(this), [
       {
@@ -78,52 +106,17 @@ export class CommunityTabPage implements OnInit {
     ]);
   }
 
-  onClickCommunity(community: Community) {
-    this.route.navigate(['/storage', community.id]);
+  onClickCommunity(community: { community: Community; userRoleLabel: string; }) {
+    this.communityDataService.changeCommunity(community)
+    this.route.navigate(['storage', community.community.id])
   }
 
-  ngOnInit() {
-    this.communities.push({
-      id: '1',
-      name: 'Community 1',
-      members: [
-        {
-          id: 1,
-          firstname: 'User 1',
-          lastname: 'User 1',
-          birthdate: new Date(),
-          email: '',
-        },
-        {
-          id: 2,
-          firstname: 'User 2',
-          lastname: 'User 2',
-          birthdate: new Date(),
-          email: '',
-        }
-
-      ]
-    });
-
-    this.communities.push({
-      id: '2',
-      name: 'Community 2',
-      members: [
-        {
-          id: 1,
-          firstname: 'User 1',
-          lastname: 'User 1',
-          birthdate: new Date(),
-          email: '',
-        },
-        {
-          id: 4,
-          firstname: 'User 4',
-          lastname: 'User 4',
-          birthdate: new Date(),
-          email: '',
-        }
-      ]
-    });
+  async ngOnInit() {
+    this.cities = await this.communityService.getAllCities()
+    await (await this.communityService.getCommunities()).forEach(async communitydd => {
+      console.log(communitydd)
+      this.communities.push(communitydd)
+    })
+    console.log(this.communities)
   }
 }

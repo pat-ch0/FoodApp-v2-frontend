@@ -26,7 +26,7 @@
     "COMMUNITY_PAGE": {
       "TITLE": "Communauté",
       "ADD_COMMUNITY": "Ajouter une communauté",
-      "DETAIL": "Il y a {{count}} utilisateurs dans cette communauté",
+      "DETAIL": "Ville: {{city}}",
       "COMMUNITY_NOT_FOUND": "Communauté non trouvée",
       "ERROR_FETCHING_INFOS": "Erreur lors de la récupération des informations de la communauté",
       "NUMBER_OF_PRODUCT": "Nombre de produits"
@@ -79,6 +79,9 @@
     },
     "STORAGE_PAGE": {
       "STORAGE_NOT_FOUND": "Stockage non trouvé",
-      "ERROR_FETCHING_INFOS": "Erreur lors de la récupération des informations du stockage"
+      "ERROR_FETCHING_INFOS": "Erreur lors de la récupération des informations du stockage",
+      "ADD_STORAGE": "Ajouter un stockage",
+      "ADD_USER": "Ajouter un utilisateur",
+      "USER_ADDED": "Utilisateur ajouté si il existe"
     }
   }

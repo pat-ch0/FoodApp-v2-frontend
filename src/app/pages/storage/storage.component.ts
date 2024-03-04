@@ -6,6 +6,9 @@ import { StorageService } from '@service/storage/storage.service'
 import { HandleError } from '@service/errors/handle-error.service'
 import ModalCreator from '@service/modal.service'
 import { Validators } from '@angular/forms'
+import { CommunityService } from '@service/community/community.service';
+import { Community } from '@type/community/community.type';
+import { CommunityDataService } from '@service/community/community_data.service';
 
 @Component({
   selector: 'app-storage',
@@ -14,6 +17,17 @@ import { Validators } from '@angular/forms'
 })
 
 export class StorageComponent implements OnInit {
+
+  async addUserToCommunity({email} : {email: string}) {
+    console.log(email)
+    try {
+      await this.communityService.addUserToCommunity(email, this.community.community.id)
+    }
+    catch (error: any) {
+      
+    }
+    this.handleError.showToast('USER_ADDED', 'success')
+  }
   async addStorageClick(storage: StorageType) {
     try {
       const response = await this.storageService.addStorage(storage.id)
@@ -35,17 +49,41 @@ export class StorageComponent implements OnInit {
     ]);
   }
 
+  async presentModalAddUser() {
+    await this.modalCreator.createFormModal(this.addUserToCommunity.bind(this), [
+      {
+        name: 'email',
+        label: 'email',
+        type: 'text',
+        validators: [Validators.required, Validators.email]
+      }
+    ]);
+  }
+
   storages: Array<StorageType> = []
   
   constructor(
     private alertController: AlertController,
     private route: Router,
     private storageService: StorageService,
+    private communityService: CommunityService,
     private handleError: HandleError,
-    private modalCreator: ModalCreator
+    private modalCreator: ModalCreator,
+    private communityDataService: CommunityDataService
   ) {}
 
+  community!: { community: Community; userRoleLabel: string; }
+
   ngOnInit() {
+
+    this.communityDataService.currentCommunity.subscribe(community => {
+      if (community) {
+        this.community = community;
+      } else {
+        this.route.navigate(['']);
+      }
+    });
+
     this.storages.push({
       name: 'Home',
       icon: 'pantry.png',
