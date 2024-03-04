@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
 import { ProductStockComponent } from './pages/product/product-stock/product-stock.component';
 import { StorageComponent } from './pages/storage/storage.component';
+import { AuthGuard } from '@Guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
+
   {
     path: 'product-detail/:barcode',
     component: ProductDetailComponent,

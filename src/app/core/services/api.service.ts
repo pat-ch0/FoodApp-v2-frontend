@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CapacitorHttp } from '@capacitor/core';
-import { environment } from '@environment/environment';
-import { AuthService } from './auth.service'; // Assurez-vous que le chemin est correct
+import { environment } from '@Environment/environment';
+import { AuthService } from '@Auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-
-  private static baseUrl = environment.config.API_GATEWAY;
+  private static baseUrl = environment.config.API_GATEWAY + '/';
   private static staticAuthService: AuthService;
   constructor(private authService: AuthService) {
     ApiService.staticAuthService = authService;
@@ -111,6 +110,31 @@ export class ApiService {
       return response;
     } catch (error) {
       console.error('Error performing PATCH request:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Perform a PUT request to the API.
+   * @param url - The URL for the request.
+   * @param data - The data to send in the request body.
+   * @returns A promise that resolves to the response data.
+   * @throws An error if the request fails.
+   */
+  async put(url: string, data: any): Promise<any> {
+    try {
+      // Send a PUT request using CapacitorHttp
+      const response = await CapacitorHttp.put({
+        url: ApiService.baseUrl + url, // Construct the full URL
+        headers: await ApiService.getHeaders(), // Get request headers
+        data, // Include the data in the request body
+      });
+
+      // Return the response data
+      return response;
+    } catch (error) {
+      // Log and rethrow the error if the request fails
+      console.error('Error performing PUT request:', error);
       throw error;
     }
   }

@@ -7,9 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { CommunityTabPageRoutingModule } from './community-tab-routing.module';
 
 import { CommunityTabPage } from './community-tab.page';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '@Shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
-
 
 @NgModule({
   imports: [
@@ -18,8 +17,8 @@ import { TranslateModule } from '@ngx-translate/core';
     IonicModule,
     CommunityTabPageRoutingModule,
     SharedModule,
-    TranslateModule
+    TranslateModule,
   ],
-  declarations: [CommunityTabPage]
+  declarations: [CommunityTabPage],
 })
 export class CommunityTabPageModule {}

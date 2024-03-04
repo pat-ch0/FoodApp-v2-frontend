@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api.service';
-import { environment } from '@environment/environment';
+import { environment } from '@Environment/environment';
+import { Message } from '@Type/message.type';
 
 /**
  * Service to handle product data operations.
@@ -8,7 +9,7 @@ import { environment } from '@environment/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService {
+export class AiService {
   constructor(private apiService: ApiService) {}
 
   /**
@@ -16,17 +17,11 @@ export class ProductService {
    * @param barcode The barcode to query for product details.
    * @returns A promise that resolves with the product details.
    */
-  async getProductByBarcode(barcode: string): Promise<any> {
+  async postAiMessage(messages: Message[]): Promise<any> {
     // Constructs the URL with the endpoint from environment variables and the passed barcode
-    return this.apiService.get(`${environment.config.endpoint.product}${barcode}`);
-  }
-
-  /**
-   * Delete a product from a storage
-   * @param barcode The product's barcode
-   * @returns A promise that resolves with the product details
-   */
-  async deleteProduct(barcode: string): Promise<any> {
-    return this.apiService.delete(`${environment.config.endpoint.stock}${barcode}`)
+    const test = {
+      messages: messages,
+    };
+    return this.apiService.post(`${environment.config.ai.endpoint}`, messages);
   }
 }

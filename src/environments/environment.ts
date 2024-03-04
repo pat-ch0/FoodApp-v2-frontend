@@ -5,23 +5,29 @@
 export const environment = {
   production: false,
   config: {
-    API_GATEWAY: 'http://localhost:5000/',
+    API_GATEWAY: 'http://localhost:5000',
     endpoint: {
-      product: "api/v1/product/",
-      stock: "api/v1/stock/product_stock/",
-      community: "api/v1/community",
-      city: "api/v1/community/cities",
-      storage: "api/v1/storage/"
+      product: 'api/v1/product',
+      stock: {
+        stock: 'api/v1/stock',
+        productStock: 'api/v1/stock/product_stock',
+        storageZone: 'api/v1/stock/storage_zones',
+        productAcuiqisition: '/api/v1/stock/product_acquisition',
+      },
+      community: {
+        community: 'api/v1/community',
+        city: 'api/v1/community/cities',
+      },
     },
     ai: {
-      endpoint: "api/v1/ai/chat"
+      endpoint: 'api/v1/ai/chat',
     },
     user: {
-      createUser: "api/v1/users",
-      login: "api/v1/users/login",
-    }
-  }
-}
+      createUser: 'api/v1/users',
+      login: 'api/v1/users/login',
+    },
+  },
+};
 
 /*
  * For easier debugging in development mode, you can import the following file

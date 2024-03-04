@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { environment } from '@environment/environment';
-import { User } from '@type/user.type';
+import { environment } from '@Environment/environment';
+import { User } from '@Type/user.type';
 
 @Injectable({
   providedIn: 'root',
@@ -9,12 +9,14 @@ import { User } from '@type/user.type';
 export class UserService {
   constructor(private apiService: ApiService) {}
 
-
   async createUser(user: User, password: string) {
-    const res = await this.apiService.post(`${environment.config.user.createUser}`, {
+    const res = await this.apiService.post(
+      `${environment.config.user.createUser}`,
+      {
         ...user,
         password,
-    });
+      }
+    );
     console.log(res);
     const newUser = res.data;
     ApiService.setToken(newUser.token);
@@ -30,5 +32,4 @@ export class UserService {
     ApiService.setToken(user.token);
     return res;
   }
-
 }

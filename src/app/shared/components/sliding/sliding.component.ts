@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { StorageType } from 'src/app/types/storage.type';
+
 @Component({
   selector: 'app-sliding',
   templateUrl: './sliding.component.html',
