@@ -83,5 +83,28 @@
       "ADD_STORAGE": "Add a storage",
       "ADD_USER": "Add a user",
       "USER_ADDED": "User added if exists"
+    },
+    "PROFIL_SETTINGS":{
+      "FIRST_TITLE": "Personal information",
+      "SECOND_TITLE": "Account settings",
+      "THIRD_TITLE": "Manage double factor authentication",
+      "FOURTH_TITLE": "Delete account",
+      "LABEL_FIRSTNAME": "Firstname",
+      "LABEL_LASTNAME": "Lastname",
+      "LABEL_DATE": "Date of birth",
+      "LABEL_PHONE": "Tel",
+      "LABEL_PASSWORD": "Password",
+      "LABEL_EMAIL": "Email address",
+      "LABEL_NOTIF": "Allow notifications",
+      "LABEL_NOTE_NOTIF": "if a member of the community add a product, for example...",
+      "LABEL_REDIRECT": "You will be redirected to the page security",
+      "WARNING_DELETE": "Keep in mind that upon deleting your account all of your account information will be deleted without the possibility of restoration.",
+      "INVALID_FIRSTNAME": "Invalid firstname",
+      "INVALID_LASTNAME": "Invalid lastname",
+      "INVALID_DATE": "Invalid date",
+      "INVALID_PHONE": "Invalid phone number",
+      "INVALID_PASSWORD": "Invalid password",
+      "INVALID_EMAIL": "Invalid email",
+      "EDIT": "Change"
     }
   }
