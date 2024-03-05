@@ -9,41 +9,25 @@ const routes: Routes = [
     children: [
       {
         path: 'search',
-        loadChildren: () => import('./search-tab/search-tab.module').then(m => m.SearchTabPageModule)
+        loadChildren: () =>
+          import('./search-tab/search-tab.module').then( (m) => m.SearchTabPageModule),
       },
       {
         path: 'community',
-        loadChildren: () => import('./community-tab/community-tab.module').then( m => m.CommunityTabPageModule)
-      }, 
-      {
-        path: 'menu',
-        loadChildren: () => import('./menu-tab/menu-tab.module').then(m => m.MenuTabPageModule)
+        loadChildren: () =>
+          import('./community-tab/community-tab.module').then( (m) => m.CommunityTabPageModule),
       },
       {
-        path: '',
-        redirectTo: '/tabs/search',
-        pathMatch: 'full'
-      }
-    ]
+        path: 'menu',
+        loadChildren: () => import('./menu-tab/menu-tab.module').then((m) => m.MenuTabPageModule),
+      },
+    ],
   },
   {
-    path: '',
+    path: '**',
     redirectTo: '/tabs/search',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
-  {
-    path: 'search-tab',
-    loadChildren: () => import('./search-tab/search-tab.module').then( m => m.SearchTabPageModule)
-  },
-  {
-    path: 'menu-tab',
-    loadChildren: () => import('./menu-tab/menu-tab.module').then( m => m.MenuTabPageModule)
-  },
-  {
-    path: 'community-tab',
-    loadChildren: () => import('./community-tab/community-tab.module').then( m => m.CommunityTabPageModule)
-  },
-
 ];
 
 @NgModule({
