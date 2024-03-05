@@ -5,6 +5,7 @@ import { ProductStockComponent } from './pages/product/product-stock/product-sto
 import { StorageComponent } from './pages/storage/storage.component';
 import { AuthGuard } from '@Guard/auth/auth.guard';
 import { NotAuthGuard } from '@Guard/notAuth/not-auth.guard';
+import { ProfilComponent } from './pages/profil/profil.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'home',
   },
+  {
+    path: 'tabs/profil',
+    component: ProfilComponent
+  }
 ];
 @NgModule({
   imports: [
@@ -50,4 +55,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
