@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { environment } from '@environment/environment';
-import { User } from '@type/user.type';
-import { AuthService } from './auth.service';
+import { environment } from '@Environment/environment';
+import { User } from '@Type/user.type';
+import { AuthService } from "@Auth/auth.service"
 import { Preferences } from '@capacitor/preferences';
 
 @Injectable({
