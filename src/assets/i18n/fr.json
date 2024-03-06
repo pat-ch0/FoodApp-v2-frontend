@@ -96,7 +96,7 @@
       "INVALID_DATE": "Date invalide",
       "INVALID_PHONE": "Téléphone invalide",
       "INVALID_PASSWORD": "Mot de passe invalide",
-      "INVALID_EMAIL": "Prénom invalide",
+      "INVALID_EMAIL": "Email invalide",
       "EDIT": "Modifier"
     }
   }

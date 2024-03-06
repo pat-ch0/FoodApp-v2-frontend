@@ -7,54 +7,67 @@
     <ion-card>
       <!-- Input firstname verification if modify -->
       <ion-item>
-        <ion-input labelPlacement="floating" [label]="'PROFIL_SETTINGS.LABEL_FIRSTNAME' | translate" [value]="user.firstname"
-          [errorText]="'PROFIL_SETTINGS.INVALID_FIRSTNAME' | translate" [readonly]="!isEditMode"></ion-input>
+        <ion-input labelPlacement="floating" [label]="'PROFIL_SETTINGS.LABEL_FIRSTNAME' | translate"
+          [value]="user.firstname" [errorText]="'PROFIL_SETTINGS.INVALID_FIRSTNAME' | translate"
+          [readonly]="!isEditMode"></ion-input>
       </ion-item>
       <div *ngIf="signupFormPerso.get('firstName')?.hasError('required') && signupFormPerso.get('firstName')?.touched"
         class="error-message">{{ 'SIGN_UP.FISTNAME_ERROR_REQUIRED' | translate }}.</div>
       <div *ngIf="signupFormPerso.get('firstName')?.hasError('minlength') && signupFormPerso.get('firstName')?.touched"
         class="error-message">{{ 'SIGN_UP.FIRSTNAME_ERROR_LENGTH' | translate }}.</div>
+        
       <!--  -->
 
       <!-- Input Lastname verification if modify -->
       <ion-item>
-        <ion-input labelPlacement="floating" [label]="'PROFIL_SETTINGS.LABEL_LASTNAME' | translate" [value]="user.lastname"
-          [errorText]="'PROFIL_SETTINGS.INVALID_LASTNAME' | translate" [readonly]="!isEditMode"></ion-input>
+        <ion-input labelPlacement="floating" [label]="'PROFIL_SETTINGS.LABEL_LASTNAME' | translate"
+          [value]="user.lastname" [errorText]="'PROFIL_SETTINGS.INVALID_LASTNAME' | translate"
+          [readonly]="!isEditMode"></ion-input>
       </ion-item>
       <div *ngIf="signupFormPerso.get('lastName')?.hasError('required') && signupFormPerso.get('lastName')?.touched"
         class="error-message">{{ 'SIGN_UP.LASTNAME_ERROR_REQUIRED' | translate }}.</div>
       <div *ngIf="signupFormPerso.get('lastName')?.hasError('minlength') && signupFormPerso.get('lastName')?.touched"
         class="error-message">{{ 'SIGN_UP.LASTNAME_ERROR_LENGTH' | translate }}.</div>
 
-      <!--  -->
+        <ion-item>
+          <ion-input labelPlacement="floating" [label]="'PROFIL_SETTINGS.LABEL_DATE' | translate"
+            [errorText]="'PROFIL_SETTINGS.INVALID_DATE' | translate"
+            [readonly]="!isEditMode"  [value]="getBirthdate()">
+          </ion-input>
+        </ion-item>
+        <div *ngIf="signupFormPerso.get('birthdate')?.hasError('required') && signupFormPerso.get('birthdate')?.touched"
+        class="error-message">{{ 'SIGN_UP.BIRTHDATE_ERROR_REQUIRED' | translate }}.</div>
+      <!-- ----------- -->
 
-      <!-- Input birthdate verification if modify -->
-
-      <ion-item [class.invalid]="signupFormPerso.get('birthdate')?.invalid">
+      <!-- Input birthdate verification if modify  To DO -->
+      <!-- <ion-item [class.invalid]="signupFormPerso.get('birthdate')?.invalid">
         <ion-input labelPlacement="floating" label="{{ 'SIGN_UP.BIRTHDATE_LABEL' | translate }}"
-          formControlName="birthdate" [readonly]="!isEditMode" (ionChange)="onDateChange($event)" [max]="maxDate" [min]="minDate" [placeholder]="getBirthdate()"></ion-input>
-        <ion-icon name="calendar-outline" slot="end" (click)="openDatePicker()"></ion-icon>
+          formControlName="birthdate" [readonly]="!isEditMode" [max]="maxDate" [min]="minDate"></ion-input>
+        <ion-icon name="calendar-outline" slot="end" (click)="openDatePicker()" [ariaReadOnly]="!isEditMode"></ion-icon>
         <ion-modal [keepContentsMounted]="true" [showBackdrop]="false" [cssClass]="'datepicker-popover'" #datePicker>
           <ng-template>
             <ion-datetime formControlName="birthdate" pickerFormat="MMM D, YYYY" presentation="date"
               (ionChange)="onDateChange($event)" [max]="maxDate" [min]="minDate" [showDefaultButtons]="true"
-              [showDefaultTitle]="true" ></ion-datetime>
+              [showDefaultTitle]="true"></ion-datetime>
           </ng-template>
         </ion-modal>
       </ion-item>
       <div *ngIf="signupFormPerso.get('birthdate')?.hasError('required') && signupFormPerso.get('birthdate')?.touched"
-        class="error-message">{{ 'SIGN_UP.BIRTHDATE_ERROR_REQUIRED' | translate }}.</div>
-
+        class="error-message">{{ 'SIGN_UP.BIRTHDATE_ERROR_REQUIRED' | translate }}.</div> -->
       <!-- <ion-item>
+
+      /*
+       *Phone number 
+       */
       <ion-input [label]="'PROFIL_SETTINGS.LABEL_PHONE' | translate" type="number" [value]="user.phone" [readonly]="!isEditMode"
         [errorText]="'PROFIL_SETTINGS.INVALID_PHONE' | translate"></ion-input>
     </ion-item> -->
 
       <ion-button expand="full" type="submit" color="warning" [disabled]="signupFormPerso.invalid">{{
         'SIGN_UP.BUTTON_SIGN_UP' | translate }}</ion-button>
-
     </ion-card>
   </form>
+
   <ion-button color="warning" (click)="toggleEditMode()">
     {{ "PROFIL_SETTINGS.EDIT" | translate }}
   </ion-button>
@@ -68,7 +81,7 @@
         [errorText]="'PROFIL_SETTINGS.INVALID_PASSWORD' | translate"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input [label]="'PROFIL_SETTINGS.LABEL_EMAIL' | translate" type="email" placeholder="Lameraboir@detergent.com"
+      <ion-input [label]="'PROFIL_SETTINGS.LABEL_EMAIL' | translate" type="email" [value]="user.email"
         [errorText]="'PROFIL_SETTINGS.INVALID_EMAIL' | translate"></ion-input>
     </ion-item>
     <ion-item>
@@ -91,10 +104,12 @@
   </ion-card>
   <!-- -------------------------------- -->
   <ion-card>
-    <ion-item button detail="true">
+    <ion-item button detail="true" id="present-alert">
       <ion-label>
         <h3>{{ "PROFIL_SETTINGS.FOURTH_TITLE" | translate }}</h3>
         <p>{{ "PROFIL_SETTINGS.WARNING_DELETE" | translate }}</p>
+        <ion-alert trigger="present-alert" header="Vous vous appretez à supprimer votre compte"
+          message="Après cette action, celui-ci ne pourra plus être restauré" [buttons]="alertButtons"></ion-alert>
       </ion-label>
     </ion-item>
   </ion-card>
