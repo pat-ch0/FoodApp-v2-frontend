@@ -1,0 +1,32 @@
+<app-header [title]="'Multi Scan'" [showBackButton]="true"></app-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col size="6">
+      <ion-button color="warning" (click)="addProduct()" expand="block">{{"MULTI_SCAN.ADD_PRODUCT_BUTTON" | translate}}</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button color="warning" (click)="scanBarcode()" expand="block">{{"MULTI_SCAN.SCAN_PRODUCT_BUTTON" | translate}}</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button color="warning" (click)="saveToStorage()" expand="block">{{"MULTI_SCAN.SAVE_STORAGE_BUTTON" | translate}}</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-list>
+    <ion-item *ngFor="let product of scannedProducts">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="product.imageSrc"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ product.name || "Product Name Not Available" }}</h2>
+        <p>{{"MULTI_SCAN.ITEM_BARCODE_TEXT" | translate}}: {{ product.barcode }}</p>
+      </ion-label>
+      <ion-button (click)="removeProduct(product)" fill="clear" size="small">
+        <ion-icon name="trash" color="danger"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

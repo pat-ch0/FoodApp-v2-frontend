@@ -15,6 +15,7 @@ import { HomeComponent } from '../pages/home/home.component';
 import { RouterModule } from '@angular/router';
 import { ChatModalComponent } from './components/chat-modal/chat-modal.component';
 import { ProfilComponent } from '../pages/profil/profil.component';
+import { MultiScanComponent } from '../pages/multi-scan/multi-scan.component';
 @NgModule({
   declarations: [
     ProductDetailComponent,
@@ -27,7 +28,8 @@ import { ProfilComponent } from '../pages/profil/profil.component';
     HeaderComponent,
     LoadingSpinnerComponent,
     HomeComponent,
-    ProfilComponent
+    ProfilComponent,
+    MultiScanComponent
   ],
   imports: [
     CommonModule,

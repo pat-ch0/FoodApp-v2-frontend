@@ -4,12 +4,18 @@
     <p class="research-view-paragraph research-item">
       {{"SEARCH_TAB.INPUT_PARAGRAPH" | translate}}.
     </p>
-    <ion-searchbar (ionChange)="searchProduct($event)" placeholder="Search"></ion-searchbar>
+    <ion-searchbar (ionChange)="searchProduct($event)" placeholder='{{"SEARCH_TAB.INPUT_PLACEHOLDER" | translate}}'></ion-searchbar>
     <div class="separator"></div>
     <p class="research-view-paragraph research-item">
       {{"SEARCH_TAB.SCAN_PARAGRAPH" | translate}}.
     </p>
-    <ion-button expand="block" color="warning" class="button-class research-item" (click)="scan()">{{"SEARCH_TAB.SCAN_BUTTON" | translate | uppercase}}</ion-button>
+    <ion-button expand="block" color="warning" class="button-class" (click)="scan()">{{"SEARCH_TAB.SCAN_BUTTON" | translate | uppercase}}</ion-button>
+
+    <p class="research-view-paragraph">
+      {{"SEARCH_TAB.SCAN_MULTIPLE_PARARAPH" | translate }}.
+    </p>
+    
+    <ion-button expand="block" color="warning" class="button-class" routerLink="/tabs/multi-scan">{{"SEARCH_TAB.SCAN_MULTIPLE_BUTTON" | translate | uppercase}}</ion-button>
 
     <!--######## BOT ICON ########-->
 
