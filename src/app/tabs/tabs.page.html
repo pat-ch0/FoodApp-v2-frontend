@@ -2,17 +2,17 @@
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="search" href="/tabs/search">
       <ion-icon aria-hidden="true" src="assets/icon/tabs/search.svg"></ion-icon>
-      <ion-label>Search</ion-label>
+      <ion-label>{{"TABS.TABS_1_TITLE" | translate}}</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="community" href="/tabs/community-tab">
       <ion-icon aria-hidden="true" src="assets/icon/tabs/people.svg"></ion-icon>
-      <ion-label>Community</ion-label>
+      <ion-label>{{"TABS.TABS_2_TITLE" | translate}}</ion-label>
     </ion-tab-button>
 
     <ion-tab-button (click)="openMenu()">
       <ion-icon aria-hidden="true" src="assets/icon/tabs/menu.svg"></ion-icon>
-      <ion-label>Menu</ion-label>
+      <ion-label>{{"TABS.TABS_MENU_TITLE" | translate}}</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
@@ -26,7 +26,7 @@
 >
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <ion-title>{{"TABS.TABS_MENU_TITLE" | translate}}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
@@ -41,18 +41,18 @@
         <!-- Profile Option -->
         <ion-button (click)="navigateTo('profil')">
           <ion-icon name="person" slot="start"></ion-icon>
-          <ion-label>Profile</ion-label>
+          <ion-label>{{"TABS.TABS_MENU_PROFILE" | translate}}</ion-label>
         </ion-button>
 
         <!-- Favorites Option -->
         <ion-button (click)="navigateTo('favorites')">
           <ion-icon name="heart" slot="start"></ion-icon>
-          <ion-label>Favorites</ion-label>
+          <ion-label>{{"TABS.TABS_MENU_FAVORITES" | translate}}</ion-label>
         </ion-button>
 
         <ion-button (click)="logout()">
           <ion-icon name="person" slot="start"></ion-icon>
-          <ion-label>Logout</ion-label>
+          <ion-label>{{"TABS.TABS_MENU_LOGOUT" | translate}}</ion-label>
         </ion-button>
       </ion-list>
     </ion-menu-toggle>

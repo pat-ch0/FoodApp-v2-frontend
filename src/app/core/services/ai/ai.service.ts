@@ -22,6 +22,6 @@ export class AiService {
     const test = {
       messages: messages,
     };
-    return this.apiService.post(`${environment.config.ai.endpoint}`, messages);
+    return this.apiService.post(`${environment.config.endpoint.ai.chat}`, messages);
   }
 }

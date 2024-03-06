@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs-routing.module';
 import { TabsPage } from './tabs.page';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     TabsPageRoutingModule,
-    RouterModule
+    RouterModule,
+    TranslateModule.forChild()
   ],
   declarations: [TabsPage]
 })

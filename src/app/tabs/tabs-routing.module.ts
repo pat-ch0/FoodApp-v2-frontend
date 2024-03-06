@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { MultiScanComponent } from '../pages/multi-scan/multi-scan.component';
 
 const routes: Routes = [
   {
@@ -21,11 +22,16 @@ const routes: Routes = [
         path: 'menu',
         loadChildren: () => import('./menu-tab/menu-tab.module').then((m) => m.MenuTabPageModule),
       },
+      {
+        path: 'multi-scan',
+        component: MultiScanComponent,
+        pathMatch: 'full',
+      }
     ],
   },
   {
     path: '**',
-    redirectTo: '/tabs/search',
+    redirectTo: '/search',
     pathMatch: 'full',
   },
 ];

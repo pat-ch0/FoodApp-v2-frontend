@@ -13,7 +13,7 @@ export class UserService {
 
   async createUser(user: User, password: string) {
     const res = await this.apiService.post(
-      `${environment.config.user.createUser}`,
+      `${environment.config.endpoint.user.user}`,
       {
         ...user,
         password,
@@ -26,7 +26,7 @@ export class UserService {
   }
 
   async login(email: string, password: string) {
-    const res = await this.apiService.post(`${environment.config.user.login}`, {
+    const res = await this.apiService.post(`${environment.config.endpoint.user.login}`, {
       email,
       password,
     });
@@ -37,7 +37,7 @@ export class UserService {
 
   async getUser() {
     const token = await this.authService.getToken();
-    const res = await this.apiService.get(`${environment.config.user.createUser}/token/${token}`);
+    const res = await this.apiService.get(`${environment.config.endpoint.user.user}/token/${token}`);
     const user = res.data;
     return user
     // return res;
