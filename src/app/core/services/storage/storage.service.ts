@@ -14,9 +14,9 @@ export class StorageService {
    * Retrieve all storage zones
    * @returns A promise that resolves with the list of storage zones
    */
-  async getAllStorages(): Promise<any> {
+  async getAllStorages(communityId: string): Promise<any> {
     return this.apiService.get(
-      `${environment.config.endpoint.stock.storageZone}`
+      `${environment.config.endpoint.stock.storageZone}/${communityId}`
     );
   }
 

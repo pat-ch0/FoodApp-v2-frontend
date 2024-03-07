@@ -34,12 +34,12 @@ export class StorageComponent implements OnInit {
     this.communityDataService.currentCommunity.subscribe(community => {
       if (community) {
         this.community = community;
+        this.loadStorages();
       } else {
         this.route.navigate(['']);
       }
     });
 
-    this.loadStorages();
   }
 
   async addUserToCommunity({email} : {email: string}) {
@@ -72,7 +72,7 @@ export class StorageComponent implements OnInit {
   async loadStorages(): Promise<void> {
     try {
       // Fetch the list of storages from the backend
-      const storageList = await this.storageService.getAllStorages();
+      const storageList = await this.storageService.getAllStorages(this.community.community.id);
 
       // Update the component's 'storages' property with the retrieved data
       this.storages = storageList.data;
@@ -87,6 +87,7 @@ export class StorageComponent implements OnInit {
       const storage: StorageType = {
         label: storageFormData.label,
         type: storageFormData.type,
+        communityId: this.community.community.id,
         icon: `${storageFormData.type.toLowerCase()}.png`,
       };
 
@@ -160,6 +161,7 @@ export class StorageComponent implements OnInit {
       const updatedStorage: StorageType = {
         id: storage.id,
         label: formData.label,
+        communityId: this.community.community.id,
         type: formData.type,
         icon: `${formData.type.toLowerCase()}.png`,
       };
