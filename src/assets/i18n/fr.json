@@ -15,10 +15,10 @@
     "ADD_TO_STOCK": "Ajouter au stock",
     "PRODUCT_NOT_FOUND": "Produit non trouvé",
     "ERROR_FETCHING_DETAILS": "Une erreur s'est produite lors de la récupération des détails du produit",
-    "NO_BARCODE_PROVIDED": "Aucun code barres fourni"
+    "NO_BARCODE_PROVIDED": "Aucun code-barres fourni"
   },
   "SEARCH_TAB": {
-    "INPUT_PARAGRAPH": "Entrez le code-barre d'un produit dans le champ de recherche pour obtenir des informations détaillées sur le produit",
+    "INPUT_PARAGRAPH": "Entrez le code-barres d'un produit dans le champ de recherche pour obtenir des informations détaillées sur le produit",
     "SCAN_PARAGRAPH": "Cliquez sur le bouton Scanner et utilisez votre appareil photo pour scanner le code-barres du produit pour une recherche plus rapide",
     "SCAN_BUTTON": "SCANNER",
     "SCAN_MULTIPLE_PARARAPH": "Sinon, vous pouvez scanner plusieurs produits pour ensuite les ajouter facilement à votre liste de stockage.",
@@ -54,7 +54,7 @@
   "HELPER_BOT": {
     "HELPER_TITLE": "Assistant virtuel",
     "CANCEL": "cancel",
-    "ROLE_USER": "Assistant IA",
+    "ROLE_USER": "Assistant virtuel",
     "WELCOME_BOT": "Bonjour, comment puis-je vous aider ?",
     "MSG_TOP_INPUT": "Écrivez quelque chose ici !",
     "MSG_INPUT": "Comment ajouter un produit dans un de mes stockages ?"
@@ -102,23 +102,23 @@
     "ERROR_FETCHING_INFOS": "Erreur lors de la récupération des informations du stockage",
     "ADD_STORAGE": "Ajouter un stockage",
     "ADD_USER": "Ajouter un utilisateur",
-    "USER_ADDED": "Utilisateur ajouté si il existe"
+    "USER_ADDED": "Utilisateur ajouté s'il existe"
   },
   "PROFIL_SETTINGS": {
-    "FIRST_TITLE": "Information personnel",
-    "SECOND_TITLE": "Paramètre de compte",
+    "FIRST_TITLE": "Informations personnelles",
+    "SECOND_TITLE": "Paramètres de compte",
     "THIRD_TITLE": "Authentificateur à deux facteurs",
     "FOURTH_TITLE": "Supprimer le compte",
     "LABEL_FIRSTNAME": "Prénom",
     "LABEL_LASTNAME": "Nom de famille",
     "LABEL_DATE": "Date de naissance",
-    "LABEL_PHONE": "Telephone",
+    "LABEL_PHONE": "Téléphone",
     "LABEL_PASSWORD": "Mot de passe",
     "LABEL_EMAIL": "Email",
     "LABEL_NOTIF": "Activer les notifications",
     "LABEL_NOTE_NOTIF": "Si un membre de la communauté ajoute un produit par exemple..",
     "LABEL_REDIRECT": "Vous allez être redirigé vers la page de sécurité",
-    "WARNING_DELETE": "Garder en tête que supprimer votre compte, effacera de notre base de donnée toutes vos informations personnel, et ne pourrons être restoré.",
+    "WARNING_DELETE": "Garder en tête que supprimer votre compte effacera de notre base de donnée toutes vos informations personnelles, et elles ne pourront être restaurées.",
     "INVALID_FIRSTNAME": "Prénom invalide",
     "INVALID_LASTNAME": "Nom invalide",
     "INVALID_DATE": "Date invalide",
