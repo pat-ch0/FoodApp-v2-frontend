@@ -27,8 +27,8 @@ export class HomeComponent {
       const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
 
-      const responce = await this.userService.login(email, password);
-      if (responce.status === 200) {
+      const response = await this.userService.login(email, password);
+      if (response.status === 200) {
         this.router.navigate(['/tabs/search']);
       }
     }

@@ -181,7 +181,6 @@ export class StorageComponent implements OnInit {
     }
   }
 
-  // passer le storage dans le bind
   async presentEditModal(storage: StorageType) {
     const storageTypes = ['Fridge', 'Freezer', 'Pantry'];
 

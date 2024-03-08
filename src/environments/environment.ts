@@ -12,7 +12,7 @@ export const environment = {
         stock: 'api/v1/stock',
         productStock: 'api/v1/stock/product_stock',
         storageZone: 'api/v1/stock/storage_zones',
-        productAcuiqisition: '/api/v1/stock/product_acquisition',
+        productAcquisition: '/api/v1/stock/product_acquisition',
       },
       community: {
         community: 'api/v1/community',

@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 import { ChatModalComponent } from './components/chat-modal/chat-modal.component';
 import { ProfilComponent } from '../pages/profil/profil.component';
 import { MultiScanComponent } from '../pages/multi-scan/multi-scan.component';
+
 @NgModule({
   declarations: [
     ProductDetailComponent,
