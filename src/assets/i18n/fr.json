@@ -125,6 +125,7 @@
     "INVALID_PHONE": "Téléphone invalide",
     "INVALID_PASSWORD": "Mot de passe invalide",
     "INVALID_EMAIL": "Prénom invalide",
+    "ACCEPT": "Accepter",
     "EDIT": "Modifier"
   }
 }
