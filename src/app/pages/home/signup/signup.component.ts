@@ -25,7 +25,6 @@ export class SignupComponent {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router,
-    private authService: AuthService
   ) {
     this.signupForm = this.formBuilder.group({
         firstName: ['', [Validators.required, Validators.minLength(2)]],
@@ -119,14 +118,13 @@ export class SignupComponent {
    */
   async onSubmit() {
     if (this.signupForm.valid) {
-      const dateForBackend = new Date(this.signupForm.value.birthdate);
+      const dateForBackend = this.signupForm.value.birthdate.split('/').reverse().join('-');
       const form: User = {
         firstname: this.signupForm.get('firstName')?.value,
         lastname: this.signupForm.get('lastName')?.value,
         email: this.signupForm.get('email')?.value,
         birthdate: dateForBackend,
       };
-      // this.signupForm.value.password
       console.log('Form:', form);
       const response = await this.userService.createUser(
         form,
