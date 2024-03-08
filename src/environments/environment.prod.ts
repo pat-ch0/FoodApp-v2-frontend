@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   config: {
-    API_GATEWAY: 'https://d80b-176-147-208-38.ngrok-free.app',
+    API_GATEWAY: 'http://localhost:5000',
     endpoint: {
       product: 'api/v1/product',
       stock: {

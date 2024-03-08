@@ -119,7 +119,7 @@ export class SignupComponent {
    */
   async onSubmit() {
     if (this.signupForm.valid) {
-      const dateForBackend = new Date(this.signupForm.value.birthdate);
+      const dateForBackend = this.signupForm.value.birthdate.split('/').reverse().join('-');
       const form: User = {
         firstname: this.signupForm.get('firstName')?.value,
         lastname: this.signupForm.get('lastName')?.value,
