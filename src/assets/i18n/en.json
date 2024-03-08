@@ -96,6 +96,7 @@
       "INVALID_PHONE": "Invalid phone number",
       "INVALID_PASSWORD": "Invalid password",
       "INVALID_EMAIL": "Invalid email",
+      "ACCEPT": "Accept",
       "EDIT": "Change"
     }
   }

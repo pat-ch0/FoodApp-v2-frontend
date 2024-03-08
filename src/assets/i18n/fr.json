@@ -97,6 +97,7 @@
       "INVALID_PHONE": "Téléphone invalide",
       "INVALID_PASSWORD": "Mot de passe invalide",
       "INVALID_EMAIL": "Email invalide",
+      "ACCEPT": "Accepter",
       "EDIT": "Modifier"
     }
   }
