@@ -25,7 +25,6 @@ export class SignupComponent {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router,
-    private authService: AuthService
   ) {
     this.signupForm = this.formBuilder.group({
         firstName: ['', [Validators.required, Validators.minLength(2)]],
@@ -126,7 +125,6 @@ export class SignupComponent {
         email: this.signupForm.get('email')?.value,
         birthdate: dateForBackend,
       };
-      // this.signupForm.value.password
       console.log('Form:', form);
       const response = await this.userService.createUser(
         form,
