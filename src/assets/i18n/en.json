@@ -21,7 +21,7 @@
     "INPUT_PARAGRAPH": "Type the product barcode in the search field to view the details of the product",
     "SCAN_PARAGRAPH": "Click on the Scan button and use your camera to scan the product barcode for a faster search",
     "SCAN_BUTTON": "SCAN",
-    "SCAN_MULTIPLE_PARARAPH": "Alternatively, You can Scan multiple products and easily add the entire list to your storage.",
+    "SCAN_MULTIPLE_PARARAPH": "Alternatively, you can Scan multiple products and easily add the entire list to your storage.",
     "SCAN_MULTIPLE_BUTTON": "EXPLORE MULTI-SCAN",
     "INPUT_PLACEHOLDER": "Search"
   },
@@ -48,7 +48,7 @@
     "ADD_COMMUNITY": "Add a community",
     "DETAIL": "City: {{city}}",
     "COMMUNITY_NOT_FOUND": "Community not found",
-    "ERROR_FETCHING_INFOS": "There was an error when fetching the community infos",
+    "ERROR_FETCHING_INFOS": "There was an error fetching the community infos",
     "NUMBER_OF_PRODUCT": "Number of products"
   },
   "HELPER_BOT": {
@@ -56,8 +56,8 @@
     "CANCEL": "cancel",
     "ROLE_USER": "AI assistant",
     "WELCOME_BOT": "Hello there, how may I help you ?",
-    "MSG_TOP_INPUT": "Write me something !",
-    "MSG_INPUT": "How can I add a product to my stock"
+    "MSG_TOP_INPUT": "Ask me something !",
+    "MSG_INPUT": "How can I add a product to my stock ?"
   },
   "HOME_SIGN_IN": {
     "TITLE": "Sign in to your account",
@@ -117,8 +117,8 @@
     "LABEL_EMAIL": "Email address",
     "LABEL_NOTIF": "Allow notifications",
     "LABEL_NOTE_NOTIF": "if a member of the community add a product, for example...",
-    "LABEL_REDIRECT": "You will be redirected to the page security",
-    "WARNING_DELETE": "Keep in mind that upon deleting your account all of your account information will be deleted without the possibility of restoration.",
+    "LABEL_REDIRECT": "You will be redirected to the security page",
+    "WARNING_DELETE": "Keep in mind that upon deleting your account, all your information will be deleted without possibility of restoration.",
     "INVALID_FIRSTNAME": "Invalid firstname",
     "INVALID_LASTNAME": "Invalid lastname",
     "INVALID_DATE": "Invalid date",

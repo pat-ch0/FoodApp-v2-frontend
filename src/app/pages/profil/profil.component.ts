@@ -110,11 +110,7 @@ export class ProfilComponent implements OnInit {
     this.isEditMode = !this.isEditMode
   }
 
-  verifEditMode() {
-
-  }
-
-  // Form modfiication
+  // Form modification
 
   /**
  * Formats the ISO date to a display-friendly format.
@@ -162,8 +158,8 @@ export class ProfilComponent implements OnInit {
       };
       // this.signupForm.value.password
       console.log('Form:', form);
-      const responce = await this.userService.createUser(form, this.signupFormPerso.value.password);
-      if (responce.status === 200) {
+      const response = await this.userService.createUser(form, this.signupFormPerso.value.password);
+      if (response.status === 200) {
         this.router.navigate(['/tabs/search']);
       }
     } else {
@@ -174,7 +170,7 @@ export class ProfilComponent implements OnInit {
   onDateChange(event: CustomEvent) {
     const selectedDate = new Date(event.detail.value);
     const formattedDate = this.formatDate(selectedDate.toISOString());
-    console.log("chage" + formattedDate)
+    console.log("change" + formattedDate)
     this.signupFormPerso.get('birthdate')?.setValue(formattedDate);
   }
 

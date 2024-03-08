@@ -3,7 +3,6 @@ import { ApiService } from './api.service';
 import { environment } from '@Environment/environment';
 import { User } from '@Type/user.type';
 import { AuthService } from "@Auth/auth.service"
-import { Preferences } from '@capacitor/preferences';
 
 @Injectable({
   providedIn: 'root',
