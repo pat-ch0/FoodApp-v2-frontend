@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@Auth/auth.service';
@@ -128,11 +128,11 @@ export class SignupComponent {
       };
       // this.signupForm.value.password
       console.log('Form:', form);
-      const responce = await this.userService.createUser(
+      const response = await this.userService.createUser(
         form,
         this.signupForm.value.password
       );
-      if (responce.status === 200) {
+      if (response.status === 200) {
         this.router.navigate(['/tabs/search']);
       }
     } else {

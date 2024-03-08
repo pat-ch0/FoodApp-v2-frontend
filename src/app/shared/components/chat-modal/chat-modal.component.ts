@@ -1,11 +1,10 @@
 import {
-  ChangeDetectorRef,
   Component,
   Input,
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { IonList, IonModal } from '@ionic/angular';
+import { IonModal } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AiService } from '@Service/ai/ai.service';
 import { Message } from '@Type/message.type';
