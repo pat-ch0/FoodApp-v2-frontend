@@ -1,40 +1,60 @@
-
 .ripple-parent {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 
-    border: 1px solid #ddd;
+  border: 1px solid #ddd;
 
-    user-select: none;
+  user-select: none;
 
-    width: 100%;
-    height: 50px;
-    border-radius: 8px;
+  width: 100%;
+  height: 50px;
+  border-radius: 8px;
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+  .theme-a.adaptive {
+    background: #753;
+    color: #dcb;
+    outline: 5px dashed #000;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  h1 {
+    color: #2D0C57;
   }
 
-h1
-{
+  ion-input {
+    color: #2D0C57 !important;
+  }
+
+  ion-label {
+    color: #2D0C57 !important;
+
+  }
+
+  ion-note {
+    color: #2D0C57 !important;
+  }
+}
+
+h1 {
   text-align: center;
-  color: #2D0C57;
 }
 
-ion-input
-{
-  color: #2D0C57 !important;
+.accept {
+  position: relative;
+  right: 0%;
+  width: 35%;
 }
 
-ion-label
-{
-  color: #2D0C57 !important;
-
+.modif {
+  position: relative;
+  left: 70%;
 }
-
-ion-note
-{
-  color: #2D0C57 !important;
-}
-

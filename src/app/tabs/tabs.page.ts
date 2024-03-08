@@ -19,7 +19,8 @@ export class TabsPage {
   }
 
   navigateTo(tab: string) {
-    this.navCtrl.navigateForward(`tabs/${tab}`);
+    this.navCtrl.navigateForward(`${tab}`);
+    console.log(tab);
   }
 
   async logout() {

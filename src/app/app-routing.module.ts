@@ -41,13 +41,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'profil',
+    component: ProfilComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },
-  {
-    path: 'tabs/profil',
-    component: ProfilComponent
-  }
 ];
 @NgModule({
   imports: [

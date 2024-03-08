@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '@Auth/auth.service';
 import { UserService } from '@Service/user.service';
 import { User } from '@Type/user.type';
 
@@ -12,6 +11,7 @@ import { User } from '@Type/user.type';
 })
 export class ProfilComponent implements OnInit {
 
+
   // Form modification
   signupFormPerso: FormGroup = new FormGroup({});
   private _showPassword = false;
@@ -20,32 +20,30 @@ export class ProfilComponent implements OnInit {
   birthdate: string = '';
   minDate: string = '1900-01-01';
   maxDate: string = new Date().toISOString();
+  // ----------------------
+
+  // Modal Warning Delete
 
 
 
   @ViewChild('datePicker') datePicker: any;
 
-
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService,
-
   ) { }
-
+  
+  form!: FormGroup
   user!: User
-  async ngOnInit() {
 
-    if ((await this.authService.isUserLoggedIn() === false)) {
-      this.router.navigate(['/home']);
-      return;
-    }
+  async ngOnInit() {
     
     this.user = await this.userService.getUser();
     console.log(this.user)
-    this.initForm();
+    this.initForm
   }
+
 
   /**
  * Initialize the signup form with form controls and validators
@@ -78,9 +76,22 @@ export class ProfilComponent implements OnInit {
         birthdate: [this.birthdate, Validators.required],
       },
       {
-        validator: this.passwordMatchValidator,
+        validator: this.signupFormPersoValidator,
       }
     );
+  }
+
+  signupFormPersoValidator(group: FormGroup)
+  {
+    const firstName = group.get('firstname')?.value;
+    const lastName = group.get('lastname')?.value;
+
+    if (firstName && lastName === null)
+    {
+      group.get('firstname')?.setErrors(null);
+      group.get('lastname')?.setErrors(null);
+    }
+    return null
   }
   /**
  * Getter for the showPassword property.
@@ -96,7 +107,12 @@ export class ProfilComponent implements OnInit {
 
 
   openDatePicker() {
-    this.datePicker.present();
+    if(this.isEditMode === false)
+    {
+      return null
+    }
+    
+    return this.datePicker.present();
   }
 
   // loginForm: FormGroup;
@@ -117,6 +133,7 @@ export class ProfilComponent implements OnInit {
  * @param isoDate - The ISO date string to be formatted.
  * @returns {string} - The formatted date string.
  */
+
   formatDate(isoDate: string): string {
     const date = new Date(isoDate);
     const day = date.getDate().toString().padStart(2, '0');
@@ -131,6 +148,7 @@ export class ProfilComponent implements OnInit {
    * @param group - The form group containing password and confirm password controls.
    * @returns {null|{mismatch: boolean}} - Null if passwords match, mismatch error object otherwise.
    */
+
   passwordMatchValidator(group: FormGroup) {
     const password = group.get('password')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
@@ -158,9 +176,9 @@ export class ProfilComponent implements OnInit {
       };
       // this.signupForm.value.password
       console.log('Form:', form);
-      const response = await this.userService.createUser(form, this.signupFormPerso.value.password);
-      if (response.status === 200) {
-        this.router.navigate(['/tabs/search']);
+      const responce = await this.userService.createUser(form, this.signupFormPerso.value.password);
+      if (responce.status === 200) {
+        this.router.navigate(['/tabs/profil']);
       }
     } else {
       console.log('Form is not valid. Please check the fields.');
@@ -181,7 +199,14 @@ export class ProfilComponent implements OnInit {
     const day = this.date.getDate().toString().padStart(2, '0');
 
     const formattedDate = `${day}/${month}/${year}`;
-    console.log("get" + formattedDate)
     this.signupFormPerso.get('birthdate')?.setValue(formattedDate);
   }
+
+  // deleteAccount()
+  // {
+  //   if (this.alertButtons[1])
+  //   {
+  //     console.log('lol')
+  //   }
+  // }
 }
