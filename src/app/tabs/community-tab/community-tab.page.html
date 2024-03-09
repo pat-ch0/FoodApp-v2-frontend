@@ -1,6 +1,6 @@
 <app-header [title]="'COMMUNITY_PAGE.TITLE' | translate" [showBackButton]="true"></app-header>
 <ion-content [fullscreen]="true">
-    <ion-button shape="round" color="warning" (click)="presentModal()">
+    <ion-button class="ion-margin" shape="round" color="warning" (click)="presentModal()">
         {{ 'COMMUNITY_PAGE.ADD_COMMUNITY' | translate }}
     </ion-button>
     <app-sliding *ngFor="let community of communities;" (clickRequest)="onClickCommunity(community)"

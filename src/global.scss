@@ -25,9 +25,32 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
 
 * {
-    font-family: "Abel";
+  font-family: "Abel";
+}
+
+// Multi-scan component styles
+// These styles are specific to the Multi-scan component
+.multi-scan__product-content {
+  .multi-scan__quantity-input {
+    -moz-appearance: textfield;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  ion-input::-webkit-outer-spin-button,
+  ion-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  ion-input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }

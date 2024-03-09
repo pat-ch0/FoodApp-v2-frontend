@@ -1,13 +1,15 @@
 <app-header [title]="'Storage'" [showBackButton]="true"></app-header>
 
 <ion-content [fullscreen]="true" class="storage">
-  <ion-button shape="round" color="warning" (click)="presentModal()" class="storage__add-storage">
-    {{"STORAGE_PAGE.ADD_STORAGE" | translate}}
-  </ion-button>
-
-  <ion-button shape="round" color="warning" (click)="presentModalAddUser()">
-    {{"STORAGE_PAGE.ADD_USER" | translate}}
-  </ion-button>
+  <ion-buttons class="storage__buttons">
+    <ion-button shape="round" fill="solid" color="warning" (click)="presentModal()" class="storage__add-storage">
+      {{"STORAGE_PAGE.ADD_STORAGE" | translate}}
+    </ion-button>
+    
+    <ion-button shape="round" fill="solid" color="warning" (click)="presentModalAddUser()">
+      {{"STORAGE_PAGE.ADD_USER" | translate}}
+    </ion-button>
+  </ion-buttons>
 
   <app-sliding
     *ngFor="let storage of storages"
@@ -16,7 +18,7 @@
     (editRequest)="presentEditModal(storage)"
     [iconPath]="'assets/icon/storage-icon/' + storage.icon"
     [name]="storage.label"
-    [detail]="'Number of product xxx'"
-  >
+    [detail]="('STORAGE_PAGE.DETAIL_NUMBER_PRODUCTS' | translate) + ' ' + storage.detailCount"
+    >
   </app-sliding>
 </ion-content>

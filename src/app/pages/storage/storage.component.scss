@@ -1,5 +1,5 @@
-.storage {
-  &__add-storage {
-    margin: 0.5em;
-  }
+.storage__buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1em 0;
 }

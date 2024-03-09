@@ -104,6 +104,7 @@ export class CommunityService {
     const response = await this.apiService.get(
       `${environment.config.endpoint.community.community}`
     );
+    console.log(response);
     if (response.status !== 200) {
       throw new Error('Error fetching communities');
     }

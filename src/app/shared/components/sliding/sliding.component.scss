@@ -1,8 +1,5 @@
 .sliding__item {
 
-    ion-item {
-        --min-height: 160px;
-    }
 
     .sliding__container {
         width: 90%;
@@ -20,6 +17,7 @@
             width: auto;
             max-width: 44vw;
             min-height: 100px;
+            max-height: 10em;
         }
     }
 

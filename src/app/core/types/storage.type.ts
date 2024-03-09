@@ -5,3 +5,7 @@ export type StorageType = {
     type: string,
     icon: string
 };
+
+export type ProductCount = {
+    detailCount: number,
+}

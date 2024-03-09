@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageType } from '@Type/storage.type';
+import { ProductCount, StorageType } from '@Type/storage.type';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { StorageService } from '@Service/storage/storage.service';
@@ -9,6 +9,7 @@ import { Validators } from '@angular/forms';
 import { CommunityService } from '@Service/community/community.service';
 import { Community } from '@Type/community/community.type';
 import { CommunityDataService } from '@Service/community/community_data.service';
+import { ProductService } from '@Service/product/product.service';
 
 /**
  * Represents the StorageComponent class.
@@ -20,8 +21,8 @@ import { CommunityDataService } from '@Service/community/community_data.service'
   styleUrls: ['./storage.component.scss'],
 })
 export class StorageComponent implements OnInit {
-  storages: Array<StorageType> = [];
-  community!: { community: Community; userRoleLabel: string; };
+  storages: Array<StorageType & ProductCount> = [];
+  community!: { community: Community; userRoleLabel: string };
 
   constructor(
     private alertController: AlertController,
@@ -30,7 +31,8 @@ export class StorageComponent implements OnInit {
     private communityService: CommunityService,
     private handleError: HandleError,
     private modalCreator: ModalCreator,
-    private communityDataService: CommunityDataService
+    private communityDataService: CommunityDataService,
+    private productService: ProductService
   ) {}
 
   /**
@@ -39,7 +41,7 @@ export class StorageComponent implements OnInit {
    * If there is no current community, navigates to the home page.
    */
   ngOnInit() {
-    this.communityDataService.currentCommunity.subscribe(community => {
+    this.communityDataService.currentCommunity.subscribe((community) => {
       if (community) {
         this.community = community;
         this.loadStorages();
@@ -53,14 +55,14 @@ export class StorageComponent implements OnInit {
    * Adds a user to the current community.
    * @param email - The email of the user to be added.
    */
-  async addUserToCommunity({email} : {email: string}) {
+  async addUserToCommunity({ email }: { email: string }) {
     console.log(email);
     try {
-      await this.communityService.addUserToCommunity(email, this.community.community.id);
-    }
-    catch (error: any) {
-      
-    }
+      await this.communityService.addUserToCommunity(
+        email,
+        this.community.community.id
+      );
+    } catch (error: any) {}
     this.handleError.showToast('USER_ADDED', 'success');
   }
 
@@ -68,14 +70,17 @@ export class StorageComponent implements OnInit {
    * Presents a modal for adding a user to the community.
    */
   async presentModalAddUser() {
-    await this.modalCreator.createFormModal(this.addUserToCommunity.bind(this), [
-      {
-        name: 'email',
-        label: 'email',
-        type: 'text',
-        validators: [Validators.required, Validators.email]
-      }
-    ]);
+    await this.modalCreator.createFormModal(
+      this.addUserToCommunity.bind(this),
+      [
+        {
+          name: 'email',
+          label: 'email',
+          type: 'text',
+          validators: [Validators.required, Validators.email],
+        },
+      ]
+    );
   }
 
   /**
@@ -86,7 +91,12 @@ export class StorageComponent implements OnInit {
   async loadStorages(): Promise<void> {
     try {
       const storageList = await this.storageService.getAllStorages(this.community.community.id);
+      // Fetch and add product count for each storage
+      for (const storage of storageList.data) {
+        storage.detailCount = await this.getProductCount(storage.id);
+      }
       this.storages = storageList.data;
+      this.getProductCount(this.storages[0].id);
     } catch (error: any) {
       console.error('Error loading storages', error);
     }
@@ -238,7 +248,22 @@ export class StorageComponent implements OnInit {
    * @param storage - The clicked storage.
    */
   onClickStorage(storage: StorageType) {
-    console.log('Storage clicked', storage);
     this.route.navigate(['/product-stock'], { queryParams: storage });
+  }
+
+  /**
+   * Gets the count of products in a storage.
+   * @param storageId - The ID of the storage.
+   * @returns The count of products in the storage.
+   */
+  async getProductCount(storageId: any): Promise<number> {
+    try {
+      const response = await this.productService.getProductCount(storageId);
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Error getting product count', error);
+      return 0;
+    }
   }
 }

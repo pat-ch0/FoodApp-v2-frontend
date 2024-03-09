@@ -13,6 +13,42 @@ import { HandleError } from '@Service/errors/handle-error.service';
   styleUrls: ['./product-stock.component.scss'],
 })
 export class ProductStockComponent implements OnInit {
+
+  storage!: StorageType;
+  loading: boolean = true;
+  isEmpty = true;
+  private products: (Product & Quantity)[] = [];
+  productsFilter: (Product & Quantity)[] = [];
+
+
+  constructor(
+    private route: ActivatedRoute,
+    private alertController: AlertController,
+    private routeNavigate: Router,
+    private productService: ProductService,
+    private handleError: HandleError,
+  ) {}
+
+
+  async ngOnInit() {
+    if (this.route.snapshot.queryParams == null) {
+      this.isEmpty = true;
+      this.loading = false;
+      return;
+    }
+    this.loading = false;
+    this.isEmpty = false;
+    this.storage = this.route.snapshot.queryParams! as StorageType;
+    this.getStorages();
+  }
+
+  async getStorages() {
+    const res = (await this.productService.getProductsInStorage(this.storage.id!));
+    this.products = res.data.products;
+    this.productsFilter = [...this.products];
+    console.log(this.products);
+  }
+
   addProductClick() {
     this.routeNavigate.navigate(['/tabs/search']);
   }
@@ -27,12 +63,6 @@ export class ProductStockComponent implements OnInit {
     );
   }
 
-  storage!: StorageType;
-  loading: boolean = true;
-  isEmpty = true;
-  private products: (Product & Quantity)[] = [];
-  productsFilter: (Product & Quantity)[] = [];
-
   async onDeleteProduct(product: Product & Quantity) {
     const alert = await this.alertController.create({
       header: `Delete ${product.name}`,
@@ -41,9 +71,10 @@ export class ProductStockComponent implements OnInit {
         {
           text: 'Yes',
           handler: async () => {
-            console.log('Yes button clicked');
             try {
-              await this.productService.deleteProduct(product.barcode);
+              await this.productService.deleteProduct(this.storage.id!, product.barcode);
+              this.products = this.products.filter((p) => p.barcode !== product.barcode);
+              this.productsFilter = [...this.products]
             } catch (error: any) {
               this.handleError.handleError(
                 error,
@@ -62,68 +93,5 @@ export class ProductStockComponent implements OnInit {
 
   onClickProduct(product: Product & Quantity) {}
 
-  constructor(
-    private route: ActivatedRoute,
-    private alertController: AlertController,
-    private routeNavigate: Router,
-    private productService: ProductService,
-    private handleError: HandleError
-  ) {
-    this.products.push({
-      barcode: '123456789',
-      name: 'Product 1',
-      imageSrc: 'https://via.placeholder.com/150',
-      quantity: 5,
-    });
 
-    this.products.push({
-      barcode: '123456789',
-      name: 'Product 3',
-      imageSrc: 'https://via.placeholder.com/150',
-      quantity: 3,
-    });
-    this.products.push({
-      barcode: '123456789',
-      name: 'Product 3',
-      imageSrc: 'https://via.placeholder.com/150',
-      quantity: 3,
-    });
-    this.products.push({
-      barcode: '123456789',
-      name: 'Product 3',
-      imageSrc: 'https://via.placeholder.com/150',
-      quantity: 3,
-    });
-    this.products.push({
-      barcode: '123456789',
-      name: 'Product 3',
-      imageSrc: 'https://via.placeholder.com/150',
-      quantity: 3,
-    });
-    this.products.push({
-      barcode: '123456789',
-      name: 'Product 3',
-      imageSrc: 'https://via.placeholder.com/150',
-      quantity: 3,
-    });
-    this.products.push({
-      barcode: '123456789',
-      name: 'Product 3',
-      imageSrc: 'https://via.placeholder.com/150',
-      quantity: 3,
-    });
-
-    this.productsFilter = [...this.products];
-  }
-
-  ngOnInit(): void {
-    if (this.route.snapshot.queryParams == null) {
-      this.isEmpty = true;
-      this.loading = false;
-      return;
-    }
-    this.loading = false;
-    this.isEmpty = false;
-    this.storage = this.route.snapshot.queryParams! as StorageType;
-  }
 }

@@ -1,22 +1,25 @@
 <app-header [title]="'Multi Scan'" [showBackButton]="true"></app-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding multi-scan">
   <ion-row>
     <ion-col size="6">
-      <ion-button color="warning" (click)="addProduct()" expand="block">{{"MULTI_SCAN.ADD_PRODUCT_BUTTON" | translate}}</ion-button>
+      <ion-button color="warning" (click)="addProduct()" expand="block">{{"MULTI_SCAN.ADD_PRODUCT_BUTTON" |
+        translate}}</ion-button>
     </ion-col>
     <ion-col size="6">
-      <ion-button color="warning" (click)="scanBarcode()" expand="block">{{"MULTI_SCAN.SCAN_PRODUCT_BUTTON" | translate}}</ion-button>
+      <ion-button color="warning" (click)="scanBarcode()" expand="block">{{"MULTI_SCAN.SCAN_PRODUCT_BUTTON" |
+        translate}}</ion-button>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col>
-      <ion-button color="warning" (click)="saveToStorage()" expand="block">{{"MULTI_SCAN.SAVE_STORAGE_BUTTON" | translate}}</ion-button>
+      <ion-button id="open-modal" color="warning" [disabled]="!validateSave()"
+        expand="block">{{"MULTI_SCAN.SAVE_STORAGE_BUTTON" | translate}}</ion-button>
     </ion-col>
   </ion-row>
 
   <ion-list>
-    <ion-item *ngFor="let product of scannedProducts">
+    <ion-item *ngFor="let product of scannedProducts" class="multi-scan__product">
       <ion-thumbnail slot="start">
         <ion-img [src]="product.imageSrc"></ion-img>
       </ion-thumbnail>
@@ -24,9 +27,46 @@
         <h2>{{ product.name || "Product Name Not Available" }}</h2>
         <p>{{"MULTI_SCAN.ITEM_BARCODE_TEXT" | translate}}: {{ product.barcode }}</p>
       </ion-label>
-      <ion-button (click)="removeProduct(product)" fill="clear" size="small">
-        <ion-icon name="trash" color="danger"></ion-icon>
-      </ion-button>
+      <ion-item slot="end" class="multi-scan__product-content">
+        <ion-button fill="clear" color="warning" (click)="incrementQuantity(product)">
+          <ion-icon name="caret-up-outline"></ion-icon>
+        </ion-button>
+        <ion-input [(ngModel)]="product.quantity" name="quantity" type="number" min="0" step="1"
+          class="multi-scan__quantity-input ion-text-center" (input)="validateQuantityInput(product)"></ion-input>
+        <ion-button fill="clear" color="warning" (click)="decrementQuantity(product)">
+          <ion-icon name="caret-down-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="removeProduct(product)" fill="clear" size="small">
+          <ion-icon name="trash" color="danger"></ion-icon>
+        </ion-button>
+      </ion-item>
     </ion-item>
   </ion-list>
+
+
+
+  <ion-modal trigger="open-modal" [initialBreakpoint]="0.5" [breakpoints]="[0, 1]">
+    <ng-template>
+      <form [formGroup]="form" class="formModal" (ngSubmit)="handleFormSubmit()">
+        <ion-title class="ion-text-center ion-padding">Add to a storage</ion-title>
+        <ion-list>
+          <ion-item>
+            <ion-select placeholder="Select a community" id="communitySelector" [(ngModel)]="selectedCommunity"
+              (ionChange)="getStoragesForCommunity()" formControlName="community">
+              <ion-select-option *ngFor="let community of communities" [value]="community.community.id">{{
+                community.community.label }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item [disabled]="storages.length === 0">
+            <ion-select placeholder="select a storage" formControlName="storage" [(ngModel)]="selectedStorage">
+              <ion-select-option *ngFor="let storage of storages" [value]="storage.id">{{ storage.label
+                }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <ion-button type="submit" expand="full" [disabled]="!form.valid">Submit</ion-button>
+      </form>
+    </ng-template>
+  </ion-modal>
+
 </ion-content>
