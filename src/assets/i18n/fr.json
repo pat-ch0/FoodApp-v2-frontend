@@ -21,7 +21,7 @@
     "INPUT_PARAGRAPH": "Entrez le code-barres d'un produit dans le champ de recherche pour obtenir des informations détaillées sur le produit",
     "SCAN_PARAGRAPH": "Cliquez sur le bouton Scanner et utilisez votre appareil photo pour scanner le code-barres du produit pour une recherche plus rapide",
     "SCAN_BUTTON": "SCANNER",
-    "SCAN_MULTIPLE_PARARAPH": "Sinon, vous pouvez scanner plusieurs produits pour ensuite les ajouter facilement à votre liste de stockage.",
+    "SCAN_MULTIPLE_PARARAPH": "Sinon, vous pouvez scanner plusieurs produits pour ensuite les ajouter facilement à votre liste de stockage",
     "SCAN_MULTIPLE_BUTTON": "EXPLORER LE MULTISCAN",
     "INPUT_PLACEHOLDER": "Rechercher"
   },
@@ -33,7 +33,9 @@
     "MODAL_HEADER_ADD_PRODUCT": "Ajouter un produit",
     "MODAL_INPUT_PLACEHOLDER": "Saissez le code barres",
     "MODAL_CANCEL_BUTTON": "Annuler",
-    "MODAL_CONFIRM_BUTTON": "Ajouter"
+    "MODAL_CONFIRM_BUTTON": "Ajouter",
+    "SAVE_PRODUCTS_MODAL_COMMUNITY_LABEL": "Communauté",
+    "SAVE_PRODUCTS_MODAL_STORAGE_LABEL": "Stockage"
   },
   "PRODUCT_STOCK": {
     "LOADING_TEXT": "Chargement...",
@@ -102,7 +104,8 @@
     "ERROR_FETCHING_INFOS": "Erreur lors de la récupération des informations du stockage",
     "ADD_STORAGE": "Ajouter un stockage",
     "ADD_USER": "Ajouter un utilisateur",
-    "USER_ADDED": "Utilisateur ajouté s'il existe"
+    "USER_ADDED": "Utilisateur ajouté s'il existe",
+    "DETAIL_NUMBER_PRODUCTS": "Nombre de produits : "
   },
   "PROFIL_SETTINGS": {
     "FIRST_TITLE": "Informations personnelles",
@@ -127,5 +130,8 @@
     "INVALID_EMAIL": "Prénom invalide",
     "ACCEPT": "Accepter",
     "EDIT": "Modifier"
+  },
+  "FORM_MODAL" : {
+    "SUBMIT_BUTTON" : "Soumettre"
   }
 }

@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '@Service/product/product.service';
-import { LoadingController } from '@ionic/angular';
+import { IonSelect, LoadingController, ModalController } from '@ionic/angular';
 import { ProductDetail } from '@Type/products/product-detail.type';
 import { HandleError } from '@Service/errors/handle-error.service';
+import { ProductQuantityData } from '@Type/products/quantity.type';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Community } from '@Type/community/community.type';
+import { StorageType } from '@Type/storage.type';
+import { CommunityService } from '@Service/community/community.service';
+import { StorageService } from '@Service/storage/storage.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -14,6 +20,17 @@ export class ProductDetailComponent implements OnInit {
   product: ProductDetail | undefined; // The product details to display.
   barcode: string | null = ''; // The barcode of the product to fetch.
   isLoading = false; // Indicates if the loading spinner should be shown.
+
+  form: FormGroup = new FormGroup({
+    community: new FormControl('', [Validators.required,]),
+    storage: new FormControl('', [Validators.required,]),
+  });
+
+  communities: ({ community: Community; userRoleLabel: string })[] = [];
+  storages: StorageType[] = [];
+  @ViewChild('communitySelect') communitySelect!: IonSelect;
+  selectedCommunity: any;
+  selectedStorage: any;
 
   /**
    * Initializes the product detail component with necessary services.
@@ -26,7 +43,10 @@ export class ProductDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductService,
     private loadingController: LoadingController,
-    private handleError: HandleError
+    private handleError: HandleError,
+    private communityService: CommunityService,
+    private storageService: StorageService,
+    private modalController: ModalController
   ) {}
 
   async ngOnInit() {
@@ -41,6 +61,7 @@ export class ProductDetailComponent implements OnInit {
       this.isLoading = false;
       await loading.dismiss();
     }
+    this.communities = await this.communityService.getCommunities();
   }
 
   /**
@@ -79,4 +100,68 @@ export class ProductDetailComponent implements OnInit {
       );
     }
   }
+
+  
+  /**
+   * Saves the scanned products to storage after selecting community and storage.
+   * Opens a modal to select community and storage, then saves the products using the selected data.
+   * Clears the scanned products array upon a successful save operation.
+   * Handles errors and displays appropriate messages to the user.
+   */
+  async saveToStorage(communityId: string, storageId: string) {
+    if (!this.product) return;
+    const newProduct: ProductQuantityData = {
+      barcode: this.product.barcode,
+      name: this.product.name,
+      imageSrc: this.product.imageSrc,
+      quantity: 1,
+    };
+    // If either communityId or storageId is null, do nothing
+    if (communityId === null || communityId === "" 
+      || storageId === null || storageId === "") {
+      return;
+    }
+
+    try {
+      // Check if both communityId and storageId are available
+      if (communityId && storageId) {
+        console.log('Products saved to storage:', [newProduct]);
+
+        // Save products in storage
+        const res = await this.productService.saveProductsInStorage(
+          communityId,
+          storageId,
+          [newProduct]
+        );
+        console.log(res);
+      } else {
+        // Handle the case where either communityId or storageId is not available
+        console.error('CommunityId or StorageId is missing.');
+        // Optionally, display an error message to the user
+      }
+    } catch (error) {
+      // Handle any unexpected errors that may occur during the process
+      console.error('An error occurred during the save operation:', error);
+      // Optionally, display an error message to the user
+    }
+  }
+
+  /**
+   * Handles the submission of the community and storage selection form.
+   * Closes the modal and provides the selected community and storage data.
+   *
+   * @param formData The data submitted from the form (selected community and storage).
+   */
+  async handleFormSubmit() {
+    console.log(this.form.value);
+    this.modalController.dismiss();
+    this.saveToStorage(this.selectedCommunity, this.selectedStorage);
+  }
+
+  async getStoragesForCommunity() {
+    const res = await this.storageService.getAllStorages(this.selectedCommunity);
+    this.storages = res.data;
+    console.log(this.storages);
+  }
+
 }

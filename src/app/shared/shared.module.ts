@@ -30,7 +30,7 @@ import { MultiScanComponent } from '../pages/multi-scan/multi-scan.component';
     LoadingSpinnerComponent,
     HomeComponent,
     ProfilComponent,
-    MultiScanComponent
+    MultiScanComponent,
   ],
   imports: [
     CommonModule,

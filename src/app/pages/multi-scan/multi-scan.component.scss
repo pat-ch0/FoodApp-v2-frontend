@@ -1,0 +1,11 @@
+.multi-scan__quantity-input {
+  width: 18px;
+}
+
+.multi-scan__product {
+    --inner-padding-end: .2em;
+
+    &-content {
+        --inner-padding-end: 0px;
+    }
+}

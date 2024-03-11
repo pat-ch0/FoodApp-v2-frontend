@@ -4,7 +4,7 @@
     "TABS_2_TITLE": "Community",
     "TABS_MENU_TITLE": "Menu",
     "TABS_MENU_PROFILE": "Profile",
-    "TABS_MENU_FAVORITES": "Profile",
+    "TABS_MENU_FAVORITES": "Favorites",
     "TABS_MENU_LOGOUT": "Logout"
   },
   "PRODUCT_DETAIL": {
@@ -21,7 +21,7 @@
     "INPUT_PARAGRAPH": "Type the product barcode in the search field to view the details of the product",
     "SCAN_PARAGRAPH": "Click on the Scan button and use your camera to scan the product barcode for a faster search",
     "SCAN_BUTTON": "SCAN",
-    "SCAN_MULTIPLE_PARARAPH": "Alternatively, you can Scan multiple products and easily add the entire list to your storage.",
+    "SCAN_MULTIPLE_PARARAPH": "Alternatively, You can Scan multiple products and easily add the entire list to your storage",
     "SCAN_MULTIPLE_BUTTON": "EXPLORE MULTI-SCAN",
     "INPUT_PLACEHOLDER": "Search"
   },
@@ -33,7 +33,9 @@
     "MODAL_HEADER_ADD_PRODUCT": "Add product",
     "MODAL_INPUT_PLACEHOLDER": "Enter Barcode",
     "MODAL_CANCEL_BUTTON": "Cancel",
-    "MODAL_CONFIRM_BUTTON": "Add"
+    "MODAL_CONFIRM_BUTTON": "Add",
+    "SAVE_PRODUCTS_MODAL_COMMUNITY_LABEL": "Community",
+    "SAVE_PRODUCTS_MODAL_STORAGE_LABEL": "Storage"
   },
   "PRODUCT_STOCK": {
     "LOADING_TEXT": "Loading...",
@@ -102,7 +104,8 @@
     "ERROR_FETCHING_INFOS": "There was an error when fetching the storage infos",
     "ADD_STORAGE": "Add a storage",
     "ADD_USER": "Add a user",
-    "USER_ADDED": "User added if exists"
+    "USER_ADDED": "User added if exists",
+    "DETAIL_NUMBER_PRODUCTS": "Number of product : "
   },
   "PROFIL_SETTINGS": {
     "FIRST_TITLE": "Personal information",
@@ -127,5 +130,8 @@
     "INVALID_EMAIL": "Invalid email",
     "ACCEPT": "Accept",
     "EDIT": "Change"
+  },
+  "FORM_MODAL": {
+    "SUBMIT_BUTTON": "Submit"
   }
 }
